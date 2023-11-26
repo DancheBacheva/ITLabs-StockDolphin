@@ -1,0 +1,21 @@
+.login-form{
+  text-align: center;
+  font-family: Poppins;
+  color: #4F5366;
+  }
+  
+  .input-login{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 5px solid #4F5366;
+    margin-bottom: 30px;
+  }
+  
+  .btn-login{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 5px solid #4F5366;
+    margin-bottom: 30px;
+  }

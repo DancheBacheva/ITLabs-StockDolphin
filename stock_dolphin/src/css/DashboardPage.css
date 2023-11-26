@@ -1,0 +1,13 @@
+.dashboard-page{
+  width: 1980px;
+  height: 1080px;
+}
+
+.frame9{
+  width: 1979px;
+  height: 1080px;
+  left: 1px;
+  border: 1px solid #FFFFFF;
+  display: flex;
+}
+

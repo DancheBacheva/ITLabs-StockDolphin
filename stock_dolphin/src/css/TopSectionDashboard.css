@@ -1,0 +1,61 @@
+.top-section-dashboard{
+width: 1628px;
+}
+
+.top-section{
+  width: 1470px;
+  height: 74px;
+  top: 46px;
+  left: 431px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-left: 75px;
+}
+
+.dashboard-title{
+  width: 213px;
+  height: 57px;
+  top: 46px;
+  left: 431px;
+  font-family: Poppins;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 57px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3E4153;
+}
+
+.user-section{
+  display: flex;
+  align-items: center;
+}
+
+.welcome{
+  width: 454px;
+  height: 39px;
+  top: 63px;
+  left: 1395px;
+  font-family: Poppins;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 39px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #000000;
+}
+
+.user-img{
+  width: 40px;
+  height: 40px;
+  top: 62px;
+  left: 1861px;
+}
+
+.line{
+  width: 1470px;
+  top: 120px;
+  left: 431px;
+  border: 2px solid #5C5C5C;
+}
