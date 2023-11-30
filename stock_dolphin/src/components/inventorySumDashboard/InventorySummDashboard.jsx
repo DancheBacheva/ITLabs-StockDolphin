@@ -1,4 +1,4 @@
-import "../css/InventorySummDashboard.css"
+import "./InventorySummDashboard.css"
 
 export const InventorySummDashboard = () => {
   return (

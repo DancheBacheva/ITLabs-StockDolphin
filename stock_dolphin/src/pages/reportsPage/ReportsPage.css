@@ -1,0 +1,45 @@
+.reports-main{
+  width: 1980px;
+  height: 1086px;
+  top: 3803px;
+  left: -546px;
+}
+
+.background-reports{
+  width: 1980px;
+  height: 1080px;
+  top: 5252px;
+  left: -530px;
+  display: flex;
+  background: #EAEAEA;
+}
+
+.top-section-reports{
+  width: 1510px;
+  height: 67px;
+  top: 58px;
+  left: 420px;
+}
+
+.reports-title{
+  width: 145px;
+  height: 57px;
+  top: 58px;
+  left: 420px;
+  font-family: Poppins;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 57px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3E4153;
+  margin-left: 75px;
+}
+
+.line-reports{
+  width: 1510px;
+  top: 125px;
+  left: 420px;
+  border: 2px solid #5C5C5C;
+  margin-left: 75px;
+}

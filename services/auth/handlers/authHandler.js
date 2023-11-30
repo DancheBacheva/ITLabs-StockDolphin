@@ -11,14 +11,9 @@ exports.register = async (req, res) => {
     });
 
     const token = jwt.sign(
-      {
-      id: newUser._id,
-      name: newUser.name
-      },
+      { id: newUser._id, name: newUser.name },
       process.env.JWT_SECRET,
-      {
-      expiresIn: process.env.JWT_EXPIRES,
-      }
+      { expiresIn: process.env.JWT_EXPIRES }
     );
 
     res.cookie("jwt", token, {
@@ -31,10 +26,7 @@ exports.register = async (req, res) => {
 
     res.status(201).json({
       status: "success",
-      token,
-      data: {
-        user: newUser,
-      },
+      token
     });
   }catch (err) {
     return res.status(500).send(err);
@@ -59,14 +51,9 @@ exports.login = async (req, res) =>{
     }
     
     const token = jwt.sign(
-      {
-      id: user._id,
-      name: user.name
-      },
+      { id: user._id, name: user.name },
       process.env.JWT_SECRET,
-      {
-      expiresIn: process.env.JWT_EXPIRES,
-      }
+      { expiresIn: process.env.JWT_EXPIRES }
     );
 
     res.cookie("jwt", token, {

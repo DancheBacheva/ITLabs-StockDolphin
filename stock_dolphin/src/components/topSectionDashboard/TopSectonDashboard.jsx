@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/TopSectionDashboard.css";
+import "./TopSectionDashboard.css";
 
 export const TopSectonDashboard = () => {
   return (

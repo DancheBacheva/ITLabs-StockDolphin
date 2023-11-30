@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/Login.css";
+import "./Login.css";
 import { useState, useEffect } from "react";
 
 export const Login = () => {
@@ -20,7 +20,7 @@ export const Login = () => {
 
   const login = async () => {
     try{
-      let res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`,
+      let res = await fetch("api/v1/auth/login",
       {
         method: 'POST',
         body: JSON.stringify(data),

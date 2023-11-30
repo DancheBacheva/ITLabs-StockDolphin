@@ -3,13 +3,14 @@ const db = require("../../pkg/db/index");
 const jwt = require("express-jwt");
 const cookieParser = require("cookie-parser");
 
-const auth = require("./handlers/authHandler");
+const authHandler = require("./handlers/authHandler");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static("public"));
 
 db.init();
 
@@ -34,8 +35,8 @@ app.use(jwt.expressjwt({
   })
 );
 
-app.post("/api/v1/auth/register", auth.register);
-app.post("/api/v1/auth/login", auth.login);
+app.post("/api/v1/auth/register", authHandler.register);
+app.post("/api/v1/auth/login", authHandler.login);
 
 app.listen(process.env.PORTAUTH, (err) => {
   if (err) {

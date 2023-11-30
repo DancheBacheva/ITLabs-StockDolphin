@@ -44,12 +44,16 @@
   background: #EFEFEF;
 }
 
-.dashboard-layout{
+.dashboard-img{
   width: 39.44px;
   height: 43.64px;
   top: 198px;
   left: 44.37px;
   margin: 0 10px;
+}
+
+.link-dashboard, .link-inventory, .link-reports, .link-suppliers, .link-signout{
+  text-decoration: none;
 }
 
 .dashboard-text{

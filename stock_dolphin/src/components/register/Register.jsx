@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/Register.css";
+import "./Register.css";
 import { useState } from "react";
 
 export const Register = () => {
@@ -21,7 +21,7 @@ export const Register = () => {
   const register = async () =>{
     try{
       let res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`,
+        "/api/v1/auth/register",
         {
           method: 'POST',
           body: JSON.stringify(data),

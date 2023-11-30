@@ -1,0 +1,44 @@
+.suppliers-main{
+  width: 1980px;
+  height: 1080px;
+  top: 5252px;
+  left: -530px;
+  padding: 0px, 50px, 0px, 0px;
+}
+
+.suppliers-right{
+  background: #EAEAEA;
+  display: flex;
+}
+
+.top-section-suppliers{
+  width: 1530px;
+  height: 67px;
+  top: 53px;
+  left: 400px;
+  padding: 0px, 0px, 0px, 0px;
+}
+
+.suppliers-title{
+  width: 175px;
+  height: 57px;
+  top: 53px;
+  left: 401px;
+  font-family: Poppins;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 57px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3E4153;
+  margin-left: 75px;
+}
+
+.line-suppliers{
+  width: 1530px;
+  top: 120px;
+  left: 400px;
+  border: 2px;
+  border: 2px solid #5C5C5C;
+  margin-left: 75px;
+}

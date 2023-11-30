@@ -1,20 +1,21 @@
-import "./css/App.css";
-import { Route, Routes, Link } from "react-router-dom";
-import { DashboardPage } from './components/DashboardPage';
-import { Default } from "./components/Default";
-
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { DashboardPage } from './pages/dashboardPage/DashboardPage';
+import { Default } from "./pages/defaultPage/Default";
+import { InventoryPage } from "./pages/inventoryPage/InventoryPage";
+import { ReportsPage } from "./pages/reportsPage/ReportsPage";
+import { SuppliersPage } from "./pages/suppliersPage/SuppliersPage";
 
 function App() {
   return (
     <div className="App">
-      <nav>
-        <Link to="/"></Link>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Default/>}/>
-        <Route path="/dashboard" element={<DashboardPage/>}/>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Default/>}/>
+          <Route path="/dashboard" element={<DashboardPage/>}/>
+          <Route path="/inventory" element={<InventoryPage/>}/>
+          <Route path="/reports" element={<ReportsPage/>}/>
+          <Route path="/suppliers" element={<SuppliersPage/>}/>
+        </Routes>
     </div>
   );
 }
