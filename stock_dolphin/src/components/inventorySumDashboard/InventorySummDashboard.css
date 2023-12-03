@@ -1,8 +1,8 @@
-.inventory-summary{
+.inventory-summary-dashboard{
   width: 770px;
   height: 230px;
-  /* top: 190px;
-  left: 781px; */
+  top: 190px;
+  left: 781px;
   margin: 0 auto;
 }
 
@@ -97,4 +97,37 @@
   letter-spacing: 0.03em;
   text-align: center;
   color: #4F5366;
+}
+
+@media (max-width: 768px) {
+  .inventory-summary {
+    width: 100%;
+    height: auto;
+  }
+
+  .rectangle {
+    width: 100%;
+    height: auto;
+  }
+
+  .elipse {
+    width: 100%;
+    height: auto;
+  }
+
+  .img-folder,
+  .img-documents,
+  .img-paper,
+  .img-coins {
+    width: 100%;
+    height: auto;
+  }
+
+  .num {
+    font-size: 16px; 
+  }
+
+  .text {
+    font-size: 12px;
+  }
 }

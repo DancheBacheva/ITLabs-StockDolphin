@@ -1,15 +1,15 @@
 import "./SuppliersPage.css";
-import { MenuSidebarLeft } from "../../components/menuSidebarLeft/MenuSidebarLeft";
+import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
+import { TopSectionSuppliers } from "../../components/TopSectionSuppliers/TopSectionSuppliers";
 
 export const SuppliersPage = () => {
   return (
-    <div className="suppliers-main">
-      <div className="suppliers-right">
-      <MenuSidebarLeft/>
-      <div className='top-section-suppliers'>
-        <p className='suppliers-title'>Suppliers</p>
-        <hr className='line-suppliers'/>
-      </div>
+    <div>
+      <div className="suppliers-page">
+        <MenuSidebarLeft/>
+        <div className="supplier-main">
+        <TopSectionSuppliers/>
+        </div>
       </div>
     </div>
   )

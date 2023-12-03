@@ -3,8 +3,8 @@ import "./InventorySummDashboard.css"
 export const InventorySummDashboard = () => {
   return (
     <div>
-      <div className="inventory-summary">
-        <p className="inventory-summary-text">Inventory Summary</p>
+      <div className="inventory-summary-dashboard">
+        <p className="inventory-summary-text"><strong>Inventory Summary</strong></p>
         <div className="rectangles"> 
           <div className="rectangle">
             <div className="elipse1">

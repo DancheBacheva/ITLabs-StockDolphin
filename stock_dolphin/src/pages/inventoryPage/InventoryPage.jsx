@@ -1,16 +1,16 @@
-import { MenuSidebarLeft } from "../../components/menuSidebarLeft/MenuSidebarLeft";
+import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
+import { TopSectionInventory } from "../../components/TopSectionInventory/TopSectionInventory";
 import "./InventoryPage.css"
 
 
 export const InventoryPage = () => {
   return (
-    <div className="inventory-main">
-      <div className="background-items">
-      <MenuSidebarLeft/>
-      <div className='top-section-inventory'>
-        <p className='inventory-title'>Inventory</p>
-        <hr className='line-inventory'/>
-      </div>
+    <div>
+      <div className="inventory-page">
+        <MenuSidebarLeft/>
+        <div className="inventory-main">
+        <TopSectionInventory/>
+        </div>
       </div>
     </div>
   )

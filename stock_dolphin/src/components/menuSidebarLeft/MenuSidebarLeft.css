@@ -175,7 +175,7 @@
   border: none;
   opacity: 40%;
   background: #EFEFEF;
-  margin-bottom: 440px; /*check again*/
+  margin-bottom: 330px; /*check again*/
   padding-left: 65px;
 }
 
@@ -230,4 +230,31 @@
   letter-spacing: 0em;
   text-align: left;
   color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-sidebar-left2 {
+    width: 100%;
+    /* max-width: 351px;
+    min-width: 280px;
+    max-height: 1080px;
+    min-height: 500px; */
+    height: auto;
+  }
+
+  .menu-panel{
+    width: 100%;
+    /* max-width: 350px;
+    min-width: 280px;
+    max-height: 1080px;
+    min-height: 500px; */
+    height: auto;
+  }
+
+  .sidebar-navigation-btn{
+    width: 100%;
+    height: auto;
+    max-width: 281.42px;
+    max-height: 860px;
+  }
 }

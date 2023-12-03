@@ -1,5 +1,5 @@
 import "./ReportsPage.css";
-import { MenuSidebarLeft } from "../../components/menuSidebarLeft/MenuSidebarLeft";
+import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
 
 export const ReportsPage = () => {
   return (

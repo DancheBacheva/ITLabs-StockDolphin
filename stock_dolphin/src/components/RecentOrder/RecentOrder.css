@@ -1,0 +1,139 @@
+.resent-order-section{
+  width: 769px;
+  height: 295px;
+  /* top: 741px;
+  left: 782px; */
+  margin: 0 auto;
+  position: relative;
+}
+
+.recent-order-text{
+  width: 157px;
+  height: 33px;
+  top: 741px;
+  left: 782px;
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+}
+
+.navigation-recent-items{
+  width: 730px;
+  height: 241px;
+  /* top: 795px;
+  left: 821px; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.recent-item{
+  width: 150px;
+  height: 168px;
+  top: 795px;
+  left: 821px;
+}
+
+.recent-item-box{
+  width: 150px;
+  height: 168px;
+  top: 795px;
+  left: 821px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px 0px #00000040;
+  text-align: center;
+}
+
+.recent-item-img{
+  width: 150px;
+  height: 100px;
+  top: 795px;
+  left: 821px;
+  border-radius: 8px, 8px, 0, 0;
+  background: #646464;
+}
+
+.items{
+ position: relative;
+}
+
+.item-name{
+  width: 109px;
+  height: 24px;
+  top: 905px;
+  left: 831px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+  text-align: left;  
+  color: #000000;
+}
+
+.quantity-cost{
+  width: 101px;
+  height: 18px;
+  top: 935px;
+  left: 831px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #000000;
+}
+
+.expand-arrow{
+  width: 40px;
+  height: 40px;
+  /* top: 899px;
+  left: 1511px; */
+  position: absolute;
+  top: 60px;
+  right: 0;
+}
+
+.elipses{
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.elipse13{
+  width: 12px;
+  height: 12px;
+  /* top: 1024px;
+  left: 1125px; */
+  border-radius: 50%;
+  border: 2px solid #A8A8A8;
+  background: #A8A8A8;
+  margin: 5px;
+}
+
+.elipse14{
+  width: 12px;
+  height: 12px;
+  /* top: 1024px;
+  left: 1125px; */
+  border-radius: 50%;
+  border: 2px solid #A8A8A8;
+  background: #D9D9D900;
+  margin: 5px;
+}
+
+.elipse15{
+  width: 12px;
+  height: 12px;
+  /* top: 1024px;
+  left: 1125px; */
+  border-radius: 50%;
+  border: 2px solid #A8A8A8;
+  background: #D9D9D900;
+  margin: 5px;
+}

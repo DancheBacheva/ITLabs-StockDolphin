@@ -11,3 +11,20 @@
   display: flex;
 }
 
+@media only screen and (max-width: 768px){
+  .dashboard-page{
+    width: 100%;
+    max-width: 1980px;
+    min-width: 375px;
+    max-height: 1080px;
+    min-height: 500px;
+    height: auto;
+  }
+
+  .frame9{
+    width: 100%;
+    min-width: 375px;
+    height: auto;
+    min-height: 500px;
+  }
+}

@@ -1,10 +1,28 @@
 .header-section{
-  width: 1980px;;
-  height: 500px;
-  background: #53A856;
+  width: 1980px;
+  height: 1080px;
 }
 
 .logo{
   width: 345.07px;
   height: 190px;  
+}
+
+.login-section{
+  background: #53A856;
+}
+
+.register-section{
+ background: white;
+}
+
+@media only screen and (max-width: 768px){
+  .header-section{
+    width: 70%;
+    /* max-width: 1979px;
+    min-width: 375px;
+    max-height: 1080px;
+    min-height: 500px; */
+    height: auto;
+  }
 }

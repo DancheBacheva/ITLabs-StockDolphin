@@ -10,6 +10,7 @@ color: #4F5366;
   border-radius: 10px;
   border: 5px solid #53A856;
   margin-bottom: 30px;
+  outline: none;
 }
 
 .btn-register{

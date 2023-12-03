@@ -1,7 +1,9 @@
 import "./DashboardPage.css";
-import { InventorySummDashboard } from "../../components/inventorySumDashboard/InventorySummDashboard";
-import { MenuSidebarLeft } from "../../components/menuSidebarLeft/MenuSidebarLeft";
-import { TopSectonDashboard } from "../../components/topSectionDashboard/TopSectonDashboard";
+import { InventorySummDashboard } from "../../components/InventorySumDashboard/InventorySummDashboard";
+import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
+import { TopSectonDashboard } from "../../components/TopSectionDashboard/TopSectonDashboard";
+import { RecentActivity } from "../../components/RecentActivity/RecentActivity";
+import { RecentOrder } from "../../components/RecentOrder/RecentOrder";
 
 export const DashboardPage = () =>{
   return(
@@ -11,6 +13,8 @@ export const DashboardPage = () =>{
         <div className="dashboard-main">
           <TopSectonDashboard/>
           <InventorySummDashboard/>
+          <RecentActivity/>
+          <RecentOrder/>
         </div>
       </div>
     </div>

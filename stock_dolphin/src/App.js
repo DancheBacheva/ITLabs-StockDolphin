@@ -1,10 +1,10 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { DashboardPage } from './pages/dashboardPage/DashboardPage';
-import { Default } from "./pages/defaultPage/Default";
-import { InventoryPage } from "./pages/inventoryPage/InventoryPage";
-import { ReportsPage } from "./pages/reportsPage/ReportsPage";
-import { SuppliersPage } from "./pages/suppliersPage/SuppliersPage";
+import { DashboardPage } from './pages/DashboardPage/DashboardPage';
+import { Default } from "./pages/DefaultPage/Default";
+import { InventoryPage } from "./pages/InventoryPage/InventoryPage";
+import { ReportsPage } from "./pages/ReportsPage/ReportsPage";
+import { SuppliersPage } from "./pages/SuppliersPage/SuppliersPage";
 
 function App() {
   return (
