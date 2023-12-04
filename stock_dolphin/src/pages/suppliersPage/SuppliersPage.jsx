@@ -6,9 +6,9 @@ export const SuppliersPage = () => {
   return (
     <div>
       <div className="suppliers-page">
-        <MenuSidebarLeft/>
+          <MenuSidebarLeft/>
         <div className="supplier-main">
-        <TopSectionSuppliers/>
+          <TopSectionSuppliers/>
         </div>
       </div>
     </div>
