@@ -1,4 +1,5 @@
 const Item = require("../../../pkg/item/itemSchema");
+const Category = require("../../../pkg/category/categorySchema");
 
 exports.viewAll = async (req, res) => {
   try{
@@ -8,7 +9,7 @@ exports.viewAll = async (req, res) => {
     (match)=> `$${match}`
     );
     const query = JSON.parse(queryString);
-    const items = await Item.find(query);
+    const items = await Item.find(query).populate("category");
     res.status(200).json({
       status: "success",
       data: {
@@ -25,7 +26,7 @@ exports.viewAll = async (req, res) => {
 
 exports.viewOne = async (req, res) => {
   try{
-    const item = await Item.findById(req.params.id);
+    const item = await Item.findById(req.params.id).populate("category");
     res.status(200).json({
       status: "success",
       data: {
@@ -42,13 +43,27 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try{
-    const newItem = await Item.create(req.body);
+    const { itemTitle, icon, categoryTitle } = req.body;
+
+    const category = await Category.findOne({ title: categoryTitle });
+
+    const newItem = await Item.create({
+      itemTitle,
+      icon,
+      category: category._id,
+    });
+
+    await Category.findByIdAndUpdate(category._id, {
+      $push: { items: newItem._id},
+    });
+
     res.status(201).json({
       status: "success",
       data: {
         item: newItem,
-      }
+      },
     });
+
   }catch(err){
     res.status(404).json({
       status: "fail",

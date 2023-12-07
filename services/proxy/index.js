@@ -10,15 +10,9 @@ const authProxy = proxy('http://localhost:9000', {
     return `/api/v1/auth${req.url}`;
   },
 });
-// const stockProxy = proxy('http://localhost:9001', {
-//   proxyReqPathResolver: (req) => {
-//     return `/api/v1/stock${req.url}`;
-//   },
-// });
 
 
 app.use('/api/v1/auth/', authProxy);
-// app.use('/api/v1/stock/', stockProxy);
 
 app.listen(9002, (err) => {
   if (err) {

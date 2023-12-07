@@ -1,4 +1,5 @@
 const Category = require("../../../pkg/category/categorySchema");
+const Item = require("../../../pkg/item/itemSchema");
 
 exports.viewAll = async (req, res) => {
   try{
@@ -8,7 +9,7 @@ exports.viewAll = async (req, res) => {
     (match)=> `$${match}`
     );
     const query = JSON.parse(queryString);
-    const categories = await Category.find(query);
+    const categories = await Category.find(query).populate("items");
     res.status(200).json({
       status: "success",
       data: {
@@ -25,7 +26,7 @@ exports.viewAll = async (req, res) => {
 
 exports.viewOne = async (req, res) => {
   try{
-    const category = await Category.findById(req.params.id);
+    const category = await Category.findById(req.params.id).populate('items');
     res.status(200).json({
       status: "success",
       data: {

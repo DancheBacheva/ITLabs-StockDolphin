@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const itemSchema = new mongoose.Schema({
-  title: {
+  itemTitle: {
+    type: String,
+  },
+
+  categoryTitle: {
     type: String,
   },
 
