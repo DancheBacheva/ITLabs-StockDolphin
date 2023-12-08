@@ -18,7 +18,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"nodemon ./services/auth/index.js\" \"nodemon ./services/proxy/index.js\" \"nodemon ./services/category/index.js\" \"nodemon ./services/item/index.js\""
+    "start": "concurrently \"nodemon ./services/auth/index.js\" \"nodemon ./services/proxy/index.js\" \"nodemon ./services/category/index.js\" \"nodemon ./services/item/index.js\" \"nodemon ./services/order/index.js\" \"nodemon ./services/supplier/index.js\""
   },
   "keywords": [],
   "author": "",

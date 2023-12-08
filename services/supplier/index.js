@@ -3,7 +3,7 @@ const db = require("../../pkg/db/index");
 const cors = require("cors");
 const jwt = require("express-jwt");
 
-const category = require("./handlers/categoryHandler");
+const supplier = require("./handlers/supplierHandler");
 
 const app = express();
 
@@ -19,15 +19,15 @@ app.use(
   })
 );
 
-app.get("/api/v1/category", category.viewAll);
-app.get("/api/v1/category/:id", category.viewOne);
-app.post("/api/v1/category", category.create);
-app.patch("/api/v1/category/:id", category.update);
-app.delete("/api/v1/category/:id", category.delete);
+app.get("/api/v1/supplier", supplier.viewAll);
+app.get("/api/v1/supplier/:id", supplier.viewOne);
+app.post("/api/v1/supplier", supplier.create);
+app.patch("/api/v1/supplier/:id", supplier.update);
+app.delete("/api/v1/supplier/:id", supplier.delete);
 
-app.listen(process.env.PORTCATEGORY, (err)=>{
+app.listen(process.env.PORTSUPPLIER, (err) =>{
   if(err){
     return console.log("Server can not start");
   }
-  console.log(`Server started successfully on port ${process.env.PORTCATEGORY}`);
+  console.log(`Server started successfully on port ${process.env.PORTSUPPLIER}`);
 });
