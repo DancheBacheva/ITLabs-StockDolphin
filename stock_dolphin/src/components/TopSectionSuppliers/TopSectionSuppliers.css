@@ -76,6 +76,16 @@
   background: #D9D9D9;
 }
 
+.input-search-s::placeholder{
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #000000;
+}
+
 .add-supplier{
   width: 230px;
   height: 60px;

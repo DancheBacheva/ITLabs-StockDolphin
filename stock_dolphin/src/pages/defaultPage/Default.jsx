@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Default.css"
 import { Register } from '../../components/Register/Register';
 import { Login } from '../../components/Login/Login';

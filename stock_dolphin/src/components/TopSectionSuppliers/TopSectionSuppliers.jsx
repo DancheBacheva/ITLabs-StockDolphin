@@ -1,4 +1,3 @@
-import React from 'react'
 import './TopSectionSuppliers.css';
 
 export const TopSectionSuppliers = () => {

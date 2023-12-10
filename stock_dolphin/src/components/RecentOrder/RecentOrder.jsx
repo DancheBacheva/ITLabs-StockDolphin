@@ -1,4 +1,3 @@
-import React from 'react';
 import "./RecentOrder.css"
 
 export const RecentOrder = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import "./TopSectionDashboard.css";
 
 export const TopSectonDashboard = () => {

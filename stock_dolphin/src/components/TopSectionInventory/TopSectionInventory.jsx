@@ -1,8 +1,14 @@
-import React from 'react';
 import "./TopSectionInventory.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const TopSectionInventory = () => {
+  // const [showList, setShowList] = useState(false);
+
+  // const handleShowList = () => {
+  //   setShowList(!showList);
+  // }; //da se proveri pak i da se dovrsi so kopcinja namesto linkovi
+
   return (
     <div className='top-section-inventory'>
       <div className='top-section'>
@@ -47,14 +53,14 @@ export const TopSectionInventory = () => {
         </div>
         <div className='item-order'>
           <div className='control-panel'>
-            <Link className='control-panel-link'>
+            <button className='control-panel-btn'>
               <img src="/images/ControlPanel.png" alt="Control Panel" />
-            </Link>
+            </button>
           </div>
           <div className='list'>
-            <Link className='list-link'>
+            <button className='list-btn'>
               <img src='/images/List.png' alt='list'/>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

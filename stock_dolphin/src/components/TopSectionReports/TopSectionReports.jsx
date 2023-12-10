@@ -1,5 +1,4 @@
-import React from 'react'
-import "./TopSectionReports.css"
+import "./TopSectionReports.css";
 
 export const TopSectionReports = () => {
   return (

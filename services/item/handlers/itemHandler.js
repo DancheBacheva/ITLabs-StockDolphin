@@ -1,5 +1,34 @@
 const Item = require("../../../pkg/item/itemSchema");
 const Category = require("../../../pkg/category/categorySchema");
+const multer = require("multer");
+const uuid = require("uuid");
+
+const imageId = uuid.v4();
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "public/img/items"); //da se proveri
+  },
+  filename: (req, file, callback) => {
+    const ext = file.mimetype.split("/")[1];
+    callback(null, `item-${imageId}-${Date.now()}.${ext}`);
+  },
+});
+
+const multerFilter = (req, file, callback) => {
+  if(file.mimetype.startsWith("image")){
+    callback(null, true);
+  }else{
+    callback(new Error("File type is not supported"), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadPhoto = upload.single("icon");
 
 exports.viewAll = async (req, res) => {
   try{
@@ -74,6 +103,11 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) =>{
   try{
+    if (req.file) {
+      const filename = req.file.filename;
+      req.body.icon = filename;
+    }
+
     const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -106,3 +140,5 @@ exports.delete = async (req, res) => {
     });
   }
 };
+
+

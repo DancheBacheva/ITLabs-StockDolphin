@@ -1,28 +1,56 @@
-import React from 'react';
 import "./SuppliersInfo.css";
+import React, { useEffect, useState} from "react";
 
 export const SuppliersInfo = () => {
+  const [data, setData] = useState([]);
+
+  const fetchSuppliers = async () => {
+    try {
+      const res = await fetch('http://localhost:9007/api/v1/supplier',
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+      const data = await res.json();
+
+      if (res.ok) {
+        setData(data.data.suppliers);
+      } else {
+        console.log('Error', data.message);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchSuppliers();
+  }, []);
+  
   return (
     <div>
       <div className='suppliersInfo-main-container'>
-        <div className='supplier-card'>
+        {data.map((supplier)=>(
+        <div key={supplier._id} className='supplier-card'>
           <div className='supplier-title'>
-            <h2 className='supplier-name'>NAME</h2>
+            <h2 className='supplier-name'>{supplier.name}</h2>
           </div>
           <div className='supplier-details'>
             <div className='supplier-address-box'>
               <span className='address-text'>Address:</span>
-              <span className='address-info-text'>ADDRESS</span>
+              <span className='address-info-text'>{supplier.address}</span>
             </div>
             <hr className='supplier-line'/>
             <div className='supplier-phoneNumber-box'>
               <span className='phoneNumber-num'>Phone <br /> Number:</span>
-              <span className='phoneNumber-info-num'>PHONE NUMBER</span>
+              <span className='phoneNumber-info-num'>{supplier.phoneNumber}</span>
             </div>
             <hr className='supplier-line'/>
             <div className='supplier-email-box'>
               <span className='email-text'>Email:</span>
-              <span className='email-info-text'>EMAIL</span>
+              <span className='email-info-text'>{supplier.email}</span>
             </div>
             <hr className='supplier-line'/>
           </div>
@@ -35,8 +63,8 @@ export const SuppliersInfo = () => {
             </div>
           </div>
         </div>
+        ))}
       </div>
     </div>
   )
 }
-
