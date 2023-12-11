@@ -1,3 +1,5 @@
+import { CardsCategories } from "../../components/CardsCategories/CardsCategories";
+import { InventorySummaryMain } from "../../components/InventorySummaryMain/InventorySummaryMain";
 import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
 import { TopSectionInventory } from "../../components/TopSectionInventory/TopSectionInventory";
 import "./InventoryPage.css"
@@ -10,6 +12,8 @@ export const InventoryPage = () => {
         <MenuSidebarLeft/>
         <div className="inventory-main">
         <TopSectionInventory/>
+        <InventorySummaryMain/>
+        <CardsCategories/>
         </div>
       </div>
     </div>

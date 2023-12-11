@@ -6,7 +6,7 @@ export const SuppliersInfo = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const res = await fetch('http://localhost:9007/api/v1/supplier',
+      const res = await fetch('http://localhost:9010/api/v1/supplier',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -32,8 +32,9 @@ export const SuppliersInfo = () => {
   return (
     <div>
       <div className='suppliersInfo-main-container'>
-        {data.map((supplier)=>(
-        <div key={supplier._id} className='supplier-card'>
+        {data.map((supplier)=>{
+        return(
+        <div className='supplier-card' key={supplier._id}>
           <div className='supplier-title'>
             <h2 className='supplier-name'>{supplier.name}</h2>
           </div>
@@ -63,7 +64,7 @@ export const SuppliersInfo = () => {
             </div>
           </div>
         </div>
-        ))}
+        )})}
       </div>
     </div>
   )

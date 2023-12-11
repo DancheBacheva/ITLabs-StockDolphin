@@ -8,8 +8,8 @@ const supplier = require("./handlers/supplierHandler");
 const app = express();
 
 db.init();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
