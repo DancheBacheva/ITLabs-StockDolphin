@@ -1,4 +1,3 @@
-import { CardsCategories } from "../../components/CardsCategories/CardsCategories";
 import { InventorySummaryMain } from "../../components/InventorySummaryMain/InventorySummaryMain";
 import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
 import { TopSectionInventory } from "../../components/TopSectionInventory/TopSectionInventory";
@@ -13,7 +12,6 @@ export const InventoryPage = () => {
         <div className="inventory-main">
         <TopSectionInventory/>
         <InventorySummaryMain/>
-        <CardsCategories/>
         </div>
       </div>
     </div>

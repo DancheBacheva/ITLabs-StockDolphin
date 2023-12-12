@@ -16,7 +16,9 @@ app.use(
   jwt.expressjwt({
     algorithms: ['HS256'],
     secret: process.env.JWT_SECRET,
-  })
+  }).unless({
+    path: ["/api/v1/supplier"]
+})
 );
 
 app.get("/api/v1/supplier", supplier.viewAll);

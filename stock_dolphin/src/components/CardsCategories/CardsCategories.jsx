@@ -14,15 +14,15 @@ export const CardsCategories = () => {
             <img className='image3' src="/images/img3pens.png" alt="img3" />
           </div>
         </div>
-        <h3 className='card-category-text'>Office Supply</h3>
+        <h1 className='card-category-text'><strong>Office Supply</strong></h1>
         <p className='content-category-text'><strong>3 Items</strong> | €338.00</p>
         <div className='date-remove'>
           <div>
-          <span className='updated-date-category'>Updated At: <br /><strong>DATE</strong></span>
+          <span className='updated-date-category'>Updated At: <br /><strong>10/10/2023 20:10</strong></span>
           </div>
           <div className='delete-category'>
-              <img className='delete-img' src='/images/Delete.png' alt='delete supplier'/>
-            </div>
+            <img className='delete-img' src='/images/Delete.png' alt='delete supplier'/>
+          </div>
         </div>
       </div>
     </div>

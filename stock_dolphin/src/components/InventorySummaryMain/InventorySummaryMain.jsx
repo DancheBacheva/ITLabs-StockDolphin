@@ -1,12 +1,19 @@
+import { CardsCategories } from "../CardsCategories/CardsCategories";
+import { ListCategories } from "../ListCategories/ListCategories";
 import "./InventorySummaryMain.css";
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export const InventorySummaryMain = () => {
-  //   const [showList, setShowList] = useState(false);
+    const [showCards, setShowCards] = useState(true);
 
-  // const handleShowList = () => {
-  //   setShowList(!showList);
-  // }; //da se proveri pak i da se dovrsi so kopcinja namesto linkovi
+    const handleShowCards = () => {
+      setShowCards(true);
+    }; 
+
+    const handleShowList = () => {
+      setShowCards(false);
+    }
+
   return (
     <div>
         <div className='inventory-summary-main'>
@@ -30,17 +37,18 @@ export const InventorySummaryMain = () => {
         </div>
         <div className='item-order'>
           <div className='cards'>
-            <button className='control-panel-btn'>
+            <button className='control-panel-btn' onClick={handleShowCards}>
               <img src="/images/ControlPanel.png" alt="Control Panel" />
             </button>
           </div>
           <div className='list'>
-            <button className='list-btn'>
+            <button className='list-btn' onClick={handleShowList}>
               <img src='/images/List.png' alt='list'/>
             </button>
           </div>
         </div>
       </div>
+      {showCards ? <CardsCategories /> : <ListCategories />}
     </div>
   )
 }
