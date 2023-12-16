@@ -4,7 +4,7 @@ export const TopSectionInventory = () => {
   return (
     <div className='top-section-inventory'>
       <div className='top-section'>
-        <p className='inventory-title'>Inventory</p>
+        <h1 className='inventory-title'>Inventory</h1>
       </div>
       <hr className='line-inventory'/>
       <div className='search-add-main'>

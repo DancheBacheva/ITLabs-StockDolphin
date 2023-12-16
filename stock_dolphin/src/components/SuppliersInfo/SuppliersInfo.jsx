@@ -20,7 +20,7 @@ export const SuppliersInfo = () => {
           console.log('API response:', data);
           setSuppliers(data.data.suppliers);
         } else {
-          console.log("Error");
+          console.log("Error fetching suppliers");
         }
       } catch (err) {
         console.error(err);

@@ -3,7 +3,7 @@ import "./RecentOrder.css"
 export const RecentOrder = () => {
   return (
     <div className="resent-order-section">
-      <p className="recent-order-text"><strong>Recent order</strong></p>
+      <h3 className="recent-order-text"><strong>Recent order</strong></h3>
         <div className="navigation-recent-items">
             <div className="recent-item">
               <div className='recent-item-box'>

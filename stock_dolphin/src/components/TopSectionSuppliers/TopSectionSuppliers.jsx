@@ -4,7 +4,7 @@ export const TopSectionSuppliers = () => {
   return (
     <div className='top-section-suppliers'>
       <div className='top-section-s'>
-        <p className='suppliers-title'>Suppliers</p>
+        <h1 className='suppliers-title'>Suppliers</h1>
       </div>
       <hr className='line-suppliers'/>
       <div className='search-main'>

@@ -42,7 +42,7 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-      let res = await fetch("/api/v1/auth/login",
+      let res = await fetch("http://127.0.0.1:9000/api/v1/auth/login",
       {
         method: 'POST',
         body: JSON.stringify(data),
@@ -117,5 +117,3 @@ export const Login = () => {
     </div>
   )
 }
-
-//ne raboti, da se proveri zosto 

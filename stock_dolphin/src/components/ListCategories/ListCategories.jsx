@@ -15,7 +15,7 @@ export const ListCategories = () => {
           </div>
         </div>
         <div className='middle-container-list'>
-          <h1 className='list-category-text'><strong>Office Supply</strong></h1>
+          <h3 className='list-category-text'><strong>Office Supply</strong></h3>
           <p className='content-category-text-list'><strong>3 Items</strong> | €338.00</p>
         </div>
         

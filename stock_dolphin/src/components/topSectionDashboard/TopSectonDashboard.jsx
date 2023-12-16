@@ -5,9 +5,9 @@ export const TopSectonDashboard = () => {
     <div className='top-section-dashboard'>
       <header>
         <div className="top-section">
-          <p className='dashboard-title'>Dashboard</p>
+          <h1 className='dashboard-title'>Dashboard</h1>
           <div className='user-section'>
-          <p className='welcome'>Welcome back NAME SURNAME!</p>
+          <h2 className='welcome'>Welcome back NAME SURNAME!</h2>
           <img className='user-img' src="/images/User.png" alt="user" />
           </div>
         </div>

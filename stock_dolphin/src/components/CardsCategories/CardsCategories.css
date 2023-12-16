@@ -1,15 +1,23 @@
 body{
-  font-family: Poppins;  
+  font-family: Poppins; 
 }
 
 .main-card-category{
+  width: 1170px;
+  margin-left: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cards-container{
   width: 240px;
   height: 270px;
   top: 300px;
   left: 490px;
   border-radius: 10px;
   box-shadow: 3px 3px 4px 0px #00000040;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   margin-left: 130px; /*privremeno*/
 }
 
