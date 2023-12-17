@@ -1,5 +1,5 @@
-import { CardsCategories } from "../CardsCategories/CardsCategories";
-import { ListCategories } from "../ListCategories/ListCategories";
+import { CategoriesCards } from "../CategoriesCards/CategoriesCards";
+import { CategoriesList } from "../CategoriesList/CategoriesList";
 import "./InventorySummaryMain.css";
 import React, { useState } from 'react'
 
@@ -48,7 +48,7 @@ export const InventorySummaryMain = () => {
           </div>
         </div>
       </div>
-      {showCards ? <CardsCategories /> : <ListCategories />}
+      {showCards ? <CategoriesCards /> : <CategoriesList />}
     </div>
   )
 }

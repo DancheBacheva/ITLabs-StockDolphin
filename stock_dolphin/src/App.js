@@ -5,6 +5,7 @@ import { Default } from "./pages/DefaultPage/Default";
 import { InventoryPage } from "./pages/InventoryPage/InventoryPage";
 import { ReportsPage } from "./pages/ReportsPage/ReportsPage";
 import { SuppliersPage } from "./pages/SuppliersPage/SuppliersPage";
+import { InventoryCategoryPage } from "./pages/InventoryCategoryPage/InventoryCategoryPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Default/>}/>
           <Route path="/dashboard" element={<DashboardPage/>}/>
           <Route path="/inventory" element={<InventoryPage/>}/>
+          <Route path="/inventory/:id" element={<InventoryCategoryPage/>}/>
           <Route path="/reports" element={<ReportsPage/>}/>
           <Route path="/suppliers" element={<SuppliersPage/>}/>
         </Routes>

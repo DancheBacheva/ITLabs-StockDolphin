@@ -44,9 +44,9 @@ body{
 }
 
 .supplier-details{
- width: 265px;
- height: 180px;
- margin: 0 auto;
+  width: 265px;
+  height: 180px;
+  margin: 0 auto;
 }
 
 .supplier-address-box, .supplier-phoneNumber-box, .supplier-email-box{

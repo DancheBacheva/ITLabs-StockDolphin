@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import "./CardsCategories.css";
+import "./CategoriesCards.css";
+import { Link } from "react-router-dom";
 
-export const CardsCategories = () => {
+
+export const CategoriesCards = () => {
   const [categories, setCategories] = useState ([]);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const CardsCategories = () => {
     <div>
       <div className='main-card-category'>
         {categories.map((category) => (
-      <div key={category.id} className='cards-containter'>
+      <div key={category.id} className='cards-container'>
         <div className='images3-container'>
           <div>
           <img className='image1' src="/images/img1mouse.png" alt="img1"/>
@@ -41,7 +43,8 @@ export const CardsCategories = () => {
             <img className='image3' src="/images/img3pens.png" alt="img3" />
           </div>
         </div>
-        <h3 className='card-category-text'><strong>{category.title}</strong></h3>
+        <Link to={`/inventory/${category._id}`} className='link-cards'>
+        <h3 className='card-category-text'><strong>{category.title}</strong></h3></Link>
         <p className='content-category-text'><strong>{category.items.length} Items</strong> | €338.00</p>
         <div className='date-remove'>
           <div>
@@ -50,7 +53,7 @@ export const CardsCategories = () => {
           <div className='delete-category'>
             <img className='delete-img' src='/images/Delete.png' alt='delete supplier'/>
           </div>
-        </div>
+        </div>   
         </div>
         ))}
       </div>

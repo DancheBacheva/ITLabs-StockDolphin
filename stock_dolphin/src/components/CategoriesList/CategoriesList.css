@@ -3,6 +3,14 @@ body{
 }
 
 .main-list-category{
+  width: 1170px;
+  margin-left: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.list-container{
   width: 920px;
   height: 150px;
   top: 290px;
@@ -10,7 +18,7 @@ body{
   border-radius: 10px;
   box-shadow: 3px 3px 4px 0px #00000040;
   background: #FFFFFF;
-  margin-left: 130px; /*privremeno*/
+  margin-bottom: 30px;
   display: flex;
 }
 
@@ -51,6 +59,10 @@ flex-direction: column;
   width: 420px;
   display: flex;
   flex-direction: column;
+}
+
+.link-cards{
+  text-decoration: none;
 }
 
 .list-category-text{
