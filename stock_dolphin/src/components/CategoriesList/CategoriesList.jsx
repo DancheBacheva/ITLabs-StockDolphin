@@ -48,12 +48,9 @@ export const CategoriesList = () => {
         </Link>
           <p className='content-category-text-list'><strong>{category.items.length} Items</strong> | €338.00</p>
         </div>
-        
         <div className='date-remove-list'>
         <hr/>
-          <div>
           <span className='updated-date-category-list'>Updated At: <br /><strong>{category.date}</strong></span>
-          </div>
           <div className='delete-category-list'>
             <img className='delete-img-list' src='/images/Delete.png' alt='delete supplier'/>
           </div>

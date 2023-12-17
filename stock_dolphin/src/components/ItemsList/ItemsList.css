@@ -2,7 +2,7 @@ body{
   font-family: Poppins;  
 }
 
-.main-list-category{
+.main-list-item{
   width: 1170px;
   margin-left: 130px;
   display: flex;
@@ -22,37 +22,12 @@ body{
   display: flex;
 }
 
-.images3-container-list{
-  display: flex;
-  flex-direction: row;
-}
-
-.image1-list{
-  width: 120px;
+.item-image-container, .item-image{
+  width: 250px;
   height: 150px;
-  top: 290px;
+  top: 230px;
   left: 490px;
-  border-radius: 10px 0px 0px 10px;
-}
-
-.image2-3-list{
-height: 140px;
-display: flex;
-flex-direction: column;
-}
-
-.image2-list{
-  width: 130px;
-  height: 75px;
-  top: 290px;
-  left: 610px;
-}
-
-.image3-list{
-  width: 130px;
-  height: 75px;
-  top: 365px;
-  left: 610px;
+  border-radius: 10 0 0 10px;
 }
 
 .middle-container-list{
@@ -61,11 +36,11 @@ flex-direction: column;
   flex-direction: column;
 }
 
-.link-cards{
+.link-list{
   text-decoration: none;
 }
 
-.list-category-text{
+.list-item-text{
   font-size: 24px;
   font-weight: 500;
   line-height: 36px;
@@ -82,7 +57,7 @@ flex-direction: column;
   align-items: center;
 }
 
-.content-category-text-list{
+.content-item-text-list{
   font-size: 16px;
   font-weight: 300;
   line-height: 24px;
@@ -92,7 +67,7 @@ flex-direction: column;
   margin-left: 30px;
 }
 
-.updated-date-category-list{
+.updated-date-item-list{
   width: 148px;
   height: 48px;
   top: 511px;
@@ -106,7 +81,7 @@ flex-direction: column;
   margin-left: 8px;
 }
 
-.delete-category-list{
+.delete-item-list{
   width: 40px;
   height: 40px;
   top: 520px;
@@ -120,7 +95,7 @@ flex-direction: column;
   margin: 0 5px 5px 0;
 }
 
-.main-list-category hr{
+.main-list-item hr{
   height: 150px;
   border: 1px solid #000000;
 }

@@ -1,0 +1,7 @@
+.inventory-category-page{
+  width: 1980px;
+  height: 1080px;
+  display: flex;
+  flex-direction: row;
+  background: #EAEAEA;
+}
