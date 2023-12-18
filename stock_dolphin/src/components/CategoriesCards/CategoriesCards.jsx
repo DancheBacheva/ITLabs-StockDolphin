@@ -49,9 +49,9 @@ export const CategoriesCards = () => {
           <p className='content-category-text'><strong>{category.items.length} Items</strong> | €338.00</p>
           <div className='date-remove'>
           <span className='updated-category'>Updated At: <strong>{category.date}</strong></span>
-          <div className='delete-category'>
+          <button className='delete-category'>
             <img className='delete-img' src='/images/Delete.png' alt='delete supplier'/>
-          </div>
+          </button>
           </div>
         </div>   
         </div>

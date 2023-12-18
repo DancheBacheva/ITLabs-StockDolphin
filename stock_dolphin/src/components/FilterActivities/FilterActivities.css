@@ -1,0 +1,47 @@
+.activity-sidebar-right{
+  width: 350px;
+  height: 540px;
+  top: 154px;
+  left: 1581px;
+  border-radius: 20px;
+  background: #FFFFFF;
+}
+
+.activity-sidebar-right h1{
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3E4153;
+  padding-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+
+.activity-sidebar-right hr{
+  width: 350px;
+  border: 2px solid #5C5C5C;
+}
+
+.activity-sidebar-right input{
+  width: 30px;
+  height: 29.4px;
+  top: 257.64px;
+  left: 1601px;
+  border: 2px solid #53A856;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.activity-sidebar-right label{
+  width: 95px;
+  height: 26.46px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #000000;
+  margin-left: 10px;
+}

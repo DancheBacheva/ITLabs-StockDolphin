@@ -40,15 +40,12 @@
 }
 
 .activity-box-text{
-  width: 566px;
-  height: 24px;
-  top: 523px;
-  left: 801px;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0em;
   color: #000000;
+  padding: 10px 30px;
 }
 
 @media only screen and (max-width: 768px) {
