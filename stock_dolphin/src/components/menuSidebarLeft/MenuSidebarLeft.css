@@ -40,8 +40,9 @@
   left: 31px;
   border-radius: 10px;
   border: none;
-  opacity: 40%; /*da se proveri*/
-  background: #EFEFEF;
+  /* opacity: 40%; da se proveri
+  background: #EFEFEF; */
+  background-color: rgba(255, 255, 255, 0.4)
 }
 
 .dashboard-img{

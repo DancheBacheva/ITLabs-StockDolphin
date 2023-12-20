@@ -1,7 +1,10 @@
 import "./Category.css";
+import React, { useState } from 'react'
+import { Modal } from "../Modal/Modal";
 //da se proverat site klasi//
 
 export const Category = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className='top-section-inventory'>
       <div className='top-section'>
@@ -15,7 +18,8 @@ export const Category = () => {
           <input className='input-search' type="text" id="item-search" name="item-search" placeholder='Search items'/></label>
         </div>
         <div className='add-item'>
-          <button className='add-item-btn'>
+          <button className='add-item-btn'
+          onClick={()=>{setOpenModal(true)}}>
             <div className='inside-btn'>
               <div className='rectangle37'>
                 <img className='add-new' src="/images/AddNew.png" alt="Add new" />
@@ -25,6 +29,7 @@ export const Category = () => {
           </button>
         </div>
       </div>
+      {openModal && <Modal closeModal={setOpenModal} title={"ADD ITEM"}/>}
     </div>
   )
 }

@@ -1,6 +1,10 @@
+import React, { useState } from 'react'
+import { Modal } from "../Modal/Modal";
 import "./TopSectionInventory.css";
 
 export const TopSectionInventory = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className='top-section-inventory'>
       <div className='top-section'>
@@ -14,7 +18,7 @@ export const TopSectionInventory = () => {
           <input className='input-search' type="text" id="category-search" name="category-search" placeholder='Search categories'/></label>
         </div>
         <div className='add-category'>
-          <button className='add-category-btn'>
+          <button className='add-category-btn' onClick={()=>{setOpenModal(true)}}>
             <div className='inside-btn'>
               <div className='rectangle37'>
                 <img className='add-new' src="/images/AddNew.png" alt="Add new" />
@@ -24,6 +28,7 @@ export const TopSectionInventory = () => {
           </button>
         </div>
       </div>
+      {openModal && <Modal closeModal={setOpenModal} title={"ADD CATEGORY"}/>}
     </div>
   )
 }

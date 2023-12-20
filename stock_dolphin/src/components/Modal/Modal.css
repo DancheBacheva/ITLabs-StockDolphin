@@ -1,0 +1,137 @@
+.modal-container{
+  font-family: Poppins;
+  width: 600px;
+  height: 490px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  margin: 0 auto;
+}
+
+.modal-header{
+  width: 600px;
+  height: 70px;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #53A856;
+}
+
+.modal-header h1{
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+  margin-left: 30px;
+}
+
+.modal-header img{
+  width: 40px;
+  height: 40px;
+  top: 15px;
+  left: 530px;
+  background-color: #53A856;
+}
+
+.modal-header button{
+  border-radius: 0 20px 0 0; 
+  background-color: #53A856;
+  border: none;
+  cursor: pointer;
+}
+
+.input-modal-name{
+  height: 45px;
+  border: none;
+  margin: 20px 0 0 30px;
+}
+
+.input-modal-name::placeholder{
+  width: 113px;
+  height: 45px;
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #3E4153;
+}
+
+.smaller-hr{
+  width: 538px;
+  border: 2px solid #999999;
+  margin-bottom: 30px;
+}
+
+.bigger-hr{
+  width: 600px;
+  top: 200px;
+  border: 1px solid #999999;
+}
+
+.add-photo{
+  width: 540px;
+  height: 90px;
+  border-radius: 12px;
+  border: 2px solid #999999;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
+.add-photo img{
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0;
+}
+
+.add-photo p{
+  width: 252px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  margin-top: 0;
+}
+
+.buttons-model{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+.btn-cancel{
+  width: 160px;
+  height: 60px;
+  border-radius: 10px;
+  background: #D9D9D9;
+  border: none;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.btn-add{
+  width: 170px;
+  height: 60px;
+  border-radius: 10px;
+  background: #53A856;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color:#FFFFFF;
+  border: none;
+  box-shadow: 3px 3px 4px 0px #00000040;
+}
