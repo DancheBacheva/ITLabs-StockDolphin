@@ -1,33 +1,6 @@
 import "./SuppliersInfo.css";
-import React, { useEffect, useState} from "react";
 
-export const SuppliersInfo = () => {
-  const [suppliers, setSuppliers] = useState([]);
-
-  useEffect(() => {
-    const fetchSuppliers = async () => {
-      try {
-        const res = await fetch("http://127.0.0.1:9007/api/v1/supplier", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        console.log("Response:", res);
-
-        const data = await res.json();
-
-        if (res.ok) {
-          console.log('API response:', data);
-          setSuppliers(data.data.suppliers);
-        } else {
-          console.log("Error fetching suppliers");
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchSuppliers();
-  }, []);
+export const SuppliersInfo = ({suppliers}) => {
   
   return (
     <div>

@@ -42,7 +42,7 @@
   border: none;
   /* opacity: 40%; da se proveri
   background: #EFEFEF; */
-  background-color: rgba(255, 255, 255, 0.4)
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .dashboard-img{
@@ -88,8 +88,9 @@
   left: 31px;
   border-radius: 10px;
   border: none;
-  opacity: 40%;
-  background: #EFEFEF;
+  /* opacity: 40%;
+  background: #EFEFEF; */
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .product{
@@ -139,8 +140,9 @@
   left: 31px;
   border-radius: 10px;
   border: none;
-  opacity: 40%;
-  background: #EFEFEF;
+  /* opacity: 40%;
+  background: #EFEFEF; */
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .reports-text{
@@ -174,8 +176,9 @@
   left: 31px;
   border-radius: 10px;
   border: none;
-  opacity: 40%;
-  background: #EFEFEF;
+  /* opacity: 40%;
+  background: #EFEFEF; */
+  background-color: rgba(255, 255, 255, 0.4);
   margin-bottom: 330px; /*check again*/
   padding-left: 65px;
 }
@@ -207,8 +210,9 @@
   left: 29.58px;
   border-radius: 10px;
   border: none;
-  opacity: 40%;
-  background: #EFEFEF;
+  /* opacity: 40%;
+  background: #EFEFEF; */
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .shutdown{

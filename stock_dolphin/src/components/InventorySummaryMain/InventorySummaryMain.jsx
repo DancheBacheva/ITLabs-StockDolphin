@@ -3,7 +3,7 @@ import { CategoriesList } from "../CategoriesList/CategoriesList";
 import "./InventorySummaryMain.css";
 import React, { useState } from 'react'
 
-export const InventorySummaryMain = () => {
+export const InventorySummaryMain = ({categories}) => {
     const [showCards, setShowCards] = useState(true);
 
     const handleShowCards = () => {
@@ -18,22 +18,10 @@ export const InventorySummaryMain = () => {
     <div>
         <div className='inventory-summary-main'>
         <div className='inventory-summary-container'>
-          <div className='box'>
-            <p className="text-is">Categories:</p>
-            <p className="num-is">4</p>
-          </div>
-          <div className='box'>
-            <p className="text-is">Items:</p>
-            <p className="num-is">11</p>
-          </div>
-          <div className='box'>
-            <p className="text-is">Total Orders:</p>
-            <p className="num-is">25</p>
-          </div>
-          <div className='box'>
-            <p className="text-is">Total Cost:</p>
-            <p className="num-is">€1.250k</p>
-          </div>
+            <p>Categories: &nbsp;<strong>{categories.length}</strong></p>
+            <p>Items: &nbsp;<strong>11</strong></p>
+            <p>Total Orders: &nbsp;<strong>25</strong></p>
+            <p>Total Cost: &nbsp;<strong>€1.250k</strong></p>
         </div>
         <div className='item-show'>
             <button className='control-panel-btn' onClick={handleShowCards}>
@@ -44,7 +32,7 @@ export const InventorySummaryMain = () => {
             </button>
         </div>
       </div>
-      {showCards ? <CategoriesCards /> : <CategoriesList />}
+      {showCards ? <CategoriesCards categories={categories}/> : <CategoriesList categories={categories}/>}
     </div>
   )
 }

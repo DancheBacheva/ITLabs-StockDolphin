@@ -7,9 +7,7 @@ export const Category = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className='top-section-inventory'>
-      <div className='top-section'>
-        <h1 className='inventory-title-category'>Inventory {'>'} CATEGORY</h1>
-      </div>
+      
       <hr className='line-inventory'/>
       <div className='search-add-main'>
         <div className='search-item'>
@@ -18,7 +16,8 @@ export const Category = () => {
           <input className='input-search' type="text" id="item-search" name="item-search" placeholder='Search items'/></label>
         </div>
         <div className='add-item'>
-          <button className='add-item-btn'
+          <button
+          className='add-item-btn'
           onClick={()=>{setOpenModal(true)}}>
             <div className='inside-btn'>
               <div className='rectangle37'>

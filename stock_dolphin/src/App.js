@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Default/>}/>
           <Route path="/dashboard" element={<DashboardPage/>}/>
           <Route path="/inventory" element={<InventoryPage/>}/>
-          <Route path="/inventory/:id" element={<InventoryCategoryPage/>}/>
+          <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
           <Route path="/reports/activityhistory" element={<ActivityHistoryPage/>}/>
           <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
           <Route path="/reports" element={<ReportsPage/>}/>

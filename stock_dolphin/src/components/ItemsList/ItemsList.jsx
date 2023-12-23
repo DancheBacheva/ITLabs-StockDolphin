@@ -1,37 +1,10 @@
-// import React, { useState, useEffect } from 'react';
 import "./ItemsList.css";
 import { Link } from "react-router-dom";
 
 export const ItemsList = () => {
-  // const [items, setItems] = useState ([]);
-
-  // useEffect(() => {
-  //   const fetchItems = async () => {
-  //     try{
-  //       const res = await fetch("http://localhost:9003/api/v1/items", {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       });
-
-  //       const data = await res.json();
-
-  //       if(res.ok) {
-  //         setItems(data.data.items);
-  //       }else{
-  //         console.log("Error fetching items");
-  //       }
-  //     }catch(err){
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchItems();
-  // }, []);
-
   return (
     <div>
       <div className='main-list-item'>
-  
         <div key='' className='list-container'>
         <div className='item-image-container'>
           <img className='item-image' src="/images/RecentItem2img.png" alt="img1"/>
@@ -50,7 +23,6 @@ export const ItemsList = () => {
           </div>
         </div>
         </div>
-  
       </div>
     </div>
   );

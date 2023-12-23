@@ -1,34 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import "./CategoriesCards.css";
 import { Link } from "react-router-dom";
 
 
-export const CategoriesCards = () => {
-  const [categories, setCategories] = useState ([]);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try{
-        const res = await fetch("http://localhost:9001/api/v1/category", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
-        const data = await res.json();
-
-        if(res.ok) {
-          setCategories(data.data.categories);
-        }else{
-          console.log("Error fetching categories");
-        }
-      }catch(err){
-        console.log(err);
-      }
-    };
-    fetchCategories();
-  }, []);
-
+export const CategoriesCards = ({categories}) => {
+  
   return (
     <div>
       <div className='main-card-category'>
@@ -44,7 +19,7 @@ export const CategoriesCards = () => {
           </div>
         </div>
         <div className='card-bottom'>
-          <Link to={`/inventory/${category._id}`} className='link-cards'>
+          <Link to={`/inventory/${category.title}`} className='link-cards'>
           <h3 className='card-category-text'><strong>{category.title}</strong></h3></Link>
           <p className='content-category-text'><strong>{category.items.length} Items</strong> | €338.00</p>
           <div className='date-remove'>

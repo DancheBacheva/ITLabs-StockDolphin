@@ -3,7 +3,7 @@ import { ItemsList } from "../ItemsList/ItemsList";
 import "./InventoryCategoryRight.css";
 import React, { useState } from 'react'
 
-export const InventoryCategoryRight = () => {
+export const InventoryCategoryRight = ({title, items}) => {
     const [showCards, setShowCards] = useState(true);
 
     const handleShowCards = () => {
@@ -17,9 +17,8 @@ export const InventoryCategoryRight = () => {
   return (
     <div className="main-container-items">
       <div className="show-item-cards">
-      {showCards ? <ItemsCards /> : <ItemsList />}
+      {showCards ? <ItemsCards title={title} items={items}/> : <ItemsList title={title} items={items}/>}
       </div>
-      
       <div className='inventory-category-right'>
         <div className='item-show'>
             <button className='control-panel-btn' onClick={handleShowCards}>
@@ -37,7 +36,6 @@ export const InventoryCategoryRight = () => {
           <h4>Edit Category</h4>
         </button>
       </div>
-
     </div>
   )
 }
