@@ -1,13 +1,12 @@
 .inventory-summary-dashboard{
-  width: 770px;
-  height: 230px;
-  top: 190px;
-  left: 781px;
+  width: 100%;
+  height: 100%;
+  max-width: 770px;
+  max-height: 230px;
   margin: 0 auto;
 }
 
-.inventory-summary-text{
-  font-family: Poppins;
+.inventory-summary-dashboard h3{
   font-size: 22px;
   font-weight: 500;
   line-height: 33px;
@@ -21,57 +20,44 @@
 }
 
 .rectangle{
-  width: 170px;
-  height: 170px;
+  width: 100%;
+  height: 100%;
+  max-width: 170px;
+  max-height: 170px;
   border-radius: 10px;
-/* da se proveri za pikselite */
   box-shadow: 3px 4px 4px 0px #00000040;
   margin: 0 auto;
+  background-color: #FFFFFF;
 }
 
-.elipse1{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #FFE4AA;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.elipse2{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #C8E6EE;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  /*da se proba pak so translate: transform*/
-}
-
-.elipse3{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #E5CAFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
+.elipse1,
+.elipse2,
+.elipse3,
 .elipse4{
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #FFD5C0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  margin-top: 10px;
+}
+
+.elipse1{
+  background: #FFE4AA;
+}
+
+.elipse2{
+  background: #C8E6EE;
+}
+
+.elipse3{
+  background: #E5CAFF;
+}
+
+.elipse4{
+  background: #FFD5C0;
 }
 
 .img-folder, .img-documents, .img-paper, .img-coins{
@@ -80,7 +66,6 @@
 }
 
 .num{
-  font-family: Poppins;
   font-size: 18px;
   font-weight: 700;
   line-height: 27px;
@@ -90,7 +75,6 @@
 }
 
 .text{
-  font-family: Poppins;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;

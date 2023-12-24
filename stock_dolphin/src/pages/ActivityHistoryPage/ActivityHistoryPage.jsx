@@ -11,12 +11,12 @@ export const ActivityHistoryPage = () => {
           <MenuSidebarLeft/>
         <div className="reports-main">
           <div className='top-section-r'>
-          <h1 className='reports-title'>Reports {'>'} Activity History</h1>
+            <h1 className='reports-title'>Reports {'>'} Activity History</h1>
           </div>
           <hr className='line-activity'/>
           <div className='main-container-activities'>
-          <Activities/>
-          <FilterActivities/>
+            <Activities/>
+            <FilterActivities/>
           </div>
         </div>
       </div>

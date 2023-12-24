@@ -1,265 +1,94 @@
-.menu-sidebar-left2 {
-  width: 351px;
-  height: 1080px;
-}
-
-.logo{
-  width: 345.07px;
-  height: 190px;  
+*{
+  font-family: Poppins;
 }
 
 .menu-panel{
-  width: 350px;
-  height: 1080px;
-  left: 1px;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 1080px;
   background: #53A856;
+}
+
+.logo{
+  width: 100%;
+  max-width: 345.07px;
+  max-height: 190px;  
 }
 
 .sidebar-navigation-btn{
   margin: 0 auto;
-  width: 281.42px;
-  height: 860px;
-  top: 190px;
-  left: 29.58px;
+  width: 100%;
+  height: 100%;
+  max-width: 281.42px;
+  max-height: 860px;
 }
 
-.dashboard-nav-btn{
-  width: 280px;
-  height: 60px;
-  top: 180px;
-  left: 30px;
+.dashboard-btn,
+.items-nav-btn,
+.reports-btn,
+.suppliers-btn,
+.signout-btn{
+  width: 100%;
+  height: 100%;
+  max-width: 280px;
+  max-height: 60px;
   margin-bottom: 30px;
-}
-
-.dashboard{
   display: flex;
   align-items: center;
-  width: 280px;
-  height: 60px;
-  top: 190px;
-  left: 31px;
   border-radius: 10px;
   border: none;
-  /* opacity: 40%; da se proveri
-  background: #EFEFEF; */
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-.dashboard-img{
-  width: 39.44px;
-  height: 43.64px;
-  top: 198px;
-  left: 44.37px;
+.menu-panel h1{
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 39px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+}
+
+.dashboard-img,
+.product,
+.combo-chart,
+.shutdown{
+  width: 100%;
+  height: 100%;
+  max-width: 39.44px;
+  max-height: 43.64px;
   margin: 0 10px;
 }
 
-.link-dashboard, .link-inventory, .link-reports, .link-suppliers, .link-signout{
+.link-dashboard,
+.link-inventory,
+.link-reports,
+.link-suppliers,
+.link-signout{
   text-decoration: none;
 }
 
-.dashboard-text{
-  width: 198px;
-  height: 43px;
-  top: 199px;
-  left: 98px;
-  font-family: Poppins;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
-.items-nav-btn{
-  width: 280px;
-  height: 60px;
-  top: 290px;
-  left: 31px;
-  margin-bottom: 30px;
-}
-
-.search{
-  display: flex;
-  align-items: center;
-  width: 280px;
-  height: 60px;
-  top: 290px;
-  left: 31px;
-  border-radius: 10px;
-  border: none;
-  /* opacity: 40%;
-  background: #EFEFEF; */
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.product{
-  width: 39.44px;
-  height: 43.64px;
-  top: 298px;
-  left: 44.37px;
-  margin: 0 10px;
-}
-
-.inventory{
-  width: 143.94px;
-  height: 43px;
-  top: 299px;
-  left: 97.61px;
-  font-family: Poppins;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
 .reports-nav-btn{
-  width: 281.42px;
-  height: 660px;
-  top: 390px;
-  left: 29.58px;
+  width: 100%;
+  height: 100%;
+  max-width: 281.42px;
+  max-height: 660px;
 }
 
-.reports-btn{
-  width: 280px;
-  height: 60px;
-  top: 990px;
-  left: 29.58px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-}
-
-.reports{
-  display: flex;
-  align-items: center;
-  width: 280px;
-  height: 60px;
-  top: 390px;
-  left: 31px;
-  border-radius: 10px;
-  border: none;
-  /* opacity: 40%;
-  background: #EFEFEF; */
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.reports-text{
-  width: 119.3px;
-  height: 43px;
-  top: 399px;
-  left: 97.61px;
-  font-family: Poppins;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
-.combo-chart{
-  width: 39.44px;
-  height: 43.64px;
-  top: 398px;
-  left: 44.37px;
-  margin: 0 10px;
-}
-
-.suppliers{
-  display: flex;
-  align-items: center;
-  width: 280px;
-  height: 60px;
-  top: 480px;
-  left: 31px;
-  border-radius: 10px;
-  border: none;
-  /* opacity: 40%;
-  background: #EFEFEF; */
-  background-color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 330px; /*check again*/
+.suppliers-btn{
+  margin-bottom: 300px; /*check again*/
   padding-left: 65px;
 }
 
-.suppliers-text{
-  width: 119.3px;
-  height: 43px;
-  top: 487px;
-  left: 99px;
-  font-family: Poppins;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
-.signout-btn{
-
-}
-
-.signout{
-  display: flex;
-  align-items: center;
-  width: 280px;
-  height: 60px;
-  top: 990px;
-  left: 29.58px;
-  border-radius: 10px;
-  border: none;
-  /* opacity: 40%;
-  background: #EFEFEF; */
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.shutdown{
-  width: 30px;
-  height: 30px;
-  top: 1005px;
-  left: 40px;
-  margin: 0 10px;
-}
-
-.signout-text{
-  width: 119.3px;
-  height: 43px;
-  top: 998px;
-  left: 89.72px;
-  font-family: Poppins;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 39px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
 @media only screen and (max-width: 768px) {
-  .menu-sidebar-left2 {
-    width: 100%;
-    /* max-width: 351px;
-    min-width: 280px;
-    max-height: 1080px;
-    min-height: 500px; */
-    height: auto;
-  }
-
   .menu-panel{
     width: 100%;
-    /* max-width: 350px;
-    min-width: 280px;
-    max-height: 1080px;
-    min-height: 500px; */
     height: auto;
   }
 
   .sidebar-navigation-btn{
     width: 100%;
     height: auto;
-    max-width: 281.42px;
-    max-height: 860px;
   }
 }

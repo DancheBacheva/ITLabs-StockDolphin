@@ -24,10 +24,10 @@ export const InventorySummaryMain = ({categories}) => {
             <p>Total Cost: &nbsp;<strong>€1.250k</strong></p>
         </div>
         <div className='item-show'>
-            <button className='control-panel-btn' onClick={handleShowCards}>
+            <button onClick={handleShowCards}>
               <img src="/images/ControlPanel.png" alt="Control Panel" />
             </button>
-            <button className='list-btn' onClick={handleShowList}>
+            <button onClick={handleShowList}>
               <img src='/images/List.png' alt='list'/>
             </button>
         </div>

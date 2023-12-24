@@ -4,7 +4,7 @@ export const InventorySummDashboard = () => {
   return (
     <div>
       <div className="inventory-summary-dashboard">
-        <h3 className="inventory-summary-text"><strong>Inventory Summary</strong></h3>
+        <h3><strong>Inventory Summary</strong></h3>
         <div className="rectangles"> 
           <div className="rectangle">
             <div className="elipse1">

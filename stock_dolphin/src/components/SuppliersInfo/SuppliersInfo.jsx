@@ -9,7 +9,7 @@ export const SuppliersInfo = ({suppliers}) => {
         return(
         <div className='supplier-card' key={supplier._id}>
           <div className='supplier-title'>
-            <h2 className='supplier-name'>{supplier.name}</h2>
+            <h2>{supplier.name}</h2>
           </div>
           <div className='supplier-details'>
             <div className='supplier-address-box'>

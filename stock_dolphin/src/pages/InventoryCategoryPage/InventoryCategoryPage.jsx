@@ -13,11 +13,11 @@ export const InventoryCategoryPage = () => {
       <div className="inventory-category-page">
         <MenuSidebarLeft/>
         <div className="inventory-main">
-        <div className='top-section'>
-        <h1 className='inventory-title-category'>Inventory {'>'} {title}</h1>
-      </div>
-        <Category />
-        <InventoryCategoryRight title={title} items={items} />
+          <div className='top-section'>
+            <h1 className='inventory-title-category'>Inventory {'>'} {title}</h1>
+          </div>
+          <Category />
+          <InventoryCategoryRight title={title} items={items} />
         </div>
       </div>
     </div>

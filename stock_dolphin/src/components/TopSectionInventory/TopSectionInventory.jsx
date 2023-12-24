@@ -6,8 +6,8 @@ export const TopSectionInventory = () => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className='top-section-inventory'>
-      <div className='top-section'>
+    <div className='top-section-inventor-page'>
+      <div className='top-section-inventory'>
         <h1 className='inventory-title'>Inventory</h1>
       </div>
       <hr className='line-inventory'/>

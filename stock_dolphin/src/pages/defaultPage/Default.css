@@ -1,11 +1,12 @@
 .header-section{
-  width: 1980px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
 }
 
 .logo{
-  width: 345.07px;
-  height: 190px;  
+  width: 100%;
+  max-width: 345.07px;
+  max-height: 190px;  
 }
 
 .login-section{
@@ -18,11 +19,7 @@
 
 @media only screen and (max-width: 768px){
   .header-section{
-    width: 70%;
-    /* max-width: 1979px;
-    min-width: 375px;
-    max-height: 1080px;
-    min-height: 500px; */
+    width: 100%;
     height: auto;
   }
 }

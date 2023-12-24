@@ -1,11 +1,13 @@
 .line-activity{
-  width: 1530px;
+  width: 100%;
+  max-width: 1530px;
   border: 2px solid #5C5C5C;
   margin-left: 70px;
 }
 
 .main-container-activities{
-  width: 1530px;
+  width: 100%;
+  max-width: 1530px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
