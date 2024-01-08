@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Modal.css";
 
-export const Modal = ({closeModal, title}) => {
+export const Modal = ({closeModal, title, saveChanges}) => {
   return (
     <div className='modal-background'>
       <div className='modal-container'>
@@ -20,7 +20,7 @@ export const Modal = ({closeModal, title}) => {
       <hr className='bigger-hr' />
       <div className='buttons-model'>
         <button className="btn-cancel" onClick={()=>closeModal(false)}>CANCEL</button>
-        <button className='btn-add'>{title}</button>
+        <button className='btn-add'>{saveChanges}</button>
       </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { MenuSidebarLeft } from '../../components/MenuSidebarLeft/MenuSidebarLef
 import { Activities } from '../../components/Activities/Activities'
 import { FilterActivities } from '../../components/FilterActivities/FilterActivities'
 import "./ActivityHistoryPage.css";
-
+//da se smenat klasite
 export const ActivityHistoryPage = () => {
   return (
     <div>

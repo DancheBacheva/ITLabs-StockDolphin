@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1530px;
   border: 2px solid #5C5C5C;
-  margin-left: 70px;
+  margin-left: 50px;
 }
 
 .main-container-activities{
@@ -11,5 +11,5 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 50px 70px;
+  margin: 50px 50px;
 }

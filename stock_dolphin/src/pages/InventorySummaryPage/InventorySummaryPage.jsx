@@ -1,6 +1,7 @@
 import React from 'react'
 import { MenuSidebarLeft } from '../../components/MenuSidebarLeft/MenuSidebarLeft'
-
+import "./InventorySummaryPage.css"
+//da se smenat klasite
 export const InventorySummaryPage = () => {
   return (
     <div>
@@ -10,7 +11,7 @@ export const InventorySummaryPage = () => {
           <div className='top-section-r'>
           <h1 className='reports-title'>Reports {'>'} Inventory Summary</h1>
           </div>
-          <hr className='line-reports'/>
+          <hr className='line-inventory-summary'/>
         </div>
       </div>
     </div>

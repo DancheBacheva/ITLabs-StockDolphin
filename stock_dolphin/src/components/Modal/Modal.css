@@ -128,8 +128,9 @@
 }
 
 .btn-add{
-  width: 170px;
-  height: 60px;
+  /* width: 170px;*/
+  height: 60px; 
+  padding: 20px;
   border-radius: 10px;
   background: #53A856;
   font-family: Poppins;

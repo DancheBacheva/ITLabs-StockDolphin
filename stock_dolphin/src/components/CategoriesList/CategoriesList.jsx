@@ -43,7 +43,7 @@ export const CategoriesList = () => {
           </div>
         </div>
         <div className='middle-container-list'>
-        <Link to={`/inventory/${category._id}`} className='link-cards'>
+        <Link to={`/inventory/${category.title}`} className='link-cards'>
           <h3 className='list-category-text'><strong>{category.title}</strong></h3>
         </Link>
           <p className='content-category-text-list'><strong>{category.items.length} Items</strong> | €338.00</p>

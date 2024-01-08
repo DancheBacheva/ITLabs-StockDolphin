@@ -7,7 +7,6 @@ export const Category = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className='top-section-inventory'>
-      
       <hr className='line-inventory'/>
       <div className='search-add-main'>
         <div className='search-item'>
@@ -28,7 +27,7 @@ export const Category = () => {
           </button>
         </div>
       </div>
-      {openModal && <Modal closeModal={setOpenModal} title={"ADD ITEM"}/>}
+      {openModal && <Modal closeModal={setOpenModal} title={"ADD ITEM"} saveChanges={"ADD ITEM"}/>}
     </div>
   )
 }

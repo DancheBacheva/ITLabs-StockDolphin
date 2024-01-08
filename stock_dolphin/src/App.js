@@ -8,6 +8,7 @@ import { SuppliersPage } from "./pages/SuppliersPage/SuppliersPage";
 import { InventoryCategoryPage } from "./pages/InventoryCategoryPage/InventoryCategoryPage";
 import { ActivityHistoryPage } from "./pages/ActivityHistoryPage/ActivityHistoryPage";
 import { InventorySummaryPage } from "./pages/InventorySummaryPage/InventorySummaryPage";
+import { InventoryItemPage } from "./pages/InventoryItemPage/InventoryItemPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage/>}/>
           <Route path="/inventory" element={<InventoryPage/>}/>
           <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
+          <Route path="/inventory/:title/:itemTitle" element={<InventoryItemPage/>}/>
           <Route path="/reports/activityhistory" element={<ActivityHistoryPage/>}/>
           <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
           <Route path="/reports" element={<ReportsPage/>}/>

@@ -28,7 +28,7 @@ export const TopSectionInventory = () => {
           </button>
         </div>
       </div>
-      {openModal && <Modal closeModal={setOpenModal} title={"ADD CATEGORY"}/>}
+      {openModal && <Modal closeModal={setOpenModal} title={"ADD CATEGORY"} saveChanges={"ADD CATEGORY"}/>}
     </div>
   )
 }
