@@ -1,7 +1,12 @@
-import React from 'react';
-import "./Orders.css"
+import React, { useState } from 'react';
+import "./Orders.css";
+import { ModalOrder } from "../ModalOrder/ModalOrder";
+import { ModalInvoice } from '../ModalInvoice/ModalInvoice';
+
 // da se proverat klasi
 export const Orders = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalInvoice, setOpenModalInvoice] = useState(false);
   return (
     <div>
       <div className='main-container-up'>
@@ -12,7 +17,7 @@ export const Orders = () => {
         </div>
         <button
           className='add-order-btn'
-          onClick={()=>{}}>
+          onClick={()=>{setOpenModal(true)}}>
             <div className='inside-btn'>
               <div className='rectangle37'>
                 <img className='add-new' src="/images/AddNew.png" alt="Add new" />
@@ -23,7 +28,9 @@ export const Orders = () => {
       </div>
       <div className='orders-invoice'>
         <h1>Orders</h1>
-        <button>Generate invoice</button>
+        <button
+        onClick={()=>{setOpenModalInvoice(true)}}
+        >Generate invoice</button>
       </div>
       <hr className='hr-orders' />
       <div className='table-item-container'>
@@ -52,7 +59,7 @@ export const Orders = () => {
           </table>
         </div>
         <div className='item-details-container'>
-            <div className='item-image-container'>
+            <div className='item-img-container'>
               <div>
               <img src="/images/Rectangle70.png" alt="item" />
               </div>
@@ -67,6 +74,8 @@ export const Orders = () => {
             </div>
         </div>
       </div>
+      {openModal && <ModalOrder closeModal={setOpenModal}/>}
+      {openModalInvoice && <ModalInvoice closeModal={setOpenModalInvoice}/>}
     </div>
   )
 }

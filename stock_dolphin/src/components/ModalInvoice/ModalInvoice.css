@@ -1,0 +1,109 @@
+.modal-invoice-background{
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-invoice-container{
+  width: 509px;
+  height: 611px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  margin: 0 auto;
+}
+
+.modal-invoice-header{
+  width: 509px;
+  height: 70px;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #53A856;
+}
+
+.modal-invoice-header h1{
+  width: 287px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+  margin-left: 30px;
+}
+
+.modal-invoice-header img{
+  width: 40px;
+  height: 40px;
+  top: 15px;
+  left: 530px;
+  background-color: #53A856;
+}
+
+.modal-invoice-header button{
+  border-radius: 0 20px 0 0; 
+  background-color: #53A856;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-invoice-container input{
+  height: 45px;
+  border: none;
+  margin: 20px 0 0 30px;
+}
+
+.modal-invoice-container input::placeholder{
+  width: 197px;
+  height: 45px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #3E4153;
+}
+
+.calendar-invoice{
+  width: 260px;
+  height: 60px;
+  border-radius: 12px;
+  border: 2px solid #999999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #3E4153;
+  margin: 20px 0 0 30px;
+}
+
+.btn-calendar-invoice img{
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.select{
+  width: 330px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  border: none;
+  margin: 20px 0 0 30px;
+  color: #3E4153;
+}
+
+.smaller-hr-invoice{
+  width: 458px;
+}
+
+.bigger-hr-invoice{
+  width: 509px;
+  margin-top: 50px;
+}

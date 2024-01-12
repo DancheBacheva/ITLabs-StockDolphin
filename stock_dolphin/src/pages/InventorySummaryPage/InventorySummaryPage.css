@@ -1,6 +1,49 @@
-.line-inventory-summary{
-  width: 100%;
-  max-width: 1530px;
+.reports-main hr{
+  width: 1530px;
   border: 2px solid #5C5C5C;
   margin-left: 50px;
+}
+
+.btns-container{
+  width: 1100px;
+  margin: 30px 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btns-container img{
+  width: 30px;
+  height: 30px;
+}
+
+.input-calendar, .select-category{
+  width: 260px;
+  height: 60px;
+  border: 2px solid #999999;
+  border-radius: 12px;
+  background: #D9D9D9;
+  margin-right: 100px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.btn-show-reset{
+  width: 260px;
+  height: 60px;
+  border-radius: 10px;
+  background: #53A856;
+  box-shadow: 3px 3px 4px 0px #00000040;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border: none;
 }

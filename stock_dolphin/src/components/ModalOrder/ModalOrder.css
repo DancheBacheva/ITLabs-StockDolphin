@@ -1,0 +1,103 @@
+.modal-order-background{
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-order-container{
+  width: 600px;
+  height: 612px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  margin: 0 auto;
+}
+
+.modal-order-header{
+width: 600px;
+height: 70px;
+border-radius: 20px 20px 0 0;
+display: flex;
+justify-content: space-between;
+background-color: #53A856;
+}
+
+.modal-order-header h1{
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+  margin-left: 30px;
+}
+
+.modal-order-header img{
+  width: 40px;
+  height: 40px;
+  top: 15px;
+  left: 530px;
+  background-color: #53A856;
+}
+
+.modal-order-header button{
+  border-radius: 0 20px 0 0; 
+  background-color: #53A856;
+  border: none;
+  cursor: pointer;
+}
+
+.select-supplier{
+  width: 330px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  border: none;
+  margin: 20px 0 0 30px;
+  color: #3E4153;
+}
+
+.modal-order-container input{
+  height: 45px;
+  border: none;
+  margin: 20px 0 0 30px;
+}
+
+.modal-order-container input::placeholder{
+  width: 197px;
+  height: 45px;
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #3E4153;
+}
+
+.calendar-order{
+  margin-left: 30px;
+  width: 260px;
+  height: 60px;
+  border-radius: 12px;
+  border: 2px solid #999999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #3E4153;
+
+
+}
+
+.btn-calendar-order img{
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}

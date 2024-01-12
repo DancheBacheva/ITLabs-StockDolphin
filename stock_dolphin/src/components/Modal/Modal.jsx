@@ -1,3 +1,4 @@
+// modal for add item, add category and edit category
 import React from 'react';
 import "./Modal.css";
 
