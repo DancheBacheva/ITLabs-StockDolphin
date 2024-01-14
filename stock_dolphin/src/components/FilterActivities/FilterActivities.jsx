@@ -6,7 +6,7 @@ export const FilterActivities = () => {
     <div>
       <div className='activity-sidebar-right'>
         <h1>Filter Activities</h1>
-        <hr />        
+        <hr id='filter-hr'/>
         <input type="radio" name="all" id="all" /><label>All activity</label><br />
         <input type="radio" name="moved" id="moved" /><label>Moved</label><br />
         <input type="radio" name="edited" id="edited" /><label>Edited</label><br />

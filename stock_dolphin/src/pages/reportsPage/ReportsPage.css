@@ -1,8 +1,91 @@
-.reports-page{
+.section-reports{
+  width: 100%;
+  max-width: 1628px;
+}
+
+.top-section-r{
+  width: 100%;
+  max-width: 1470px;
+  max-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 75px;
+}
+
+.top-section-r h1{
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 57px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3E4153;
+}
+
+.line-reports{
+  width: 100%;
+  max-width: 1470px;
+  border: 2px solid #5C5C5C;
+  margin-left: 75px;
+}
+
+.activity-history,
+.inventory-summary-reports{
+  margin-left: 75px;
+  margin-top: 50px;
+}
+
+.title-activity{
+  height: 50px;
+  display: flex;
+  align-items: center; 
+  border: none;
+  background-color: #EAEAEA;
+  text-decoration: none;
+}
+
+.time-mashine-img,
+.product-img-r{
   width: 100%;
   height: 100%;
-  max-width: 1980px;
-  max-height: 1080px;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.activity-history h1,
+.inventory-summary-reports h1{
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 57px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #5C5C5C;
+}
+
+.title-inventory{
+  height: 50px;
   display: flex;
-  background: #EAEAEA;
+  align-items: center;
+  border: none;
+  background-color: #EAEAEA;
+  text-decoration: none;
+}
+
+.activity-history p,
+.inventory-summary-reports p{
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #5C5C5C;
+}
+
+.line9,
+.line10{
+  width: 100%;
+  height: 100%;
+  max-width: 1530px;
+  border: 1px solid #000000;
+  margin-left: 75px;
 }

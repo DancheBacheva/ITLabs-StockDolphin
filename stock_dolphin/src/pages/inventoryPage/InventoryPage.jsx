@@ -1,7 +1,6 @@
 import "./InventoryPage.css"
 import React, { useEffect, useState } from 'react';
 import { InventorySummaryMain } from "../../components/InventorySummaryMain/InventorySummaryMain";
-import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
 import { TopSectionInventory } from "../../components/TopSectionInventory/TopSectionInventory";
 
 export const InventoryPage = () => {
@@ -31,15 +30,11 @@ export const InventoryPage = () => {
   }, []);
 
   return (
-    <div>
-      <div className="inventory-page">
-        <MenuSidebarLeft/>
-        <div className="inventory-main">
-        <TopSectionInventory/>
-        <InventorySummaryMain categories={categories}/>
-        </div>
-      </div>
+    <div className="inventory-main">
+      <TopSectionInventory/>
+      <InventorySummaryMain categories={categories}/>
     </div>
+   
   )
 }
 

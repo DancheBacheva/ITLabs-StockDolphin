@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { Category } from "../../components/Category/Category";
 import { InventoryCategoryRight } from "../../components/InventoryCategoryRight/InventoryCategoryRight";
-import { MenuSidebarLeft } from "../../components/MenuSidebarLeft/MenuSidebarLeft";
 
 
 export const InventoryCategoryPage = () => {
@@ -34,17 +33,12 @@ export const InventoryCategoryPage = () => {
   }, []);
 
   return (
-    <div>
-      <div className="inventory-category-page">
-        <MenuSidebarLeft/>
-        <div className="inventory-main">
-          <div className='top-section'>
-            <h1 className='inventory-title-category'>Inventory {'>'} {title}</h1>
-          </div>
-          <Category />
-          <InventoryCategoryRight title={title} items={items} />
-        </div>
+    <div className="inventory-main">
+      <div className='top-section'>
+        <h1 className='inventory-title-category'>Inventory {'>'} {title}</h1>
       </div>
+      <Category />
+      <InventoryCategoryRight title={title} items={items} />
     </div>
   )
 }

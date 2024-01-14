@@ -9,10 +9,18 @@ import { InventoryCategoryPage } from "./pages/InventoryCategoryPage/InventoryCa
 import { ActivityHistoryPage } from "./pages/ActivityHistoryPage/ActivityHistoryPage";
 import { InventorySummaryPage } from "./pages/InventorySummaryPage/InventorySummaryPage";
 import { InventoryItemPage } from "./pages/InventoryItemPage/InventoryItemPage";
+import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
+import { Context } from "./utils/Context";
 
 function App() {
   return (
     <div className="App">
+      <Context.Provider>
+      <nav>
+        <MenuSidebarLeft/>
+      </nav>
+      
+      <main>
         <Routes>
           <Route path="/" element={<Default/>}/>
           <Route path="/dashboard" element={<DashboardPage/>}/>
@@ -24,6 +32,8 @@ function App() {
           <Route path="/reports" element={<ReportsPage/>}/>
           <Route path="/suppliers" element={<SuppliersPage/>}/>
         </Routes>
+      </main>
+      </Context.Provider>
     </div>
   );
 }

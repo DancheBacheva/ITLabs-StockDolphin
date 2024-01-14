@@ -1,12 +1,7 @@
-*{
-  font-family: Poppins;
-}
-
 .menu-panel{
   width: 100%;
   height: 100%;
   max-width: 350px;
-  max-height: 1080px;
   background: #53A856;
 }
 
@@ -73,7 +68,7 @@
   width: 100%;
   height: 100%;
   max-width: 281.42px;
-  max-height: 660px;
+  padding-bottom: 50px;
 }
 
 .suppliers-btn{
