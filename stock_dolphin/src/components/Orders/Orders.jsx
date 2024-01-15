@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import "./Orders.css";
 import { ModalOrder } from "../ModalOrder/ModalOrder";
 import { ModalInvoice } from '../ModalInvoice/ModalInvoice';
+import { ModalEditCategory } from '../ModalEditCategory/ModalEditCategory';
+import { ModalMoveItem } from '../ModalMoveItem/ModalMoveItem';
 
 // da se proverat klasi
 export const Orders = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalInvoice, setOpenModalInvoice] = useState(false);
+  const [openModalEditCategory, setOpenModalEditCategory] = useState(false);
+  const [openModalMoveItem, setOpenModalMoveItem] = useState(false);
   return (
     <div>
       <div className='main-container-up'>
@@ -59,23 +63,30 @@ export const Orders = () => {
           </table>
         </div>
         <div className='item-details-container'>
-            <div className='item-img-container'>
+            <button 
+            onClick={()=>{setOpenModalEditCategory(true)}}
+            className='item-img-container'>
               <div>
               <img src="/images/Rectangle70.png" alt="item" />
               </div>
               <div className='epipse21'>
               <img className="editgreen" src="/images/EditGreen.png" alt="edit" />
               </div>
-            </div>
+            </button>
             <div className='name-container'>Name: <strong>Mouse</strong></div>
             <div className='folder-save-container'>
-              <button className='add-folder'><img className="add-folder-img" src="/images/AddFolder.png" alt="" /></button>
+              <button
+              onClick={()=>{setOpenModalMoveItem(true)}}
+              className='add-folder'><img className="add-folder-img" src="/images/AddFolder.png" alt="" /></button>
               <button className='save-item'>SAVE</button>
             </div>
         </div>
       </div>
       {openModal && <ModalOrder closeModal={setOpenModal}/>}
       {openModalInvoice && <ModalInvoice closeModal={setOpenModalInvoice}/>}
+      {openModalEditCategory && <ModalEditCategory closeModal={setOpenModalEditCategory} title={"Edit Category"} saveChanges={"SAVE CHANGES"}/>}
+      {openModalMoveItem && <ModalMoveItem closeModal={setOpenModalMoveItem}/>}
+
     </div>
   )
 }
