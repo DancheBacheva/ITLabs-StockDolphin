@@ -3,7 +3,7 @@ import "./ModalMoveItem.css";
 
 export const ModalMoveItem = ({closeModal}) => {
   return (
-    <div className='modal-background'>
+    <div className='modal-move-background'>
       <div className='modal-container-move'>
         <div className='modal-header-move'>
           <h1>Move Item</h1>

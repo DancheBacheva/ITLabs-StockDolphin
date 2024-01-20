@@ -101,6 +101,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border: none;
 }
 
 .edit-delete-container{

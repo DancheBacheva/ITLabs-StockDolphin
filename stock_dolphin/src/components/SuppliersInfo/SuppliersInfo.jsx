@@ -1,6 +1,12 @@
+import React, { useState, useContext } from 'react'
+import { DataContext } from "../../App";
 import "./SuppliersInfo.css";
+import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 
-export const SuppliersInfo = ({suppliers}) => {
+
+export const SuppliersInfo = () => {
+  const { suppliers } = useContext(DataContext);
+  const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
   
   return (
     <div>
@@ -32,13 +38,16 @@ export const SuppliersInfo = ({suppliers}) => {
             <div className='edit-supplier'>
               <img className='edit-supplier-img' src='/images/icone-crayon-vert1.png' alt='edit supplier'/>
             </div>
-            <div className='delete-supplier'>
+            <button
+              onClick={()=>{setOpenModalDiscardConfirm(true)}}
+              className='delete-supplier'>
               <img className='delete-supplier-img' src='/images/Delete.png' alt='delete supplier'/>
-            </div>
+            </button>
           </div>
         </div>
         )})}
       </div>
+      {openModalDiscardConfirm && <ModalDiscardConfirm closeModal={setOpenModalDiscardConfirm} text={"Do you want to delete this supplier"} change={"CONFIRM"}/>}
     </div>
   )
 }

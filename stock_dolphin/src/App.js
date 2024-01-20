@@ -1,4 +1,5 @@
 import "./App.css";
+import React, {useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { Default } from "./pages/DefaultPage/Default";
@@ -10,12 +11,69 @@ import { ActivityHistoryPage } from "./pages/ActivityHistoryPage/ActivityHistory
 import { InventorySummaryPage } from "./pages/InventorySummaryPage/InventorySummaryPage";
 import { InventoryItemPage } from "./pages/InventoryItemPage/InventoryItemPage";
 import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
-import { Context } from "./utils/Context";
+
+export const DataContext = React.createContext();
 
 function App() {
+  const [data, setData] = useState({ categories: [], items: [], suppliers: [] });
+
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const categoriesResponse = await fetch("http://localhost:9001/api/v1/category", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const itemsResponse = await fetch("http://localhost:9003/api/v1/item", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      
+      const suppliersResponse = await fetch("http://127.0.0.1:9007/api/v1/supplier", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const categoriesData = await categoriesResponse.json();
+      const itemsData = await itemsResponse.json();
+      const suppliersData = await suppliersResponse.json();
+
+      let newData = { ...data };
+
+      if (categoriesResponse.ok) {
+        newData.categories = categoriesData.data.categories;
+      } else {
+        console.error("Error fetching categories");
+      }
+
+      if (itemsResponse.ok) {
+        newData.items = itemsData.data.items;
+      } else {
+        console.error("Error fetching items");
+      }
+
+      if (suppliersResponse.ok) {
+        newData.suppliers = suppliersData.data.suppliers;
+      } else {
+        console.error("Error fetching suppliers");
+      }
+
+      setData(newData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchData();
+}, []);
+
   return (
     <div className="App">
-      <Context.Provider>
+      <DataContext.Provider value={data}>
       <nav>
         <MenuSidebarLeft/>
       </nav>
@@ -33,9 +91,8 @@ function App() {
           <Route path="/suppliers" element={<SuppliersPage/>}/>
         </Routes>
       </main>
-      </Context.Provider>
+      </DataContext.Provider>
     </div>
   );
 }
-
 export default App;

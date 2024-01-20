@@ -1,6 +1,9 @@
-import "./InventorySummDashboard.css"
+import "./InventorySummDashboard.css";
+import React, {useContext} from 'react';
+import { DataContext } from "../../App";
 
 export const InventorySummDashboard = () => {
+  const { categories, items } = useContext(DataContext);
   return (
     <div>
       <div className="inventory-summary-dashboard">
@@ -10,14 +13,14 @@ export const InventorySummDashboard = () => {
             <div className="elipse1">
             <img classname="img-folder" src="/images/Folder.png" alt="folder"/>
             </div>
-            <p className="num">13</p>
+            <p className="num">{categories.length}</p>
             <p className="text">Categories</p>
           </div>
           <div className="rectangle">
             <div className="elipse2"> 
             <img classname="img-documents" src="/images/Documents.png" alt="documents"/>
             </div>
-            <p className="num">123</p>
+            <p className="num">{items.length}</p>
             <p className="text">Items</p>
           </div>
           <div className="rectangle">

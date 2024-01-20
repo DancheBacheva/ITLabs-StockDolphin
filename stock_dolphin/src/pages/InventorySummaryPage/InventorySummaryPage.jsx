@@ -15,7 +15,7 @@ export const InventorySummaryPage = () => {
           <option value="">All Categories</option>
         </select>
         <button className='btn-show-reset'>SHOW</button>
-        <button className='btn-show-reset'>RESET</button>
+        {/* <button className='btn-show-reset'>RESET</button> */}
       </div>
     </div>
   )

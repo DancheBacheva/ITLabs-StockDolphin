@@ -14,6 +14,11 @@ const orderSchema = new mongoose.Schema({
     default: Date.now()
   },
 
+  items: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Item'
+  },
+
   supplier: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Supplier"

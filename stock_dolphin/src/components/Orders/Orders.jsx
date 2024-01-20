@@ -63,17 +63,16 @@ export const Orders = () => {
           </table>
         </div>
         <div className='item-details-container'>
-            <button 
-            onClick={()=>{setOpenModalEditCategory(true)}}
-            className='item-img-container'>
+            <div className='item-img-container'>
               <div>
               <img src="/images/Rectangle70.png" alt="item" />
               </div>
-              <div className='epipse21'>
+              <button
+              onClick={()=>{setOpenModalEditCategory(true)}} className='epipse21'>
               <img className="editgreen" src="/images/EditGreen.png" alt="edit" />
-              </div>
-            </button>
-            <div className='name-container'>Name: <strong>Mouse</strong></div>
+              </button>
+            </div>
+            <div className='name-container'>Name: &nbsp; <strong>Mouse</strong></div>
             <div className='folder-save-container'>
               <button
               onClick={()=>{setOpenModalMoveItem(true)}}

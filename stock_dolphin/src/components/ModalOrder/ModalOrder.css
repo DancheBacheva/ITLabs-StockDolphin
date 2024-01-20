@@ -1,7 +1,13 @@
-.modal-order-background{
+.modal-order-background {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(22, 19, 19, 0.5);
 }
 
 .modal-order-container{
@@ -10,6 +16,7 @@
   border-radius: 20px;
   background-color: #FFFFFF;
   margin: 0 auto;
+  box-shadow: 4px 4px 4px 0px #00000040;
 }
 
 .modal-order-header{
