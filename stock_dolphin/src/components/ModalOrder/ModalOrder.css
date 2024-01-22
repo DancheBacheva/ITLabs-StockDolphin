@@ -67,6 +67,7 @@ background-color: #53A856;
 }
 
 .modal-order-container input{
+  width: 300px;
   height: 45px;
   border: none;
   margin: 20px 0 0 30px;
@@ -75,7 +76,6 @@ background-color: #53A856;
 .modal-order-container input::placeholder{
   width: 197px;
   height: 45px;
-  font-family: Poppins;
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
@@ -84,7 +84,7 @@ background-color: #53A856;
   color: #3E4153;
 }
 
-.calendar-order{
+#date{
   margin-left: 30px;
   width: 260px;
   height: 60px;
@@ -100,12 +100,4 @@ background-color: #53A856;
   letter-spacing: 0.05em;
   text-align: left;
   color: #3E4153;
-
-
-}
-
-.btn-calendar-order img{
-  width: 30px;
-  height: 30px;
-  margin: 10px;
 }

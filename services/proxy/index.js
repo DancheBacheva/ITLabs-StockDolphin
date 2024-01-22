@@ -35,11 +35,18 @@ const supplierProxy = proxy('http://localhost:9007', {
   },
 });
 
+const activityProxy = proxy('http://localhost:9009', {
+  proxyReqPathResolver: (req) => {
+    return `/api/v1/activity${req.url}`;
+  },
+});
+
 app.use('/api/v1/auth/', authProxy);
 app.use('/api/v1/category/', categoryProxy);
 app.use('/api/v1/item/', itemProxy);
 app.use('/api/v1/order/', orderProxy);
 app.use('/api/v1/supplier/', supplierProxy);
+app.use('/api/v1/activity/', activityProxy);
 
 app.listen(9010, (err) => {
   if (err) {

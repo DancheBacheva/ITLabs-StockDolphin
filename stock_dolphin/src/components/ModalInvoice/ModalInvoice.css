@@ -54,14 +54,15 @@
   cursor: pointer;
 }
 
-.modal-invoice-container input{
+.invoice-name{
+  width: 300px;
   height: 45px;
   border: none;
   margin: 20px 0 0 30px;
 }
 
-.modal-invoice-container input::placeholder{
-  width: 197px;
+.invoice-name::placeholder{
+  width: 300px;
   height: 45px;
   font-size: 30px;
   font-weight: 500;
@@ -86,12 +87,7 @@
   text-align: left;
   color: #3E4153;
   margin: 20px 0 0 30px;
-}
-
-.btn-calendar-invoice img{
-  width: 30px;
-  height: 30px;
-  margin: 10px;
+  padding: 0 10px;
 }
 
 .select{

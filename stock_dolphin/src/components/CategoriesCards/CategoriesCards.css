@@ -1,14 +1,10 @@
-body{
-  font-family: Poppins; 
-}
-
 .main-card-category{
   width: 1170px;
   margin-left: 95px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 }
 
 .category-cards-container{
@@ -112,4 +108,5 @@ body{
   align-items: center;
   margin-top: 20px;
   border: none;
+  cursor: pointer;
 }

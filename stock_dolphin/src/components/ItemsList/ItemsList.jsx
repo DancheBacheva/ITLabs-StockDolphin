@@ -1,8 +1,11 @@
 import "./ItemsList.css";
 import { Link } from "react-router-dom";
+import React, { useState} from "react";
+import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 
 export const ItemsList = ({title, items}) => {
   const oneCategory = items.filter(item => item.category.title === title);
+  const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
   return (
     <div>
@@ -22,10 +25,26 @@ export const ItemsList = ({title, items}) => {
         <div className='date-remove-list'>
         <hr/>
           <span className='updated-date-item-list'>Updated At: <br /><strong>{item.date}</strong></span>
-          <div className='delete-item-list'>
-            <img className='delete-img-list' src='/images/Delete.png' alt='delete supplier'/>
-          </div>
+          <button
+                  onClick={() => {
+                    setOpenModalDiscardConfirm(true);
+                  }}
+                  className="delete-item-list"
+                >
+                  <img
+                    className="delete-img"
+                    src="/images/Delete.png"
+                    alt="delete supplier"
+                  />
+                </button>
         </div>
+        {openModalDiscardConfirm && (
+                <ModalDiscardConfirm
+                  closeModal={setOpenModalDiscardConfirm}
+                  text={"Do you want to delete this item"}
+                  change={"CONFIRM"}
+                />
+              )}
         </div>
         ))
         ) : (

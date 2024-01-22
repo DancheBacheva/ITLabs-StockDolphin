@@ -15,7 +15,7 @@ import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
 export const DataContext = React.createContext();
 
 function App() {
-  const [data, setData] = useState({ categories: [], items: [], suppliers: [] });
+  const [data, setData] = useState({ categories: [], items: [], suppliers: [], activities: [] });
 
  useEffect(() => {
   const fetchData = async () => {
@@ -38,9 +38,16 @@ function App() {
         },
       });
 
+      const activitiesResponse = await fetch("http://127.0.0.1:9009/api/v1/activity", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
       const categoriesData = await categoriesResponse.json();
       const itemsData = await itemsResponse.json();
       const suppliersData = await suppliersResponse.json();
+      const activitiesData = await activitiesResponse.json();
 
       let newData = { ...data };
 
@@ -58,6 +65,12 @@ function App() {
 
       if (suppliersResponse.ok) {
         newData.suppliers = suppliersData.data.suppliers;
+      } else {
+        console.error("Error fetching suppliers");
+      }
+
+      if (activitiesResponse.ok) {
+        newData.activities = activitiesData.data.activities;
       } else {
         console.error("Error fetching suppliers");
       }
@@ -81,14 +94,16 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Default/>}/>
-          <Route path="/dashboard" element={<DashboardPage/>}/>
-          <Route path="/inventory" element={<InventoryPage/>}/>
-          <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
-          <Route path="/inventory/:title/:itemTitle" element={<InventoryItemPage/>}/>
-          <Route path="/reports/activityhistory" element={<ActivityHistoryPage/>}/>
-          <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
-          <Route path="/reports" element={<ReportsPage/>}/>
-          <Route path="/suppliers" element={<SuppliersPage/>}/>
+          {/* <Route element={<MenuSidebarLeft/>}> */}
+            <Route path="/dashboard" element={<DashboardPage/>}/>
+            <Route path="/inventory" element={<InventoryPage/>}/>
+            <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
+            <Route path="/inventory/:title/:itemTitle" element={<InventoryItemPage/>}/>
+            <Route path="/reports/activityhistory" element={<ActivityHistoryPage/>}/>
+            <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
+            <Route path="/reports" element={<ReportsPage/>}/>
+            <Route path="/suppliers" element={<SuppliersPage/>}/>
+          {/* </Route> */}
         </Routes>
       </main>
       </DataContext.Provider>

@@ -21,6 +21,11 @@ const itemSchema = new mongoose.Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category'
+  },
+
+  activity: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Activity'
   }
 })
 

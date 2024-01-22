@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Category } from "../../components/Category/Category";
 import { InventoryCategoryRight } from "../../components/InventoryCategoryRight/InventoryCategoryRight";
 
-
+//da se napravi so context 
 export const InventoryCategoryPage = () => {
   const [items, setItems] = useState ([]);
   const { title } = useParams();

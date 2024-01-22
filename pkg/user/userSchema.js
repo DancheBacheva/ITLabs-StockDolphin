@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema({
 
   password: {
     type: String,
-    required: [true, "You must enter a password"]
+    required: [true, "You must enter a password"],
   },
-  
+
   role: {
     type: String,
     enum: ["user", "admin"],
@@ -35,5 +35,4 @@ userSchema.pre("save", async function (next) {
 });
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;

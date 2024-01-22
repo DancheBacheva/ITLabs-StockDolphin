@@ -1,5 +1,6 @@
 const Item = require("../../../pkg/item/itemSchema");
 const Category = require("../../../pkg/category/categorySchema");
+const Activity = require("../../../pkg/activity/activitySchema");
 const multer = require("multer");
 const uuid = require("uuid");
 
@@ -81,6 +82,13 @@ exports.create = async (req, res) => {
       icon,
       category: category._id,
     });
+    
+    const createdActivity = await Activity.create({
+      activity: "created",
+      itemTitle,
+      categoryTitle,
+      date: new Date(),
+    });
 
     await Category.findByIdAndUpdate(category._id, {
       $push: { items: newItem._id},
@@ -90,6 +98,7 @@ exports.create = async (req, res) => {
       status: "success",
       data: {
         item: newItem,
+        activity: createdActivity
       },
     });
 
@@ -103,6 +112,7 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) =>{
   try{
+    const { itemTitle, categoryTitle } = req.body;
     if (req.file) {
       const filename = req.file.filename;
       req.body.icon = filename;
@@ -112,10 +122,19 @@ exports.update = async (req, res) =>{
       new: true,
       runValidators: true,
     });
+
+    const createdActivity = await Activity.create({
+      activity: "edited",
+      itemTitle,
+      categoryTitle,
+      date: new Date(),
+    });
+
     res.status(200).json({
       status: "success",
       data: {
         item,
+        activity: createdActivity
       }
     });
   }catch(err){
@@ -128,10 +147,23 @@ exports.update = async (req, res) =>{
 
 exports.delete = async (req, res) => {
   try{
+    const { itemTitle, categoryTitle } = req.body;
+
     await Item.findByIdAndDelete(req.params.id);
+
+    const createdActivity = await Activity.create({
+      activity: "deleted",
+      itemTitle,
+      categoryTitle,
+      date: new Date(),
+    });
+
     res.status(204).json({
       status: "success",
-      data: null,
+      data: {
+        item: null,
+        activity: createdActivity
+      }
     });
   }catch(err){
     res.status(404).json({

@@ -1,5 +1,5 @@
 import "./MenuSidebarLeft.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const MenuSidebarLeft = () => {
 return(
@@ -30,6 +30,7 @@ return(
         </div>
       </div>
     </div>
+    <Outlet/>
   </div>
 )
 }
