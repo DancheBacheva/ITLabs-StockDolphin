@@ -1,21 +1,23 @@
 const Order = require("../../../pkg/order/orderSchema");
+const Item = require("../../../pkg/item/itemSchema");
 
 exports.viewAll = async (req, res) => {
-  try{
-    const queryObj = {...req.query};
+  try {
+    const queryObj = { ...req.query };
     let queryString = JSON.stringify(queryObj);
-    queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g,
-    (match)=> `$${match}`
+    queryString = queryString.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      (match) => `$${match}`
     );
     const query = JSON.parse(queryString);
-    const orders = await Order.find(query);
+    const orders = await Order.find(query).populate("item");
     res.status(200).json({
       status: "success",
       data: {
         orders,
-      }
-    })
-  }catch(err){
+      },
+    });
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -24,32 +26,42 @@ exports.viewAll = async (req, res) => {
 };
 
 exports.viewOne = async (req, res) => {
-  try{
-    const order = await Order.findById(req.params.id);
+  try {
+    const order = await Order.findById(req.params.id).populate("item");
     res.status(200).json({
       status: "success",
       data: {
         order,
-      }
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
-      message: err
+      message: err,
     });
   }
 };
 
 exports.create = async (req, res) => {
-  try{
-    const newOrder = await Order.create(req.body);
+  try {
+    const { itemTitle, quantity, pricePerUnit } = req.body;
+
+    const item = await Item.findOne({ itemTitle });
+
+    const newOrder = await Order.create({
+      itemTitle,
+      quantity,
+      pricePerUnit,
+      item: item._id,
+    });
+    
     res.status(201).json({
       status: "success",
       data: {
         order: newOrder,
       },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -58,7 +70,7 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  try{
+  try {
     const order = await Order.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -67,9 +79,9 @@ exports.update = async (req, res) => {
       status: "success",
       data: {
         order,
-      }
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -78,13 +90,13 @@ exports.update = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  try{
+  try {
     await Order.findByIdAndDelete(req.params.id);
     res.status(204).json({
       status: "success",
       data: null,
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,

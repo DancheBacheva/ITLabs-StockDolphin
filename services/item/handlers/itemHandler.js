@@ -17,9 +17,9 @@ const multerStorage = multer.diskStorage({
 });
 
 const multerFilter = (req, file, callback) => {
-  if(file.mimetype.startsWith("image")){
+  if (file.mimetype.startsWith("image")) {
     callback(null, true);
-  }else{
+  } else {
     callback(new Error("File type is not supported"), false);
   }
 };
@@ -32,11 +32,12 @@ const upload = multer({
 exports.uploadPhoto = upload.single("icon");
 
 exports.viewAll = async (req, res) => {
-  try{
-    const queryObj = {...req.query};
+  try {
+    const queryObj = { ...req.query };
     let queryString = JSON.stringify(queryObj);
-    queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g,
-    (match)=> `$${match}`
+    queryString = queryString.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      (match) => `$${match}`
     );
     const query = JSON.parse(queryString);
     const items = await Item.find(query).populate("category");
@@ -44,9 +45,9 @@ exports.viewAll = async (req, res) => {
       status: "success",
       data: {
         items,
-      }
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -55,15 +56,15 @@ exports.viewAll = async (req, res) => {
 };
 
 exports.viewOne = async (req, res) => {
-  try{
+  try {
     const item = await Item.findById(req.params.id).populate("category");
     res.status(200).json({
       status: "success",
       data: {
         item,
-      }
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -72,7 +73,7 @@ exports.viewOne = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  try{
+  try {
     const { itemTitle, icon, categoryTitle } = req.body;
 
     const category = await Category.findOne({ title: categoryTitle });
@@ -82,7 +83,7 @@ exports.create = async (req, res) => {
       icon,
       category: category._id,
     });
-    
+
     const createdActivity = await Activity.create({
       activity: "created",
       itemTitle,
@@ -91,18 +92,17 @@ exports.create = async (req, res) => {
     });
 
     await Category.findByIdAndUpdate(category._id, {
-      $push: { items: newItem._id},
+      $push: { items: newItem._id },
     });
 
     res.status(201).json({
       status: "success",
       data: {
         item: newItem,
-        activity: createdActivity
+        activity: createdActivity,
       },
     });
-
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -110,8 +110,8 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.update = async (req, res) =>{
-  try{
+exports.update = async (req, res) => {
+  try {
     const { itemTitle, categoryTitle } = req.body;
     if (req.file) {
       const filename = req.file.filename;
@@ -134,10 +134,10 @@ exports.update = async (req, res) =>{
       status: "success",
       data: {
         item,
-        activity: createdActivity
-      }
+        activity: createdActivity,
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
@@ -146,7 +146,7 @@ exports.update = async (req, res) =>{
 };
 
 exports.delete = async (req, res) => {
-  try{
+  try {
     const { itemTitle, categoryTitle } = req.body;
 
     await Item.findByIdAndDelete(req.params.id);
@@ -162,15 +162,13 @@ exports.delete = async (req, res) => {
       status: "success",
       data: {
         item: null,
-        activity: createdActivity
-      }
+        activity: createdActivity,
+      },
     });
-  }catch(err){
+  } catch (err) {
     res.status(404).json({
       status: "fail",
       message: err,
     });
   }
 };
-
-

@@ -1,6 +1,5 @@
 const Activity = require("../../../pkg/activity/activitySchema");
 const Item = require("../../../pkg/item/itemSchema");
-// const Category = require("../../../pkg/category/categorySchema");
 
 exports.viewAll = async (req, res) => {
   try{

@@ -1,34 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./CategoriesList.css";
 import { Link } from "react-router-dom";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 
-export const CategoriesList = () => {
-  const [categories, setCategories] = useState([]);
+export const CategoriesList = ({ categories }) => {
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const res = await fetch("http://localhost:9001/api/v1/category", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          setCategories(data.data.categories);
-        } else {
-          console.log("Error fetching categories");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCategories();
-  }, []);
 
   return (
     <div>

@@ -15,7 +15,7 @@ import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
 export const DataContext = React.createContext();
 
 function App() {
-  const [data, setData] = useState({ categories: [], items: [], suppliers: [], activities: [] });
+  const [data, setData] = useState({ categories: [], items: [], orders: [], suppliers: [], activities: [] });
 
  useEffect(() => {
   const fetchData = async () => {
@@ -27,6 +27,12 @@ function App() {
       });
 
       const itemsResponse = await fetch("http://localhost:9003/api/v1/item", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const ordersResponse = await fetch("http://localhost:9005/api/v1/order", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -46,6 +52,7 @@ function App() {
 
       const categoriesData = await categoriesResponse.json();
       const itemsData = await itemsResponse.json();
+      const ordersData = await ordersResponse.json();
       const suppliersData = await suppliersResponse.json();
       const activitiesData = await activitiesResponse.json();
 
@@ -59,6 +66,12 @@ function App() {
 
       if (itemsResponse.ok) {
         newData.items = itemsData.data.items;
+      } else {
+        console.error("Error fetching items");
+      }
+
+      if (ordersResponse.ok) {
+        newData.orders = ordersData.data.orders;
       } else {
         console.error("Error fetching items");
       }

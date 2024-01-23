@@ -183,10 +183,13 @@ td{
   line-height: 42px;
   letter-spacing: 0em;
   text-align: left;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin: 20px 0 50px 0;
   display: flex;
   align-items: center;
+}
+
+.name-container span{
+  margin-left: 20px;
 }
 
 .folder-save-container{

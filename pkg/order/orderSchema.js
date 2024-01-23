@@ -5,16 +5,28 @@ const orderSchema = new mongoose.Schema({
     type: Number,
   },
 
-  price: {
+  totaPrice: {
     type: Number,
   },
 
-  date: {
+  pricePerUnit: {
+    type: Number,
+  },
+
+  ordered: {
     type: Date,
     default: Date.now()
   },
+  
+  supplierName: {
+    type: String,
+  },
 
-  items: {
+  itemTitle: {
+    type: String,
+  },
+
+  item: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item'
   },
@@ -22,6 +34,11 @@ const orderSchema = new mongoose.Schema({
   supplier: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Supplier"
+  },
+
+  activity: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Activity'
   }
 })
 
