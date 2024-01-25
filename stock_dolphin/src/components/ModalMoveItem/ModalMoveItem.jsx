@@ -22,7 +22,7 @@ export const ModalMoveItem = ({closeModal}) => {
             </div>
             <div className='move-container'>
               <img src="/images/Folder1.png" alt="addImage" />
-              <h2>Sanotary Supplies</h2>
+              <h2>Sanitary Supplies</h2>
             </div>
             <div className='move-container'>
               <img src="/images/Folder1.png" alt="addImage" />

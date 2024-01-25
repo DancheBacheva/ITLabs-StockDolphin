@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import { DataContext } from "../../App";
 
 export const InventorySummDashboard = () => {
-  const { categories, items } = useContext(DataContext);
+  const { categories, items, orders } = useContext(DataContext);
   return (
     <div>
       <div className="inventory-summary-dashboard">
@@ -27,7 +27,7 @@ export const InventorySummDashboard = () => {
             <div className="elipse3">
             <img classname="img-paper" src="/images/Paper.png" alt="paper"/>
             </div>
-            <p className="num">378</p>
+            <p className="num">{orders.length}</p>
             <p className="text">Total Orders</p>
           </div>
           <div className="rectangle">

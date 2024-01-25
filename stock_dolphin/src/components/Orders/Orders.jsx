@@ -16,8 +16,10 @@ export const Orders = () => {
   const [openModalEditCategory, setOpenModalEditCategory] = useState(false);
   const [openModalMoveItem, setOpenModalMoveItem] = useState(false);
 
+  const oneItem = orders.filter((order) => order.itemTitle === itemTitle);
+
   const calculateTotalPrice = (order) => {
-    return order.quantity * order.pricePerUnit 
+    return order.quantity * order.pricePerUnit;
   };
 
   return (
@@ -25,7 +27,7 @@ export const Orders = () => {
       <div className="main-container-up">
         <div className="total-container">
           <p>
-            Total Orders: &nbsp;<strong>22</strong>
+            Total Orders: &nbsp;<strong>{orders.length}</strong>
           </p>
           <p>
             Total Cost: &nbsp;<strong>€180.00</strong>
@@ -79,7 +81,7 @@ export const Orders = () => {
                 <th>Supplier</th>
               </tr>
             </thead>
-            {orders.map((order) => (
+            {oneItem.map((order) => (
               <tbody>
                 <tr>
                   <td>{order.quantity} units</td>

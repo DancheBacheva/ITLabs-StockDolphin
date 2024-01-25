@@ -1,5 +1,6 @@
 const Order = require("../../../pkg/order/orderSchema");
 const Item = require("../../../pkg/item/itemSchema");
+const Activity = require("../../../pkg/activity/activitySchema");
 
 exports.viewAll = async (req, res) => {
   try {
@@ -44,7 +45,7 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { itemTitle, quantity, pricePerUnit } = req.body;
+    const { itemTitle, quantity, pricePerUnit, categoryTitle } = req.body;
 
     const item = await Item.findOne({ itemTitle });
 
@@ -54,11 +55,19 @@ exports.create = async (req, res) => {
       pricePerUnit,
       item: item._id,
     });
+
+    const createdActivity = await Activity.create({
+      activity: "ordered",
+      itemTitle,
+      categoryTitle,
+      date: new Date(),
+    });
     
     res.status(201).json({
       status: "success",
       data: {
         order: newOrder,
+        activity: createdActivity,
       },
     });
   } catch (err) {

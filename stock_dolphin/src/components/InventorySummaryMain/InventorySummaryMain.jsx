@@ -5,7 +5,7 @@ import { CategoriesList } from "../CategoriesList/CategoriesList";
 import "./InventorySummaryMain.css";
 
 export const InventorySummaryMain = () => {
-    const { categories, items } = useContext(DataContext);
+    const { categories, items, orders } = useContext(DataContext);
     const [showCards, setShowCards] = useState(true);
 
     const handleShowCards = () => {
@@ -22,7 +22,7 @@ export const InventorySummaryMain = () => {
         <div className='inventory-summary-container'>
           <p>Categories: &nbsp;<strong>{categories.length}</strong></p>
           <p>Items: &nbsp;<strong>{items.length}</strong></p>
-          <p>Total Orders: &nbsp;<strong>25</strong></p>
+          <p>Total Orders: &nbsp;<strong>{orders.length}</strong></p>
           <p>Total Cost: &nbsp;<strong>€1.250k</strong></p>
         </div>
         <div className='item-show'>
