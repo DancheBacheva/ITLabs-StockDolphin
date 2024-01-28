@@ -45,7 +45,7 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { itemTitle, quantity, pricePerUnit, categoryTitle } = req.body;
+    const { itemTitle, categoryTitle, quantity, pricePerUnit } = req.body;
 
     const item = await Item.findOne({ itemTitle });
 
@@ -59,7 +59,7 @@ exports.create = async (req, res) => {
     const createdActivity = await Activity.create({
       activity: "ordered",
       itemTitle,
-      categoryTitle,
+      categoryTitle, //ne se pojavuva imeto na kategorijata, da se proveri zosto 
       date: new Date(),
     });
     

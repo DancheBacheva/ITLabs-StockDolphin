@@ -26,6 +26,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
   },
 
+  categoryTitle: {
+    type: String,
+  },
+
   item: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item'

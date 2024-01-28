@@ -26,6 +26,11 @@ const itemSchema = new mongoose.Schema({
   activity: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Activity'
+  },
+    
+  order: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Order'
   }
 })
 

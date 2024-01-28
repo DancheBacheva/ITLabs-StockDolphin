@@ -4,8 +4,33 @@ import "./SuppliersInfo.css";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 
 export const SuppliersInfo = () => {
-  const { suppliers } = useContext(DataContext);
+  const { suppliers, setSuppliers } = useContext(DataContext);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+  const [selectedSupplierId, setSelectedSupplierId] = useState(null);
+
+  const handleDelete = async (supplierId) => {
+    try {
+      const res = await fetch(
+        `http://localhost:9007/api/v1/supplier/${supplierId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (res.ok) {
+        setSuppliers((prevSuppliers) =>
+          prevSuppliers.filter((supplier) => supplier._id !== supplierId)
+        );
+      }
+    } catch (error) {
+      console.log("Error deleting supplier", error);
+    }
+    setOpenModalDiscardConfirm(false);
+    setSelectedSupplierId(null);
+  };
 
   return (
     <div>
@@ -48,6 +73,7 @@ export const SuppliersInfo = () => {
                 <button
                   onClick={() => {
                     setOpenModalDiscardConfirm(true);
+                    setSelectedSupplierId(supplier._id);
                   }}
                   className="delete-supplier"
                 >
@@ -64,7 +90,9 @@ export const SuppliersInfo = () => {
       </div>
       {openModalDiscardConfirm && (
         <ModalDiscardConfirm
-          closeModal={setOpenModalDiscardConfirm}
+          closeModal={() => setOpenModalDiscardConfirm(false)}
+          supplierId={selectedSupplierId}
+          onDelete={handleDelete}
           text={"Do you want to delete this supplier"}
           change={"CONFIRM"}
         />

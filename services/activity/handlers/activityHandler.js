@@ -43,9 +43,9 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try{
-    const { itemTitle } = req.body;
+    const { itemTitle, categoryTitle } = req.body;
     
-    const item = await Item.findOne({ itemTitle });
+    const item = await Item.findOne({ itemTitle, categoryTitle });
 
     const createdActivity = await Activity.create({
       item: item._id,
