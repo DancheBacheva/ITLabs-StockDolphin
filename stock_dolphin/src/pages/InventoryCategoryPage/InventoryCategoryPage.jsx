@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../App";
 import { Category } from "../../components/Category/Category";
 import { InventoryCategoryRight } from "../../components/InventoryCategoryRight/InventoryCategoryRight";
+import { Header } from "../../components/Header/Header";
 
 export const InventoryCategoryPage = () => {
   const { items } = useContext(DataContext);
@@ -11,11 +12,7 @@ export const InventoryCategoryPage = () => {
 
   return (
     <div className="inventory-main">
-      <div className="top-section">
-        <h1 className="inventory-title-category">
-          Inventory {">"} {title}
-        </h1>
-      </div>
+      <Header headerTitle={"Inventory"} headerSubtitle={title} />
       <Category />
       <InventoryCategoryRight title={title} items={items} />
     </div>

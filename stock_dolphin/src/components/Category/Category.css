@@ -1,14 +1,3 @@
-.inventory-title-category{
-  font-size: 38px;
-  font-weight: 400;
-  line-height: 57px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #3E4153;
-  display: flex;
-  flex-direction: row;
-}
-
 .add-item{
   width: 230px;
   height: 60px;
@@ -17,8 +6,6 @@
 .add-item-btn{
   width: 230px;
   height: 60px;
-  top: 130px;
-  left: 1671px;
   border-radius: 10px;
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;

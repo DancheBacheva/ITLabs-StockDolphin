@@ -6,6 +6,7 @@ import { ModalOrder } from "../ModalOrder/ModalOrder";
 import { ModalInvoice } from "../ModalInvoice/ModalInvoice";
 import { ModalEditCategory } from "../ModalEditCategory/ModalEditCategory";
 import { ModalMoveItem } from "../ModalMoveItem/ModalMoveItem";
+import { Add } from "../Add/Add";
 
 // da se proverat klasi
 export const Orders = () => {
@@ -42,12 +43,7 @@ export const Orders = () => {
             setOpenModal(true);
           }}
         >
-          <div className="inside-btn">
-            <div className="rectangle37">
-              <img className="add-new" src="/images/AddNew.png" alt="Add new" />
-            </div>
-            <p className="text-btn">ADD ORDER</p>
-          </div>
+          <Add addText={"ADD ORDER"} />
         </button>
       </div>
       <div className="orders-invoice">

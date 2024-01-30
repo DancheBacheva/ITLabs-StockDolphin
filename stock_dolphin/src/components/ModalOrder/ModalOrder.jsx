@@ -14,6 +14,7 @@ export const ModalOrder = ({ closeModal }) => {
           </button>
         </div>
         <select className="select-supplier" name="supplier" id="supplier">
+          <option>Supplier</option>
           {suppliers.map((supplier) => (
             <option key={supplier._id} value={supplier.name}>
               {supplier.name}

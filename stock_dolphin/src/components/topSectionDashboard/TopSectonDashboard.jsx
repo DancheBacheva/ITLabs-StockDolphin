@@ -1,9 +1,9 @@
 import "./TopSectionDashboard.css";
+// import { Header } from "../../components/Header/Header";
 
 export const TopSectonDashboard = () => {
   return (
-    <div >
-      <header className='top-section-dashboard'>
+    <div className='top-section-dashboard'>
         <div className="top-section">
           <h1>Dashboard</h1>
           <div className='user-section'>
@@ -12,7 +12,8 @@ export const TopSectonDashboard = () => {
           </div>
         </div>
         <hr/>
-      </header>
+        {/* <Header headerTitle="Dashboard" /> */}
+        {/* da se dobravi koga kje dodadam NAME AND SURNAME */}
     </div>
   )
 }

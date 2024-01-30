@@ -4,6 +4,7 @@ import "./ModalInvoice.css";
 
 export const ModalInvoice = ({ closeModal }) => {
   const { suppliers } = useContext(DataContext);
+
   return (
     <div className="modal-invoice-background">
       <div className="modal-invoice-container">
@@ -23,6 +24,7 @@ export const ModalInvoice = ({ closeModal }) => {
         />
         <hr className="smaller-hr-invoice" />
         <select className="select-supplier" name="supplier" id="supplier">
+          <option>Supplier</option>
           {suppliers.map((supplier) => (
             <option key={supplier._id} value={supplier.name}>
               {supplier.name}

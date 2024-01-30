@@ -1,25 +1,18 @@
-import './TopSectionSuppliers.css';
+import { Add } from "../Add/Add";
+import { Header } from "../Header/Header";
+import { SearchBar } from "../SearchBar/SearchBar";
+import "./TopSectionSuppliers.css";
 
 export const TopSectionSuppliers = () => {
   return (
-    <div className='top-section-suppliers'>
-      <div className='top-section-s'>
-        <h1 className='suppliers-title'>Suppliers</h1>
-      </div>
-      <hr className='line-suppliers'/>
-      <div className='search-add-suppliers'>
-        <label className="search-label-s" for="search">
-        <img className='search-img-s' src="/images/Search.png" alt="Search" />  
-        <input className='input-search-s' type="text" id="supplier-search" name="supplier-search" placeholder='Search Suppliers'/></label>
-        <button className='add-supplier-btn'>
-          <div className='inside-btn'>
-            <div className='rectangle37'>
-              <img className='add-new' src="/images/AddNew.png" alt="Add new" />
-              </div>
-              <p className='text-btn'>ADD SUPPLIER</p>
-          </div>
+    <div className="top-section-suppliers">
+      <Header headerTitle={"Suppliers"} />
+      <div className="search-add-suppliers">
+        <SearchBar placeholderText={"Search Suppliers"} />
+        <button className="add-supplier-btn">
+          <Add addText={"ADD SUPPLIER"} />
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
