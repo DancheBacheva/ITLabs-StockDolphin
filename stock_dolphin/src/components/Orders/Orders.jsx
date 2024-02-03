@@ -77,17 +77,21 @@ export const Orders = () => {
                 <th>Supplier</th>
               </tr>
             </thead>
-            {oneItem.map((order) => (
-              <tbody>
-                <tr>
-                  <td>{order.quantity} units</td>
-                  <td>€{calculateTotalPrice(order)}</td>
-                  <td>€{order.pricePerUnit}</td>
-                  <td>{order.ordered}</td>
-                  <td>Amazon Ltd Electronics</td>
-                </tr>
-              </tbody>
-            ))}
+            {oneItem.length > 0 ? (
+              oneItem.map((order) => (
+                <tbody key={order._id}>
+                  <tr>
+                    <td>{order.quantity} units</td>
+                    <td>€{calculateTotalPrice(order)}</td>
+                    <td>€{order.pricePerUnit}</td>
+                    <td>{order.ordered}</td>
+                    <td>Amazon Ltd Electronics</td>
+                  </tr>
+                </tbody>
+              ))
+            ) : (
+              <p>No orders for this item</p>
+            )}
           </table>
         </div>
         <div className="item-details-container">

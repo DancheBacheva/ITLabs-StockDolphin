@@ -11,6 +11,7 @@ const itemSchema = new mongoose.Schema({
 
   icon: {
     type: String,
+    default: "defaultpp.png"
   },
 
   date: {

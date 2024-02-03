@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./SearchBar.css"
 
-export const SearchBar = ({placeholderText}) => {
+export const SearchBar = ({placeholderText, data, setData}) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    const filteredData = data.filter((item)=>
+    item.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setData(filteredData);
+
+  }
   return (
     <div>
       <label className="search-label" for="search">
@@ -12,6 +24,7 @@ export const SearchBar = ({placeholderText}) => {
             id="search"
             name="search"
             placeholder={placeholderText}
+            onChange={handleSearch}
           />
         </label>
     </div>
