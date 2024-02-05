@@ -14,36 +14,43 @@ export const ModalInvoice = ({ closeModal }) => {
             <img src="/images/Multiply.png" alt="multiply" />
           </button>
         </div>
-        <input
-          className="invoice-name"
-          type="text"
-          name="invoicename"
-          id="invoicename"
-          placeholder="Invoice Name"
-          required
-        />
-        <hr className="smaller-hr-invoice" />
-        <select className="select-supplier" name="supplier" id="supplier">
-          <option>Supplier</option>
-          {suppliers.map((supplier) => (
-            <option key={supplier._id} value={supplier.name}>
-              {supplier.name}
-            </option>
-          ))}
-        </select>
-        <hr className="smaller-hr-invoice" />
-        <input type="date" className="calendar-invoice" id="date" name="date" />
-        <select className="select" name="selectorders" id="selectorders">
-          <option value="">Select Orders</option>
-        </select>
-        <hr className="smaller-hr-invoice" />
-        <hr className="bigger-hr-invoice" />
-        <div className="buttons-model">
-          <button className="btn-cancel" onClick={() => closeModal(false)}>
-            CANCEL
-          </button>
-          <button className="btn-add">Add Invoice</button>
-        </div>
+        <form>
+          <input
+            className="invoice-name"
+            type="text"
+            name="invoicename"
+            id="invoicename"
+            placeholder="Invoice Name"
+            required
+          />
+          <hr className="smaller-hr-invoice" />
+          <select className="select-supplier" name="supplier" id="supplier">
+            <option>Supplier</option>
+            {suppliers.map((supplier) => (
+              <option key={supplier._id} value={supplier.name}>
+                {supplier.name}
+              </option>
+            ))}
+          </select>
+          <hr className="smaller-hr-invoice" />
+          <input
+            type="date"
+            className="calendar-invoice"
+            id="date"
+            name="date"
+          />
+          <select className="select" name="selectorders" id="selectorders">
+            <option value="">Select Orders</option>
+          </select>
+          <hr className="smaller-hr-invoice" />
+          <hr className="bigger-hr-invoice" />
+          <div className="buttons-model">
+            <button className="btn-cancel" onClick={() => closeModal(false)}>
+              CANCEL
+            </button>
+            <button className="btn-add">Add Invoice</button>
+          </div>
+        </form>
       </div>
     </div>
   );

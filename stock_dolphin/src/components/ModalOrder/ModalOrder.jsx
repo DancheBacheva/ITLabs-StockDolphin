@@ -13,40 +13,42 @@ export const ModalOrder = ({ closeModal }) => {
             <img src="/images/Multiply.png" alt="multiply" />
           </button>
         </div>
-        <select className="select-supplier" name="supplier" id="supplier">
-          <option>Supplier</option>
-          {suppliers.map((supplier) => (
-            <option key={supplier._id} value={supplier.name}>
-              {supplier.name}
-            </option>
-          ))}
-        </select>
-        <hr className="smaller-hr" />
-        <input
-          className="quantity"
-          type="text"
-          name="quantity"
-          id="quantity"
-          placeholder="Quantity*"
-          required
-        />
-        <hr className="smaller-hr" />
-        <input
-          type="text"
-          name="totalprice"
-          id="totalprice"
-          placeholder="Total Price*"
-          required
-        />
-        <hr className="smaller-hr" />
-        <input type="date" id="date" name="date" />
-        <hr className="bigger-hr" />
-        <div className="buttons-model">
-          <button className="btn-cancel" onClick={() => closeModal(false)}>
-            CANCEL
-          </button>
-          <button className="btn-add">ADD ORDER</button>
-        </div>
+        <form>
+          <select className="select-supplier" name="supplier" id="supplier">
+            <option>Supplier</option>
+            {suppliers.map((supplier) => (
+              <option key={supplier._id} value={supplier.name}>
+                {supplier.name}
+              </option>
+            ))}
+          </select>
+          <hr className="smaller-hr" />
+          <input
+            className="quantity"
+            type="number"
+            name="quantity"
+            id="quantity"
+            placeholder="Quantity*"
+            required
+          />
+          <hr className="smaller-hr" />
+          <input
+            type="number"
+            name="totalprice"
+            id="totalprice"
+            placeholder="Total Price*"
+            required
+          />
+          <hr className="smaller-hr" />
+          <input type="date" id="date" name="date" />
+          <hr className="bigger-hr" />
+          <div className="buttons-model">
+            <button className="btn-cancel" onClick={() => closeModal(false)}>
+              CANCEL
+            </button>
+            <button className="btn-add">ADD ORDER</button>
+          </div>
+        </form>
       </div>
     </div>
   );

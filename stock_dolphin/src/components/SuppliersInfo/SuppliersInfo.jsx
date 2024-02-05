@@ -1,16 +1,18 @@
 import React, { useState, useContext } from "react";
 import { DataContext } from "../../App";
 import "./SuppliersInfo.css";
-import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Add } from "../Add/Add";
+import { ModalAddSupplier } from "../ModalAddSupplier/ModalAddSupplier";
+import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 
 export const SuppliersInfo = () => {
   const { suppliers, setSuppliers } = useContext(DataContext);
-  const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
   const [selectedSupplierId, setSelectedSupplierId] = useState(null);
   const [filteredSuppliers, setFilteredSuppliers] = useState(suppliers);
- 
+  const [openModalAddSupplier, setOpenModalAddSupplier] = useState(false);
+  const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+
   const handleDelete = async (supplierId) => {
     try {
       const res = await fetch(
@@ -41,11 +43,18 @@ export const SuppliersInfo = () => {
 
   return (
     <div>
-      <div className="search-add-suppliers">
-        <SearchBar placeholderText="Search Suppliers"
-        data={suppliers}
-        setData={updateFilteredSuppliers}/>
-        <button className="add-supplier-btn">
+      <div className="search-add-main">
+        <SearchBar
+          placeholderText="Search Suppliers"
+          data={suppliers}
+          setData={updateFilteredSuppliers}
+        />
+        <button
+          className="add-supplier-btn"
+          onClick={() => {
+            setOpenModalAddSupplier(true);
+          }}
+        >
           <Add addText={"ADD SUPPLIER"} />
         </button>
       </div>
@@ -109,9 +118,10 @@ export const SuppliersInfo = () => {
       ) : (
         <h1>Loading suppliers...</h1>
       )}
+      {openModalAddSupplier && <ModalAddSupplier closeModal={setOpenModalAddSupplier} />}
       {openModalDiscardConfirm && (
         <ModalDiscardConfirm
-          closeModal={() => setOpenModalDiscardConfirm(false)}
+          closeModal={setOpenModalDiscardConfirm}
           supplierId={selectedSupplierId}
           onDelete={handleDelete}
           text={"Do you want to delete this supplier"}

@@ -111,3 +111,11 @@
   margin: 5px 10px;
 }
 
+.add-supplier-btn{
+  width: 230px;
+  height: 60px;
+  border-radius: 10px;
+  background: #53A856;
+  box-shadow: 3px 3px 4px 0px #00000040;
+  border: none;
+}

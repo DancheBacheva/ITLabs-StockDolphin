@@ -60,9 +60,7 @@
 }
 
 .input-modal-name::placeholder{
-  width: 113px;
   height: 45px;
-  font-family: Poppins;
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;

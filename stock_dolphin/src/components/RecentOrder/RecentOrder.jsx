@@ -31,6 +31,7 @@ export const RecentOrder = () => {
               <img alt="recent item" src="/images/RecentItem2img.png" />
               <br />
               <span className="item-name">{order.itemTitle}</span>
+              {/* Click on the order name will redirect to the item page. (EXTRA) */}
               <br />
               <span clsasName="quantity-cost">
                 <b>{order.quantity}</b> | €{calculateTotalPrice(order)}

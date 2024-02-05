@@ -74,7 +74,6 @@ background-color: #53A856;
 }
 
 .modal-order-container input::placeholder{
-  width: 197px;
   height: 45px;
   font-size: 30px;
   font-weight: 500;

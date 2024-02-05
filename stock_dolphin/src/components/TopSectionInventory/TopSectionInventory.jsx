@@ -9,7 +9,7 @@ export const TopSectionInventory = () => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div className="top-section-inventor-page">
+    <div className="top-section-inventory-page">
       <Header headerTitle={"Inventory"} />
       <div className="search-add-main">
         <div className="search-category">

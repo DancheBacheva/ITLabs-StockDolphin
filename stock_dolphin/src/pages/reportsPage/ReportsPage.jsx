@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const ReportsPage = () => {
   return (
-    <div className="section-reports">
+    <div className="reports-main">
       <Header headerTitle={"Reports"} />
       <div className="activity-history">
         <Link to={"/reports/activityhistory"} className="title-activity">

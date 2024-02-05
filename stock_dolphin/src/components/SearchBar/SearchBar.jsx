@@ -12,8 +12,8 @@ export const SearchBar = ({placeholderText, data, setData}) => {
     item.name.toLowerCase().includes(query.toLowerCase())
     );
     setData(filteredData);
-
   }
+
   return (
     <div>
       <label className="search-label" for="search">
@@ -23,6 +23,7 @@ export const SearchBar = ({placeholderText, data, setData}) => {
             type="text"
             id="search"
             name="search"
+            value={searchQuery}
             placeholder={placeholderText}
             onChange={handleSearch}
           />

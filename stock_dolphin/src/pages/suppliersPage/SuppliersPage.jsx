@@ -1,12 +1,13 @@
 import React from "react";
 import "./SuppliersPage.css";
-import { TopSectionSuppliers } from "../../components/TopSectionSuppliers/TopSectionSuppliers";
+import { Header } from "../../components/Header/Header";
 import { SuppliersInfo } from "../../components/SuppliersInfo/SuppliersInfo";
+
 
 export const SuppliersPage = () => {
   return (
     <div className="supplier-main">
-      <TopSectionSuppliers/>
+      <Header headerTitle={"Suppliers"}/>
       <SuppliersInfo/>
     </div>
   )

@@ -1,6 +1,8 @@
-.section-reports{
+.reports-main{
   width: 100%;
-  max-width: 1628px;
+  height: 100%;
+  max-width: 1980px;
+  max-height: 1080px;
 }
 
 .activity-history,

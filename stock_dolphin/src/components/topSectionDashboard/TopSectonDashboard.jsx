@@ -13,7 +13,7 @@ export const TopSectonDashboard = () => {
         </div>
         <hr/>
         {/* <Header headerTitle="Dashboard" /> */}
-        {/* da se dobravi koga kje dodadam NAME AND SURNAME */}
+        {/* da se dopravi koga kje dodadam NAME AND SURNAME */}
     </div>
   )
 }
