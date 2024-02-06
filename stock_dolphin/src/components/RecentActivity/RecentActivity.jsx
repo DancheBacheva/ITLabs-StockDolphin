@@ -4,8 +4,10 @@ import { DataContext } from "../../App";
 
 export const RecentActivity = () => {
   const { activities } = useContext(DataContext);
-  const recentActivities = activities.slice(0, 4);
-  
+  const recentActivities = activities.sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  }).slice(0, 4);
+
   return (
     <div className="resent-activity-section">
       <h3>

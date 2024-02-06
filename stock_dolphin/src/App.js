@@ -100,14 +100,14 @@ function App() {
   return (
     <div className="App">
       <DataContext.Provider value={data}>
-      <nav>
+      {/* <nav>
         <MenuSidebarLeft/>
-      </nav>
+      </nav> */}
       
       <main>
         <Routes>
           <Route path="/" element={<Default/>}/>
-          {/* <Route element={<MenuSidebarLeft/>}> */}
+          <Route element={<MenuSidebarLeft/>}>
             <Route path="/dashboard" element={<DashboardPage/>}/>
             <Route path="/inventory" element={<InventoryPage/>}/>
             <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
@@ -116,7 +116,7 @@ function App() {
             <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
             <Route path="/reports" element={<ReportsPage/>}/>
             <Route path="/suppliers" element={<SuppliersPage/>}/>
-          {/* </Route> */}
+          </Route>
         </Routes>
       </main>
       </DataContext.Provider>

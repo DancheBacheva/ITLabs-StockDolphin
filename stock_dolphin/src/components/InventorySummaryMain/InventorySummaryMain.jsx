@@ -8,6 +8,13 @@ export const InventorySummaryMain = () => {
     const { categories, items, orders } = useContext(DataContext);
     const [showCards, setShowCards] = useState(true);
 
+    const totalCost = Math.round(
+      orders.reduce((acc, order) => {
+        const orderCost = order.quantity * order.pricePerUnit;
+        return acc + orderCost;
+      }, 0)
+    );
+    
     const handleShowCards = () => {
       setShowCards(true);
     }; 
@@ -23,7 +30,7 @@ export const InventorySummaryMain = () => {
           <p>Categories: &nbsp;<strong>{categories.length}</strong></p>
           <p>Items: &nbsp;<strong>{items.length}</strong></p>
           <p>Total Orders: &nbsp;<strong>{orders.length}</strong></p>
-          <p>Total Cost: &nbsp;<strong>€1.250k</strong></p>
+          <p>Total Cost: &nbsp;<strong>€{totalCost}</strong></p>
         </div>
         <div className='item-show'>
           <button onClick={handleShowCards}>

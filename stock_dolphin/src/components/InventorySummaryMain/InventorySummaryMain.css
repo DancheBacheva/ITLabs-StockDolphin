@@ -12,9 +12,7 @@
   height: 100%;
   max-width: 890px;
   max-height: 39px;
-  top: 236px;
-  left: 491px;
-  margin-left: 140px;
+  margin-left: 50px;
   display: flex;
 }
 
@@ -35,6 +33,7 @@
   height: 100%;
   max-width: 90px;
   max-height: 77px;
+  margin-right: 50px;
 }
 
 .item-show button{
