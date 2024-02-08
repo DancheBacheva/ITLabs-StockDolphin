@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./CategoriesList.css";
 import { Link } from "react-router-dom";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
+import moment from "moment";
 
 export const CategoriesList = ({ categories }) => {
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
@@ -50,7 +51,7 @@ export const CategoriesList = ({ categories }) => {
                 <hr />
                 <span className="updated-date-category-list">
                   Updated At: <br />
-                  <strong>{category.date}</strong>
+                  <strong>{moment(category.date).format("MM/DD/YYYY HH:mm")}</strong>
                 </span>
                 <button
                   onClick={() => {

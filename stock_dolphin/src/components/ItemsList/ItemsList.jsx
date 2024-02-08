@@ -2,6 +2,7 @@ import "./ItemsList.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
+import moment from "moment";
 
 export const ItemsList = ({ title, items }) => {
   const oneCategory = items.filter((item) => item.category.title === title);
@@ -33,7 +34,7 @@ export const ItemsList = ({ title, items }) => {
                 <hr />
                 <span className="updated-date-item-list">
                   Updated At: <br />
-                  <strong>{item.date}</strong>
+                  <strong>{moment(item.date).format("MM/DD/YYYY HH:mm")}</strong>
                 </span>
                 <button
                   onClick={() => {

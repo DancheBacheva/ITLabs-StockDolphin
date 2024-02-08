@@ -41,7 +41,7 @@ export const Register = () => {
   return (
     <div>
       <form className='register-form'>
-        <h3>Register</h3>
+        <h1>Register</h1>
         <label>
         <input
         className='input-register'

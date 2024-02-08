@@ -7,6 +7,8 @@
 
 .activity-history,
 .inventory-summary-reports{
+  width: 100%;
+  max-width: 1980px;
   margin-left: 75px;
   margin-top: 50px;
 }

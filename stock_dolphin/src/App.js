@@ -112,9 +112,9 @@ function App() {
             <Route path="/inventory" element={<InventoryPage/>}/>
             <Route path="/inventory/:title" element={<InventoryCategoryPage/>}/>
             <Route path="/inventory/:title/:itemTitle" element={<InventoryItemPage/>}/>
+            <Route path="/reports" element={<ReportsPage/>}/>
             <Route path="/reports/activityhistory" element={<ActivityHistoryPage/>}/>
             <Route path="/reports/inventorysummary" element={<InventorySummaryPage/>}/>
-            <Route path="/reports" element={<ReportsPage/>}/>
             <Route path="/suppliers" element={<SuppliersPage/>}/>
           </Route>
         </Routes>

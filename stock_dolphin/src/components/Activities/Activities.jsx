@@ -2,6 +2,7 @@ import "./Activities.css";
 import React, { useState, useContext } from "react";
 import { DataContext } from "../../App";
 import { FilterActivities } from "../FilterActivities/FilterActivities";
+import moment from "moment";
 
 export const Activities = () => {
   const { activities } = useContext(DataContext);
@@ -36,7 +37,7 @@ export const Activities = () => {
                 Admin has {activity.activity} item <b>{activity.itemTitle}</b> in <b>{activity.categoryTitle}({activity.categoryTitle})</b>
                 {/* ova da se napravi so split i da se zema samo imeto na kategorijata za da bide (Office Categories) */}
               </p>
-              <p>{activity.date}</p>
+              <p>{moment(activity.date).format("MM/DD/YYYY HH:mm")}</p>
             </div>
           ))}
         </div>

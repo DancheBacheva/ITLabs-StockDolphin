@@ -7,6 +7,7 @@ import { ModalInvoice } from "../ModalInvoice/ModalInvoice";
 import { ModalEditCategory } from "../ModalEditCategory/ModalEditCategory";
 import { ModalMoveItem } from "../ModalMoveItem/ModalMoveItem";
 import { Add } from "../Add/Add";
+import moment from "moment";
 
 // da se proverat klasi
 export const Orders = () => {
@@ -84,7 +85,7 @@ export const Orders = () => {
                     <td>{order.quantity} units</td>
                     <td>€{calculateTotalPrice(order)}</td>
                     <td>€{order.pricePerUnit}</td>
-                    <td>{order.ordered}</td>
+                    <td>{moment(order.ordered).format("MM/DD/YYYY HH:mm")}</td>
                     <td>Amazon Ltd Electronics</td>
                   </tr>
                 </tbody>

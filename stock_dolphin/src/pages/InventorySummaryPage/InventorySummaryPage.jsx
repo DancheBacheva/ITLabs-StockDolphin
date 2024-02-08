@@ -39,9 +39,9 @@ export const InventorySummaryPage = () => {
         <button className="btn-show-reset">SHOW</button>
         {/* <button className='btn-show-reset'>RESET</button> */}
       </div>
-      <div>
+
         <ReportsChart />
-      </div>
+      
     </div>
   );
 };

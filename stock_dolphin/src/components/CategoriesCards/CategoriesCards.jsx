@@ -2,6 +2,7 @@ import "./CategoriesCards.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
+import moment from "moment";
 
 export const CategoriesCards = ({ categories }) => {
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
@@ -46,7 +47,7 @@ export const CategoriesCards = ({ categories }) => {
                 </p>
                 <div className="date-remove">
                   <span className="updated-category">
-                    Updated At: <strong>{category.date}</strong>
+                    Updated At: <strong>{moment(category.date).format("MM/DD/YYYY HH:mm")}</strong>
                   </span>
                   <button
                     onClick={() => {

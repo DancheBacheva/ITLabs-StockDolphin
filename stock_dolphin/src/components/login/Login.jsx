@@ -2,7 +2,7 @@ import "./Login.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Login = () => {
+export const Login = ({ onShowRegister }) => {
   const initialData = {
     email: "",
     password: ""
@@ -89,7 +89,7 @@ export const Login = () => {
         </div>
       ):(
         <form className='login-form'>
-          <h3>Login</h3>
+          <h1>Login</h1>
           <label>
           <input
           className='input-login'
@@ -111,7 +111,7 @@ export const Login = () => {
           /></label>
           <br />
           <button className='btn-login' type='submit' onClick={handleLogin}>Login</button>
-          <h3>OR</h3>
+          <h3>Don't have an accound? <a href="#" onClick={onShowRegister}><strong>Register</strong></a></h3>
         </form>
       )}  
     </div>
