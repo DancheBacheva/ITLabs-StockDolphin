@@ -46,6 +46,7 @@ export const SuppliersInfo = () => {
       <div className="search-add-main">
         <SearchBar
           placeholderText="Search Suppliers"
+          name="name"
           data={suppliers}
           setData={updateFilteredSuppliers}
         />
@@ -118,7 +119,9 @@ export const SuppliersInfo = () => {
       ) : (
         <h1>Loading suppliers...</h1>
       )}
-      {openModalAddSupplier && <ModalAddSupplier closeModal={setOpenModalAddSupplier} />}
+      {openModalAddSupplier && (
+        <ModalAddSupplier closeModal={setOpenModalAddSupplier} />
+      )}
       {openModalDiscardConfirm && (
         <ModalDiscardConfirm
           closeModal={setOpenModalDiscardConfirm}

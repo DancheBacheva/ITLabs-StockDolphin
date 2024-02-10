@@ -1,16 +1,40 @@
 import { Add } from "../Add/Add";
 import "./Category.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal } from "../Modal/Modal";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { DataContext } from "../../App";
+import { ItemsCards } from "../ItemsCards/ItemsCards";
+import { ItemsList } from "../ItemsList/ItemsList";
 
-export const Category = () => {
+export const Category = ({title}) => {
+  const { items } = useContext(DataContext);
+  const [filteredItems, setFilteredItems] = useState(items);
   const [openModal, setOpenModal] = useState(false);
+  const [showCards, setShowCards] = useState(true);
+
+  const updateFilteredItems = (filteredData) => {
+    setFilteredItems(filteredData);
+  };
+
+  const handleShowCards = () => {
+    setShowCards(true);
+  };
+
+  const handleShowList = () => {
+    setShowCards(false);
+  };
+
   return (
     <div className="top-section-inventory">
       <div className="search-add-main">
         <div className="search-item">
-          <SearchBar placeholderText={"Search Items"} />
+          <SearchBar
+            placeholderText={"Search Items"}
+            name="itemTitle"
+            data={filteredItems}
+            setData={updateFilteredItems}
+          />
         </div>
         <div className="add-item">
           <button
@@ -30,6 +54,48 @@ export const Category = () => {
           saveChanges={"ADD ITEM"}
         />
       )}
+          <div>
+      <div className="main-container-items">
+        <div className="show-item-cards">
+          {showCards ? (
+            <ItemsCards title={title} filteredItems={filteredItems} />
+          ) : (
+            <ItemsList title={title} filteredItems={filteredItems} />
+          )}
+        </div>
+        <div className="inventory-category-right">
+          <div className="item-show">
+            <button className="control-panel-btn" onClick={handleShowCards}>
+              <img src="/images/ControlPanel.png" alt="Control Panel" />
+            </button>
+            <button className="list-btn" onClick={handleShowList}>
+              <img src="/images/List.png" alt="list" />
+            </button>
+          </div>
+          <br />
+        </div>
+      </div>
+      <button
+        className="edit-category-btn"
+        onClick={() => {
+          setOpenModal(true);
+        }}
+      >
+        <div className="rectangle78">
+          <img src="/images/Edit.png" alt="edit" />
+        </div>
+        <h4>Edit Category</h4>
+      </button>
+      {openModal && (
+        <Modal
+          closeModal={setOpenModal}
+          title={"EDIT CATEGORY"}
+          saveChanges={"SAVE CHANGES"}
+        />
+      )}
     </div>
+    </div>
+
+    
   );
 };

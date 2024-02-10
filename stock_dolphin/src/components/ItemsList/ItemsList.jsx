@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const ItemsList = ({ title, items }) => {
-  const oneCategory = items.filter((item) => item.category.title === title);
+export const ItemsList = ({ title, filteredItems }) => {
+  const oneCategory = filteredItems.filter((item) => item.category.title === title);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
   return (

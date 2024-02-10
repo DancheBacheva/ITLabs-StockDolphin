@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import "./SearchBar.css"
 
-export const SearchBar = ({placeholderText, data, setData}) => {
+export const SearchBar = ({placeholderText, data, setData, name}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
@@ -9,7 +9,7 @@ export const SearchBar = ({placeholderText, data, setData}) => {
     setSearchQuery(query);
 
     const filteredData = data.filter((item)=>
-    item.name.toLowerCase().includes(query.toLowerCase())
+    item[name].toLowerCase().includes(query.toLowerCase())
     );
     setData(filteredData);
   }

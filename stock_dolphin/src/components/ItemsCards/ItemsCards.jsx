@@ -3,8 +3,8 @@ import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm"
 import "./ItemsCards.css";
 import { Link } from "react-router-dom";
 
-export const ItemsCards = ({ title, items }) => {
-  const oneCategory = items.filter((item) => item.category.title === title);
+export const ItemsCards = ({ title, filteredItems }) => {
+  const oneCategory = filteredItems.filter((item) => item.category.title === title);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
   return (

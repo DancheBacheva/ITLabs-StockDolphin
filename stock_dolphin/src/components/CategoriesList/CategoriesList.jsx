@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const CategoriesList = ({ categories }) => {
+export const CategoriesList = ({ filteredCategories }) => {
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
   return (
     <div>
-      {categories.length > 0 ? (
+      {filteredCategories.length > 0 ? (
         <div className="main-list-category">
-          {categories.map((category) => (
+          {filteredCategories.map((category) => (
             <div key={category._id} className="list-container">
               <div className="images3-container-list">
                 <div>

@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const CategoriesCards = ({ categories }) => {
+export const CategoriesCards = ({ filteredCategories }) => {
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
   return (
     <div>
-      {categories.length > 0 ? (
+      {filteredCategories.length > 0 ? (
         <div className="main-card-category">
-          {categories.map((category) => (
+          {filteredCategories.map((category) => (
             <div key={category._id} className="category-cards-container">
               <div className="images3-container">
                 <div>
@@ -47,7 +47,10 @@ export const CategoriesCards = ({ categories }) => {
                 </p>
                 <div className="date-remove">
                   <span className="updated-category">
-                    Updated At: <strong>{moment(category.date).format("MM/DD/YYYY HH:mm")}</strong>
+                    Updated At:{" "}
+                    <strong>
+                      {moment(category.date).format("MM/DD/YYYY HH:mm")}
+                    </strong>
                   </span>
                   <button
                     onClick={() => {
