@@ -13,8 +13,6 @@ body{
 .list-container{
   width: 920px;
   height: 150px;
-  top: 290px;
-  left: 490px;
   border-radius: 10px;
   box-shadow: 3px 3px 4px 0px #00000040;
   background: #FFFFFF;
@@ -22,11 +20,9 @@ body{
   display: flex;
 }
 
-.item-image-container, .item-image{
+.item-image{
   width: 250px;
   height: 150px;
-  top: 230px;
-  left: 490px;
   border-radius: 10 0 0 10px;
 }
 

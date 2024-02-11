@@ -5,7 +5,9 @@ import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm"
 import moment from "moment";
 
 export const ItemsList = ({ title, filteredItems }) => {
-  const oneCategory = filteredItems.filter((item) => item.category.title === title);
+  const oneCategory = filteredItems.filter(
+    (item) => item.category.title === title
+  );
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
   return (
@@ -14,9 +16,11 @@ export const ItemsList = ({ title, filteredItems }) => {
         {oneCategory.length > 0 ? (
           oneCategory.map((item) => (
             <div key={item._id} className="list-container">
-              <div className="item-image-container">
-                <img className="item-image" src={item.icon} alt="img1" />
-              </div>
+              <img
+                className="item-image"
+                src={`/img/items/${item.icon}`}
+                alt={`Icon for ${item.itemTitle}`}
+              />
               <div className="middle-container-list">
                 <Link
                   to={`/inventory/${title}/${item.itemTitle}`}
@@ -34,7 +38,9 @@ export const ItemsList = ({ title, filteredItems }) => {
                 <hr />
                 <span className="updated-date-item-list">
                   Updated At: <br />
-                  <strong>{moment(item.date).format("MM/DD/YYYY HH:mm")}</strong>
+                  <strong>
+                    {moment(item.date).format("MM/DD/YYYY HH:mm")}
+                  </strong>
                 </span>
                 <button
                   onClick={() => {

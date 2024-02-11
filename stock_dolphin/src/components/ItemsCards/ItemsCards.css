@@ -10,8 +10,6 @@
 .cards-container{
   width: 260px;
   height: 270px;
-  top: 240px;
-  left: 1360px;
   border-radius: 10px;
   box-shadow: 3px 3px 4px 0px #00000040;
   background-color: #FFFFFF;
@@ -21,8 +19,6 @@
 .item-image-container .item-image{
   width: 260px;
   height: 140px;
-  top: 240px;
-  left: 490px;
   border-radius: 8px 10px 0 0;
 }
 

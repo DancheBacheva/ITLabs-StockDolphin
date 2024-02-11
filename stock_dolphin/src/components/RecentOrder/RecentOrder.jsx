@@ -28,7 +28,10 @@ export const RecentOrder = () => {
         <div className="recent-item-box">
           {recentOrders.map((order) => (
             <div className="item">
-              <img alt="recent item" src="/images/RecentItem2img.png" />
+              <img
+                src="/images/defaultpp.png"
+                alt={`Icon for ${order.itemTitle}`}
+              />
               <br />
               <span className="item-name">{order.itemTitle}</span>
               {/* Click on the order name will redirect to the item page. (EXTRA) */}

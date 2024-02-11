@@ -8,7 +8,7 @@ const imageId = uuid.v4();
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "src/images"); //da se proveri
+    callback(null, "public/img/items");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];

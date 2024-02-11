@@ -40,6 +40,12 @@
   margin-right: 20px;
 }
 
+.item img{
+  width: 150px;
+  height: 100px;
+  border-radius: 8px 8px 0px 0px;
+}
+
 .item-name{
   font-size: 16px;
   font-weight: 400;

@@ -11,7 +11,7 @@ import moment from "moment";
 
 // da se proverat klasi
 export const Orders = () => {
-  const { orders } = useContext(DataContext);
+  const { orders, items } = useContext(DataContext);
   const { itemTitle } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [openModalInvoice, setOpenModalInvoice] = useState(false);
@@ -19,10 +19,18 @@ export const Orders = () => {
   const [openModalMoveItem, setOpenModalMoveItem] = useState(false);
 
   const oneItem = orders.filter((order) => order.itemTitle === itemTitle);
+  const itemImg = items.find((item) => item.itemTitle === itemTitle).icon;
 
   const calculateTotalPrice = (order) => {
     return order.quantity * order.pricePerUnit;
   };
+
+  const totalCost = Math.round(
+    orders.reduce((acc, order) => {
+      const orderCost = order.quantity * order.pricePerUnit;
+      return acc + orderCost;
+    }, 0)
+  );
 
   return (
     <div>
@@ -32,7 +40,7 @@ export const Orders = () => {
             Total Orders: &nbsp;<strong>{orders.length}</strong>
           </p>
           <p>
-            Total Cost: &nbsp;<strong>€180.00</strong>
+            Total Cost: &nbsp;<strong>€{totalCost}</strong>
           </p>
           <p>
             Total Invoices: &nbsp;<strong>12</strong>
@@ -97,9 +105,7 @@ export const Orders = () => {
         </div>
         <div className="item-details-container">
           <div className="item-img-container">
-            <div>
-              <img src="/images/Rectangle70.png" alt="item" />
-            </div>
+            <img className="img-edit" src={`/img/items/${itemImg}`} alt={`Icon for ${itemTitle}`} />
             <button
               onClick={() => {
                 setOpenModalEditCategory(true);

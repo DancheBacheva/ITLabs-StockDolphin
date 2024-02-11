@@ -3,7 +3,7 @@ import { DataContext } from "../../App";
 import "./ModalInvoice.css";
 
 export const ModalInvoice = ({ closeModal }) => {
-  const { suppliers } = useContext(DataContext);
+  const { suppliers, orders } = useContext(DataContext);
 
   return (
     <div className="modal-invoice-background">
@@ -41,6 +41,9 @@ export const ModalInvoice = ({ closeModal }) => {
           />
           <select className="select" name="selectorders" id="selectorders">
             <option value="">Select Orders</option>
+            {orders.map((order)=> (
+              <option key={order._id} value={order.name}>{order.itemTitle + " " + order.quantity}</option>
+            ))}
           </select>
           <hr className="smaller-hr-invoice" />
           <hr className="bigger-hr-invoice" />

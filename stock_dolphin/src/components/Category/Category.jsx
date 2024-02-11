@@ -7,10 +7,11 @@ import { DataContext } from "../../App";
 import { ItemsCards } from "../ItemsCards/ItemsCards";
 import { ItemsList } from "../ItemsList/ItemsList";
 
-export const Category = ({title}) => {
+export const Category = ({ title }) => {
   const { items } = useContext(DataContext);
   const [filteredItems, setFilteredItems] = useState(items);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalEdit, setOpenModalEdit] = useState(false);
   const [showCards, setShowCards] = useState(true);
 
   const updateFilteredItems = (filteredData) => {
@@ -78,7 +79,7 @@ export const Category = ({title}) => {
       <button
         className="edit-category-btn"
         onClick={() => {
-          setOpenModal(true);
+          setOpenModalEdit(true);
         }}
       >
         <div className="rectangle78">
@@ -86,9 +87,9 @@ export const Category = ({title}) => {
         </div>
         <h4>Edit Category</h4>
       </button>
-      {openModal && (
+      {openModalEdit && (
         <Modal
-          closeModal={setOpenModal}
+          closeModal={setOpenModalEdit}
           title={"EDIT CATEGORY"}
           saveChanges={"SAVE CHANGES"}
         />

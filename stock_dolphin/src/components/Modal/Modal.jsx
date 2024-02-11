@@ -12,7 +12,7 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
             <img src="/images/Multiply.png" alt="multiply" />
           </button>
         </div>
-        <form>
+        <form action="" method="">
           <input
             className="input-modal-name"
             type="text"

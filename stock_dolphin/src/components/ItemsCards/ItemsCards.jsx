@@ -14,7 +14,7 @@ export const ItemsCards = ({ title, filteredItems }) => {
           oneCategory.map((item) => (
             <div key={item._id} className="cards-container">
               <div className="item-image-container">
-                <img className="item-image" src={item.icon} alt="img1" />
+                <img className="item-image" src={`/img/items/${item.icon}`} alt={`Icon for ${item.itemTitle}`}/>
               </div>
               <Link
                 to={`/inventory/${title}/${item.itemTitle}`}

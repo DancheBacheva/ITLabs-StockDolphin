@@ -25,7 +25,7 @@ app.use(
 app.get("/api/v1/item", item.viewAll);
 app.get("/api/v1/item/:id", item.viewOne);
 app.post("/api/v1/item", item.create);
-app.patch("/api/v1/item/:id", item.update);
+app.patch("/api/v1/item/:id", item.uploadPhoto, item.update);
 app.delete("/api/v1/item/:id", item.delete);
 
 app.listen(process.env.PORTITEM, (err)=>{
