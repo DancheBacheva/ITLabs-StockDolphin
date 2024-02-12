@@ -1,23 +1,20 @@
 import React from "react";
 import "./ModalEditCategory.css";
-/*da se proverat klasi */
-export const ModalEditCategory = ({ closeModal, title, saveChanges }) => {
+import { ModalHeader } from "../ModalHeader/ModalHeader";
+import { ModalButtons } from "../ModalButtons/ModalButtons";
+
+export const ModalEditCategory = ({ closeModal, title, saveChanges, itemTitle }) => {
   return (
     <div className="modal-background">
       <div className="modal-container-edit">
-        <div className="modal-header-edit">
-          <h1>{title}</h1>
-          <button onClick={() => closeModal(false)}>
-            <img src="/images/Multiply.png" alt="multiply" />
-          </button>
-        </div>
+        <ModalHeader title={title} closeModal={closeModal} />
         <form>
           <input
             className="input-modal-name"
             type="text"
             name="name"
             id="name"
-            placeholder="Name*"
+            placeholder={itemTitle}
             required
           />
           <hr className="smaller-hr" />
@@ -28,12 +25,7 @@ export const ModalEditCategory = ({ closeModal, title, saveChanges }) => {
             <input type="file" id="file-input" style={{ display: "none" }} />
           </div>
           <hr className="bigger-hr" />
-          <div className="buttons-model">
-            <button className="btn-cancel" onClick={() => closeModal(false)}>
-              CANCEL
-            </button>
-            <button className="btn-add">{saveChanges}</button>
-          </div>
+          <ModalButtons closeModal={closeModal} saveChanges={saveChanges} />
         </form>
       </div>
     </div>

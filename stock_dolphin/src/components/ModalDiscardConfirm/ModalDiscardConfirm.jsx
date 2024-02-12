@@ -1,12 +1,13 @@
 import React from "react";
 import "./ModalDiscardConfirm.css";
+import { ModalButtons } from "../ModalButtons/ModalButtons";
 
 export const ModalDiscardConfirm = ({
   closeModal,
   text,
-  change,
   supplierId,
   onDelete,
+  saveChanges
 }) => {
   const handleConfirmDelete = () => {
     onDelete(supplierId);
@@ -17,16 +18,7 @@ export const ModalDiscardConfirm = ({
     <div className="modal-background">
       <div className="modal-container-discard-confirm">
         <p>{text}</p>
-        <div className="buttons-model">
-          <button
-           onClick={() => closeModal(false)} className="btn-cancel">
-            CANCEL
-          </button>
-          <button
-            onClick={handleConfirmDelete} className="btn-discard-confirm">
-            {change}
-          </button>
-        </div>
+        <ModalButtons closeModal={closeModal} saveChanges={saveChanges} handleConfirmDelete={handleConfirmDelete}/>
       </div>
     </div>
   );

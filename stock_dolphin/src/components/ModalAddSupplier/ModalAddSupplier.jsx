@@ -1,16 +1,13 @@
 import React from "react";
 import "./ModalAddSupplier.css";
+import { ModalHeader } from "../ModalHeader/ModalHeader";
+import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalAddSupplier = ({ closeModal }) => {
+export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
   return (
     <div className="modal-order-background">
       <div className="modal-order-container">
-        <div className="modal-order-header">
-          <h1>Add Supplier</h1>
-          <button onClick={() => closeModal(false)}>
-            <img src="/images/Multiply.png" alt="multiply" />
-          </button>
-        </div>
+        <ModalHeader title={title} closeModal={closeModal} />
         <form>
           <input
             className="nameSupplier"
@@ -45,12 +42,7 @@ export const ModalAddSupplier = ({ closeModal }) => {
             required
           />
           <hr className="smaller-hr" />
-          <div className="buttons-model">
-            <button className="btn-cancel" onClick={() => closeModal(false)}>
-              CANCEL
-            </button>
-            <button className="btn-add">ADD SUPPLIER</button>
-          </div>
+          <ModalButtons closeModal={closeModal} saveChanges={saveChanges} />
         </form>
       </div>
     </div>

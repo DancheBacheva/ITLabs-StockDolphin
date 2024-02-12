@@ -23,7 +23,7 @@ body{
 .item-image{
   width: 250px;
   height: 150px;
-  border-radius: 10 0 0 10px;
+  border-radius: 10px 0 0 10px;
 }
 
 .middle-container-list{

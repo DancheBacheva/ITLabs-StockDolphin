@@ -60,7 +60,7 @@ export const InventoryPage = () => {
         {openModal && (
           <Modal
             closeModal={setOpenModal}
-            title={"ADD CATEGORY"}
+            title={"Add Category"}
             saveChanges={"ADD CATEGORY"}
           />
         )}

@@ -51,7 +51,7 @@ export const Category = ({ title }) => {
       {openModal && (
         <Modal
           closeModal={setOpenModal}
-          title={"ADD ITEM"}
+          title={"Add Item"}
           saveChanges={"ADD ITEM"}
         />
       )}
@@ -90,7 +90,7 @@ export const Category = ({ title }) => {
       {openModalEdit && (
         <Modal
           closeModal={setOpenModalEdit}
-          title={"EDIT CATEGORY"}
+          title={"Edit Category"}
           saveChanges={"SAVE CHANGES"}
         />
       )}

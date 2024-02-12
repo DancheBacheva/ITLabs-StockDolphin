@@ -1,17 +1,14 @@
 // modal for add item, add category and edit category
 import React from "react";
 import "./Modal.css";
+import { ModalHeader } from "../ModalHeader/ModalHeader";
+import { ModalButtons } from "../ModalButtons/ModalButtons";
 
 export const Modal = ({ closeModal, title, saveChanges }) => {
   return (
     <div className="modal-background">
       <div className="modal-container">
-        <div className="modal-header">
-          <h1>{title}</h1>
-          <button onClick={() => closeModal(false)}>
-            <img src="/images/Multiply.png" alt="multiply" />
-          </button>
-        </div>
+        <ModalHeader title={title} closeModal={closeModal} />
         <form action="" method="">
           <input
             className="input-modal-name"
@@ -29,12 +26,7 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
             <input type="file" id="file-input" style={{ display: "none" }} />
           </div>
           <hr className="bigger-hr" />
-          <div className="buttons-model">
-            <button className="btn-cancel" onClick={() => closeModal(false)}>
-              CANCEL
-            </button>
-            <button className="btn-add">{saveChanges}</button>
-          </div>
+          <ModalButtons closeModal={closeModal} saveChanges={saveChanges} />
         </form>
       </div>
     </div>

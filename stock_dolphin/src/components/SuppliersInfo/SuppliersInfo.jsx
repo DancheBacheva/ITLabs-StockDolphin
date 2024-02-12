@@ -120,7 +120,11 @@ export const SuppliersInfo = () => {
         <h1>Loading suppliers...</h1>
       )}
       {openModalAddSupplier && (
-        <ModalAddSupplier closeModal={setOpenModalAddSupplier} />
+        <ModalAddSupplier
+          title={"Add Supplier"}
+          closeModal={setOpenModalAddSupplier}
+          saveChanges={"ADD SUPPLIER"}
+        />
       )}
       {openModalDiscardConfirm && (
         <ModalDiscardConfirm
@@ -128,7 +132,7 @@ export const SuppliersInfo = () => {
           supplierId={selectedSupplierId}
           onDelete={handleDelete}
           text={"Do you want to delete this supplier"}
-          change={"CONFIRM"}
+          saveChanges={"CONFIRM"}
         />
       )}
     </div>

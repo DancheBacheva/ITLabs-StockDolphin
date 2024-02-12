@@ -71,7 +71,7 @@ export const CategoriesList = ({ filteredCategories }) => {
                     text={
                       "Are you sure that you want to delete? All the items in the category will be deleted."
                     }
-                    change={"CONFIRM"}
+                    saveChanges={"CONFIRM"}
                   />
                 )}
               </div>

@@ -105,7 +105,11 @@ export const Orders = () => {
         </div>
         <div className="item-details-container">
           <div className="item-img-container">
-            <img className="img-edit" src={`/img/items/${itemImg}`} alt={`Icon for ${itemTitle}`} />
+            <img
+              className="img-edit"
+              src={`/img/items/${itemImg}`}
+              alt={`Icon for ${itemTitle}`}
+            />
             <button
               onClick={() => {
                 setOpenModalEditCategory(true);
@@ -141,16 +145,34 @@ export const Orders = () => {
           </div>
         </div>
       </div>
-      {openModal && <ModalOrder closeModal={setOpenModal} />}
-      {openModalInvoice && <ModalInvoice closeModal={setOpenModalInvoice} />}
+      {openModal && (
+        <ModalOrder
+          title={"Add Order"}
+          closeModal={setOpenModal}
+          saveChanges={"ADD ORDER"}
+        />
+      )}
+      {openModalInvoice && (
+        <ModalInvoice
+          title={"Add Invoice"}
+          closeModal={setOpenModalInvoice}
+          saveChanges={"Add Invoice"}
+        />
+      )}
       {openModalEditCategory && (
         <ModalEditCategory
           closeModal={setOpenModalEditCategory}
           title={"Edit Category"}
           saveChanges={"SAVE CHANGES"}
+          itemTitle={itemTitle}
         />
       )}
-      {openModalMoveItem && <ModalMoveItem closeModal={setOpenModalMoveItem} />}
+      {openModalMoveItem && (
+        <ModalMoveItem
+          title={"Move Item"}
+          closeModal={setOpenModalMoveItem}
+        />
+      )}
     </div>
   );
 };

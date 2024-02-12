@@ -1,18 +1,15 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../App";
 import "./ModalOrder.css";
+import { ModalHeader } from "../ModalHeader/ModalHeader";
+import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalOrder = ({ closeModal }) => {
+export const ModalOrder = ({ closeModal, title, saveChanges }) => {
   const { suppliers } = useContext(DataContext);
   return (
     <div className="modal-order-background">
       <div className="modal-order-container">
-        <div className="modal-order-header">
-          <h1>Add Order</h1>
-          <button onClick={() => closeModal(false)}>
-            <img src="/images/Multiply.png" alt="multiply" />
-          </button>
-        </div>
+        <ModalHeader title={title} closeModal={closeModal} />
         <form>
           <select className="select-supplier" name="supplier" id="supplier">
             <option>Supplier</option>
@@ -42,12 +39,7 @@ export const ModalOrder = ({ closeModal }) => {
           <hr className="smaller-hr" />
           <input type="date" id="date" name="date" />
           <hr className="bigger-hr" />
-          <div className="buttons-model">
-            <button className="btn-cancel" onClick={() => closeModal(false)}>
-              CANCEL
-            </button>
-            <button className="btn-add">ADD ORDER</button>
-          </div>
+          <ModalButtons closeModal={closeModal} saveChanges={saveChanges} />
         </form>
       </div>
     </div>

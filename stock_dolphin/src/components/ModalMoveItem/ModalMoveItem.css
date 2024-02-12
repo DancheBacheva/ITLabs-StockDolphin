@@ -19,38 +19,6 @@
   box-shadow: 4px 4px 4px 0px #00000040;
 }
 
-.modal-header-move{
-  width: 360px;
-  height: 70px;
-  border-radius: 20px 20px 0 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: #53A856;
-}
-
-.modal-header-move h1{
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 42px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #FFFFFF;
-  margin-left: 30px;
-}
-
-.modal-header-move img{
-  width: 40px;
-  height: 40px;
-  background-color: #53A856;
-}
-
-.modal-header-move button{
-  border-radius: 0 20px 0 0; 
-  background-color: #53A856;
-  border: none;
-  cursor: pointer;
-}
-
 .modal-move-main{
   display: flex;
   padding: 10px;

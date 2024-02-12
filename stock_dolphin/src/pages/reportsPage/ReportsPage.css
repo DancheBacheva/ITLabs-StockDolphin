@@ -24,10 +24,8 @@
 
 .time-mashine-img,
 .product-img-r{
-  width: 100%;
-  height: 100%;
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .activity-history h1,
@@ -63,7 +61,7 @@
 .line10{
   width: 100%;
   height: 100%;
-  max-width: 1530px;
+  max-width: 1500px;
   border: 1px solid #000000;
   margin-left: 75px;
 }

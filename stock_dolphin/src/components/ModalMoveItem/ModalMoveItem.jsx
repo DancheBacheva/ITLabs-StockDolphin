@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../App";
 import "./ModalMoveItem.css";
+import { ModalHeader } from "../ModalHeader/ModalHeader";
 
-export const ModalMoveItem = ({ closeModal }) => {
+export const ModalMoveItem = ({ closeModal, title }) => {
   const { categories } = useContext(DataContext);
   return (
     <div className="modal-move-background">
       <div className="modal-container-move">
-        <div className="modal-header-move">
-          <h1>Move Item</h1>
-          <button onClick={() => closeModal(false)}>
-            <img src="/images/Multiply.png" alt="multiply" />
-          </button>
-        </div>
+        <ModalHeader title={title} closeModal={closeModal}/>
         <div className="modal-move-main">
           <hr />
           <div>

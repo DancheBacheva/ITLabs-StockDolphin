@@ -45,7 +45,7 @@ export const ItemsCards = ({ title, filteredItems }) => {
                 <ModalDiscardConfirm
                   closeModal={setOpenModalDiscardConfirm}
                   text={"Do you want to delete this item"}
-                  change={"CONFIRM"}
+                  saveChanges={"CONFIRM"}
                 />
               )}
             </div>
