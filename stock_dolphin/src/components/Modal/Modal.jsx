@@ -1,10 +1,14 @@
 // modal for add item, add category and edit category
-import React from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
 export const Modal = ({ closeModal, title, saveChanges }) => {
+  const [formValue, setFormValue] = useState({
+    name: "",
+  })
+  
   return (
     <div className="modal-background">
       <div className="modal-container">

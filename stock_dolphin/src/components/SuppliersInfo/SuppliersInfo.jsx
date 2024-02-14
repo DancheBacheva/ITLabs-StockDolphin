@@ -5,6 +5,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { Add } from "../Add/Add";
 import { ModalAddSupplier } from "../ModalAddSupplier/ModalAddSupplier";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
+// import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
 export const SuppliersInfo = () => {
   const { suppliers, setSuppliers } = useContext(DataContext);
@@ -93,10 +94,13 @@ export const SuppliersInfo = () => {
                 <div className="edit-delete-container">
                   <div className="edit-supplier">
                     <img
-                      className="edit-supplier-img"
+                      className="edit-btn"
                       src="/images/icone-crayon-vert1.png"
                       alt="edit supplier"
                     />
+                    {/* <span className="actions">
+                      <BsFillPencilFill className="edit-btn" />
+                    </span> */}
                   </div>
                   <button
                     onClick={() => {
@@ -106,10 +110,11 @@ export const SuppliersInfo = () => {
                     className="delete-supplier"
                   >
                     <img
-                      className="delete-supplier-img"
+                      className="delete-btn"
                       src="/images/Delete.png"
                       alt="delete supplier"
                     />
+                    {/* <BsFillTrashFill className="delete-btn" /> */}
                   </button>
                 </div>
               </div>

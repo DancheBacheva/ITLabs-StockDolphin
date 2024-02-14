@@ -111,7 +111,7 @@ export const Login = ({ onShowRegister }) => {
           /></label>
           <br />
           <button className='btn-login' type='submit' onClick={handleLogin}>Login</button>
-          <h3>Don't have an accound? <a href="#" onClick={onShowRegister}><strong>Register</strong></a></h3>
+          <h3>Don't have an account? <a href="#" onClick={onShowRegister}><strong>Register</strong></a></h3>
         </form>
       )}  
     </div>
