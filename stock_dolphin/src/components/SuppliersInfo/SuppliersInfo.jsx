@@ -17,7 +17,7 @@ export const SuppliersInfo = () => {
   const handleDelete = async (supplierId) => {
     try {
       const res = await fetch(
-        `http://localhost:9007/api/v1/supplier/${supplierId}`,
+        `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
         {
           method: "DELETE",
           headers: {

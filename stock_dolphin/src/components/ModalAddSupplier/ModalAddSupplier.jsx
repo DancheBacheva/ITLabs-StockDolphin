@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ModalAddSupplier.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
@@ -14,43 +14,34 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    setFormErrors({
-      ...formErrors,
-      [name]: "",
-    });
-  };
-
   const validate = (values) => {
     const regexPhone = /^\+\d{1,3}\d{6,14}$/;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const errors = {};
 
-    if (!values.name) errors.name = "Please enter a name";
+    if (!values.name) errors.name = "Name is required";
 
-    if (!values.address) errors.address = "Please enter an address";
+    if (!values.address) errors.address = "Address is required";
 
     if (!values.phoneNumber) {
-      errors.phoneNumber = "Please enter a phone number";
+      errors.phoneNumber = "Phone number is required";
     } else if (!regexPhone.test(values.phoneNumber)) {
       errors.phoneNumber = "This is not a valid phone format";
     }
 
     if (!values.email) {
-      errors.email = "Please enter an email";
+      errors.email = "Email is required";
     } else if (!regexEmail.test(values.email)) {
       errors.email = "This is not a valid email format";
     }
     return errors;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    
+  }, []); 
+
+  const handleSubmit = async () => {
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
@@ -63,9 +54,7 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
           },
         });
         let jsonToObject = await res.json();
-
-        setFormErrors(validate(formValues));
-
+        
         if (!res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
@@ -75,6 +64,18 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
         console.log(err);
       }
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setFormErrors({
+      ...formErrors,
+      [name]: "",
+    });
   };
 
   return (

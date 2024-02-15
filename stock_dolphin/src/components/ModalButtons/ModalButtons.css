@@ -16,6 +16,7 @@
   line-height: 30px;
   letter-spacing: 0.05em;
   text-align: center;
+  cursor: pointer;
 }
 
 .btn-add{
@@ -32,4 +33,5 @@
   color:#FFFFFF;
   border: none;
   box-shadow: 3px 3px 4px 0px #00000040;
+  cursor: pointer;
 }
