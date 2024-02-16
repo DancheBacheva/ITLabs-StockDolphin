@@ -41,7 +41,7 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
     
   }, []); 
 
-  const handleSubmit = async () => {
+  const handleAddSupplier = async () => {
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
@@ -141,7 +141,7 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
             <ModalButtons
               closeModal={closeModal}
               saveChanges={saveChanges}
-              handleSubmit={handleSubmit}
+              handleAddSupplier={handleAddSupplier}
             />
           </form>
         )}

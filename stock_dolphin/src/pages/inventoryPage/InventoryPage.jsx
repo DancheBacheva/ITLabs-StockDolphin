@@ -91,9 +91,9 @@ export const InventoryPage = () => {
           </div>
         </div>
         {showCards ? (
-          <CategoriesCards filteredCategories={filteredCategories} />
+          <CategoriesCards filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
         ) : (
-          <CategoriesList filteredCategories={filteredCategories} />
+          <CategoriesList filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
         )}
       </div>
     </div>

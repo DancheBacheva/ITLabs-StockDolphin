@@ -14,7 +14,7 @@ export const SuppliersInfo = () => {
   const [openModalAddSupplier, setOpenModalAddSupplier] = useState(false);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
-  const handleDelete = async (supplierId) => {
+  const handleDeleteSupplier = async (supplierId) => {
     try {
       const res = await fetch(
         `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
@@ -135,7 +135,7 @@ export const SuppliersInfo = () => {
         <ModalDiscardConfirm
           closeModal={setOpenModalDiscardConfirm}
           supplierId={selectedSupplierId}
-          onDelete={handleDelete}
+          handleDeleteSupplier={handleDeleteSupplier}
           text={"Do you want to delete this supplier"}
           saveChanges={"CONFIRM"}
         />

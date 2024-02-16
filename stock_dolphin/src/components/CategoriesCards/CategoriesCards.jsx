@@ -4,8 +4,34 @@ import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const CategoriesCards = ({ filteredCategories }) => {
+export const CategoriesCards = ({ filteredCategories, setFilteredCategories }) => {
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+
+  const handleCategoryDelete = async (categoryId) => {
+    try{
+      const res = await fetch (`http://localhost:9001/api/v1/category/${categoryId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (res.ok) {
+        const updatedCategories = filteredCategories.filter(
+          (category) => category._id !== categoryId
+        );
+        setFilteredCategories(updatedCategories);
+      }
+      
+    }catch(err){
+      console.log("Error deleting category", err)
+    }
+    setOpenModalDiscardConfirm(false);
+    setSelectedCategoryId(null);
+  };
+
   return (
     <div>
       {filteredCategories.length > 0 ? (
@@ -55,6 +81,7 @@ export const CategoriesCards = ({ filteredCategories }) => {
                   <button
                     onClick={() => {
                       setOpenModalDiscardConfirm(true);
+                      setSelectedCategoryId(category._id)
                     }}
                     className="delete-category"
                   >
@@ -68,6 +95,8 @@ export const CategoriesCards = ({ filteredCategories }) => {
                 {openModalDiscardConfirm && (
                   <ModalDiscardConfirm
                     closeModal={setOpenModalDiscardConfirm}
+                    categoryId={selectedCategoryId}
+                    handleCategoryDelete={handleCategoryDelete}
                     text={
                       "Are you sure that you want to delete? All the items in the category will be deleted."
                     }
