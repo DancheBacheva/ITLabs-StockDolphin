@@ -16,7 +16,7 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
     let errors = {};
 
     if (!values.title) errors.title = "Name is required";
-
+    // da se napravi validate za format na slika
     return errors;
   };
 
