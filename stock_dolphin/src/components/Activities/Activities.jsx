@@ -31,7 +31,7 @@ export const Activities = () => {
           />
         </div>
         <div className="recent-activity-container">
-          {filteredActivities.map((activity) => (
+          {filteredActivities.slice(0, 12).map((activity) => (
             <div key={activity._id} className="activity-box1">
               <p className="activity-box-text">
                 Admin has {activity.activity} item <b>{activity.itemTitle}</b> in <b>{activity.categoryTitle}({activity.categoryTitle})</b>

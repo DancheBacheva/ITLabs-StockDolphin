@@ -11,27 +11,25 @@ export const CategoriesList = ({ filteredCategories }) => {
     <div>
       {filteredCategories.length > 0 ? (
         <div className="main-list-category">
-          {filteredCategories.map((category) => (
+          {filteredCategories.slice(0, 4).map((category) => (
             <div key={category._id} className="list-container">
               <div className="images3-container-list">
-                <div>
-                  <img
-                    className="image1-list"
-                    src="/images/img1mouse.png"
-                    alt="img1"
-                  />
-                </div>
+                {category.items.slice(0, 1).map((item) => (
+                  <div className="image1-list">
+                    <img src={`/img/items/${item.icon}`} alt="img1" />
+                  </div>
+                ))}
                 <div className="image2-3-list">
-                  <img
-                    className="image2-list"
-                    src="/images/img2paper.png"
-                    alt="img2"
-                  />
-                  <img
-                    className="image3-list"
-                    src="/images/img3pens.png"
-                    alt="img3"
-                  />
+                  {category.items.slice(1, 2).map((item) => (
+                    <div className="image2-list">
+                      <img src={`/img/items/${item.icon}`} alt="img2" />
+                    </div>
+                  ))}
+                  {category.items.slice(2, 3).map((item) => (
+                    <div className="image3-list">
+                      <img src={`/img/items/${item.icon}`} alt="img3" />
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="middle-container-list">

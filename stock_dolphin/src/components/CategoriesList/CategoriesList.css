@@ -17,31 +17,46 @@
 }
 
 .images3-container-list{
+  width: 240px;
+  height: 140;
   display: flex;
   flex-direction: row;
+  background-color: #53A856;
+  border-radius: 10px 0 0 10px;
 }
 
-.image1-list{
+.image1-list img{
   width: 120px;
   height: 150px;
-  top: 290px;
-  left: 490px;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 10px 0 0 10px;
 }
 
 .image2-3-list{
-height: 140px;
-display: flex;
-flex-direction: column;
+  width: 120px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
 }
 
-.image2-list{
-  width: 130px;
+.image2-list {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.image3-list {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.image2-list img{
+  width: 120px;
   height: 75px;
 }
 
-.image3-list{
-  width: 130px;
+.image3-list img{
+  width: 120px;
   height: 75px;
 }
 

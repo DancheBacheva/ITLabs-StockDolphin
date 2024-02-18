@@ -30,7 +30,7 @@ const upload = multer({
 });
 
 exports.uploadPhoto = upload.single("icon");
-exports.uploadPhotos = upload.array("icons", 3);
+// exports.uploadPhotos = upload.array("icons", 3);
 
 exports.viewAll = async (req, res) => {
   try {
@@ -119,10 +119,10 @@ exports.update = async (req, res) => {
       req.body.icon = filename;
     }
 
-    if (req.files && req.files.icons) {
-      const filenames = req.files.icons.map((file) => file.filename);
-      req.body.icons = filenames;
-    }
+    // if (req.files && req.files.icons) {
+    //   const filenames = req.files.icons.map((file) => file.filename);
+    //   req.body.icons = filenames;
+    // }
 
     const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
       new: true,

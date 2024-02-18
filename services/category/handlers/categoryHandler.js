@@ -43,15 +43,16 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try{
-    const { title, icons } = req.body;
-    const item = await Item.findOne({ _id });
+    const newCategory = await Category.create(req.body);
+    // const { title, icons } = req.body;
+    // const item = await Item.findOne({ _id });
 
-    const newCategory = await Category.create({
-      title,
-      icons,
-      item: item._id,
-      icon: item.icon
-    });
+    // const newCategory = await Category.create({
+    //   title,
+    //   icons,
+    //   item: item._id,
+    //   icon: item.icon
+    // });
     res.status(201).json({
       status: "success",
       data: {

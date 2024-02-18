@@ -10,14 +10,18 @@ const categorySchema = new mongoose.Schema({
     default: Date.now
   },
 
-  icons: {
-    type: [String],
+  icon: {
+    type: String,
   },
 
-  icons: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Item'
-  }],
+  // icons: {
+  //   type: [String],
+  // },
+
+  // icons: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Item'
+  // }],
 
   items: [{
     type: mongoose.Schema.Types.ObjectId,

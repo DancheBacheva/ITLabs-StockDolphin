@@ -14,7 +14,7 @@ export const ItemsList = ({ title, filteredItems }) => {
     <div>
       <div className="main-list-item">
         {oneCategory.length > 0 ? (
-          oneCategory.map((item) => (
+          oneCategory.slice(0, 4).map((item) => (
             <div key={item._id} className="list-container">
               <img
                 className="item-image"
