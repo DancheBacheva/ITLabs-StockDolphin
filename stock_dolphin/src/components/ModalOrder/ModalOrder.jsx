@@ -4,12 +4,12 @@ import "./ModalOrder.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalOrder = ({ closeModal, title, saveChanges }) => {
+export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
   const { suppliers } = useContext(DataContext);
   return (
     <div className="modal-order-background">
       <div className="modal-order-container">
-        <ModalHeader title={title} closeModal={closeModal} />
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         <form>
           <select className="select-supplier" name="supplier" id="supplier">
             <option>Supplier</option>

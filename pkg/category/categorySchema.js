@@ -5,14 +5,19 @@ const categorySchema = new mongoose.Schema({
     type: String,
   },
 
-  icon: {
-    type: String,
-  },
-
   date: {
     type: Date,
     default: Date.now
   },
+
+  icons: {
+    type: [String],
+  },
+
+  icons: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Item'
+  }],
 
   items: [{
     type: mongoose.Schema.Types.ObjectId,

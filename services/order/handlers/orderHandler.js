@@ -54,6 +54,7 @@ exports.create = async (req, res) => {
       quantity,
       pricePerUnit,
       item: item._id,
+      icon: item.icon,
     });
 
     const createdActivity = await Activity.create({

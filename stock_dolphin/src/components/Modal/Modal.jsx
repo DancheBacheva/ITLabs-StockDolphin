@@ -4,9 +4,10 @@ import "./Modal.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const Modal = ({ closeModal, title, saveChanges }) => {
+export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   const initialData = {
     title: "",
+    // itemTitle: "",
   };
   const [formValues, setFormValues] = useState(initialData);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -16,6 +17,9 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
     let errors = {};
 
     if (!values.title) errors.title = "Name is required";
+
+    // if (!values.itemTitle) errors.itemTitle = "Name is required";
+
     // da se napravi validate za format na slika
     return errors;
   };
@@ -87,7 +91,7 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
   return (
     <div className="modal-background">
       <div className="modal-container">
-        <ModalHeader title={title} closeModal={closeModal} />
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         {isSubmit ? (
           <h1>New supplier added</h1>
         ) : (
@@ -97,8 +101,10 @@ export const Modal = ({ closeModal, title, saveChanges }) => {
             className="input-modal-name"
             type="text"
             value={formValues.title}
+            // value={title === "Category" ? formValues.title : formValues.itemTitle}
             onChange={handleChange}
             name="title"
+            // name={title === "Category" ? "title" : "itemTitle"}
             id="name"
             placeholder="Name*"
             required

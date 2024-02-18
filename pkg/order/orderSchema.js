@@ -30,6 +30,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
   },
 
+  icon:{
+    type: String
+  },
+
   item: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item'

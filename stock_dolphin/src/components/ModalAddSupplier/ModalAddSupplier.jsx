@@ -3,7 +3,7 @@ import "./ModalAddSupplier.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
+export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
   const initialData = {
     name: "",
     address: "",
@@ -81,7 +81,7 @@ export const ModalAddSupplier = ({ closeModal, title, saveChanges }) => {
   return (
     <div className="modal-order-background">
       <div className="modal-order-container">
-        <ModalHeader title={title} closeModal={closeModal} />
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         {isSubmit ? (
           <h1>New supplier added</h1>
         ) : (

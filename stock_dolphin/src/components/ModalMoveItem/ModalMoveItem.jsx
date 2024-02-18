@@ -3,12 +3,12 @@ import { DataContext } from "../../App";
 import "./ModalMoveItem.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 
-export const ModalMoveItem = ({ closeModal, title }) => {
+export const ModalMoveItem = ({ closeModal, modalTitle }) => {
   const { categories } = useContext(DataContext);
   return (
     <div className="modal-move-background">
       <div className="modal-container-move">
-        <ModalHeader title={title} closeModal={closeModal}/>
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal}/>
         <div className="modal-move-main">
           <hr />
           <div>

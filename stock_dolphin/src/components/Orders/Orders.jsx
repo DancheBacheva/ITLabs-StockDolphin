@@ -4,7 +4,7 @@ import "./Orders.css";
 import { useParams } from "react-router-dom";
 import { ModalOrder } from "../ModalOrder/ModalOrder";
 import { ModalInvoice } from "../ModalInvoice/ModalInvoice";
-import { ModalEditCategory } from "../ModalEditCategory/ModalEditCategory";
+import { ModalEditItem } from "../ModalEditItem/ModalEditItem";
 import { ModalMoveItem } from "../ModalMoveItem/ModalMoveItem";
 import { Add } from "../Add/Add";
 import moment from "moment";
@@ -19,28 +19,35 @@ export const Orders = () => {
   const [openModalMoveItem, setOpenModalMoveItem] = useState(false);
 
   const oneItem = orders.filter((order) => order.itemTitle === itemTitle);
-  const itemImg = items.find((item) => item.itemTitle === itemTitle).icon;
+  const itemImg = items.find((item) => item.itemTitle === itemTitle)?.icon;
 
   const calculateTotalPrice = (order) => {
     return order.quantity * order.pricePerUnit;
   };
 
-  const totalCost = Math.round(
-    orders.reduce((acc, order) => {
-      const orderCost = order.quantity * order.pricePerUnit;
-      return acc + orderCost;
-    }, 0)
-  );
+  // const totalCost = Math.round(
+  //   orders.reduce((acc, order) => {
+  //     const orderCost = order.quantity * order.pricePerUnit;
+  //     return acc + orderCost;
+  //   }, 0)
+  // );
+
+  const totalCostOneItem = Math.round(
+    oneItem.reduce((acc, order)=> {
+    const oneOrderCost = order.quantity * order.pricePerUnit;
+    return acc + oneOrderCost
+  }, 0)
+  )
 
   return (
     <div>
       <div className="main-container-up">
         <div className="total-container">
           <p>
-            Total Orders: &nbsp;<strong>{orders.length}</strong>
+            Total Orders: &nbsp;<strong>{oneItem.length}</strong>
           </p>
           <p>
-            Total Cost: &nbsp;<strong>€{totalCost}</strong>
+            Total Cost: &nbsp;<strong>€{totalCostOneItem}</strong>
           </p>
           <p>
             Total Invoices: &nbsp;<strong>12</strong>
@@ -147,29 +154,29 @@ export const Orders = () => {
       </div>
       {openModal && (
         <ModalOrder
-          title={"Add Order"}
+          modalTitle={"Add Order"}
           closeModal={setOpenModal}
           saveChanges={"ADD ORDER"}
         />
       )}
       {openModalInvoice && (
         <ModalInvoice
-          title={"Add Invoice"}
+          modalTitle={"Add Invoice"}
           closeModal={setOpenModalInvoice}
           saveChanges={"Add Invoice"}
         />
       )}
       {openModalEditCategory && (
-        <ModalEditCategory
+        <ModalEditItem
           closeModal={setOpenModalEditCategory}
-          title={"Edit Category"}
+          modalTitle={"Edit Item"}
           saveChanges={"SAVE CHANGES"}
           itemTitle={itemTitle}
         />
       )}
       {openModalMoveItem && (
         <ModalMoveItem
-          title={"Move Item"}
+          modalTitle={"Move Item"}
           closeModal={setOpenModalMoveItem}
         />
       )}

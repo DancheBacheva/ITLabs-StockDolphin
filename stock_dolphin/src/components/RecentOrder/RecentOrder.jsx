@@ -2,21 +2,29 @@ import "./RecentOrder.css";
 import React, { useContext, useState } from "react";
 import { DataContext } from "../../App";
 import { Pagination } from "../Pagination/Pagination";
+import { Link } from "react-router-dom";
 
 export const RecentOrder = () => {
-  const { orders } = useContext(DataContext);
+  const { orders, items } = useContext(DataContext);
   const [currentPage, setCurrentPage] = useState(1);
   const orderPerPage = 4;
   const indexOfLastOrder = currentPage * orderPerPage;
   const indexOfFirstOrder = indexOfLastOrder - orderPerPage;
-  const recentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
+  const sortedOrders = orders.sort((a, b) => {
+    return new Date(b.ordered) - new Date(a.ordered);
+  });
+  const recentOrders = sortedOrders.slice(indexOfFirstOrder, indexOfLastOrder);
 
   const calculateTotalPrice = (order) => {
     return order.quantity * order.pricePerUnit;
   };
 
-  const handleArrowPagination = () => {
+  const handleNext = () => {
     setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage(currentPage - 1);
   };
 
   return (
@@ -26,22 +34,36 @@ export const RecentOrder = () => {
       </h3>
       <div className="navigation-recent-items">
         <div className="recent-item-box">
-          {recentOrders.map((order) => (
-            <div className="item">
-              <img
-                src="/images/defaultpp.png"
-                alt={`Icon for ${order.itemTitle}`}
-              />
-              <br />
-              <span className="item-name">{order.itemTitle}</span>
-              {/* Click on the order name will redirect to the item page. (EXTRA) */}
-              <br />
-              <span clsasName="quantity-cost">
-                <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
-              </span>
-            </div>
-          ))}
-          <button onClick={handleArrowPagination} className="arrow-btn">
+          <button onClick={handlePrev} className="arrow-btn">
+            <img
+              className="expand-arrow"
+              src="/images/prev.png"
+              alt="expand arrow"
+            />
+          </button>
+          {recentOrders.map((order) => {
+            const item = items.find((item) => item._id === order.item._id);
+            return (
+              <div className="item">
+                <img
+                  src={`/img/items/${order.icon}`}
+                  alt={`Icon for ${order.itemTitle}`}
+                />
+                <br />
+                <Link
+                  to={`/inventory/${item.category.title}/${order.itemTitle}`}
+                  className="link-cards"
+                >
+                  <span className="item-name">{order.itemTitle}</span>{" "}
+                </Link>
+                <br />
+                <span className="quantity-cost">
+                  <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
+                </span>
+              </div>
+            );
+          })}
+          <button onClick={handleNext} className="arrow-btn">
             <img
               className="expand-arrow"
               src="/images/ExpandArrow.png"

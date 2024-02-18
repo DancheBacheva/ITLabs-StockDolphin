@@ -126,7 +126,7 @@ export const SuppliersInfo = () => {
       )}
       {openModalAddSupplier && (
         <ModalAddSupplier
-          title={"Add Supplier"}
+          modalTitle={"Add Supplier"}
           closeModal={setOpenModalAddSupplier}
           saveChanges={"ADD SUPPLIER"}
         />

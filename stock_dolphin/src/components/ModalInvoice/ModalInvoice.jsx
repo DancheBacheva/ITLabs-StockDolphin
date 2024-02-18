@@ -4,13 +4,13 @@ import "./ModalInvoice.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalInvoice = ({ closeModal, title, saveChanges }) => {
+export const ModalInvoice = ({ closeModal, modalTitle, saveChanges }) => {
   const { suppliers, orders } = useContext(DataContext);
 
   return (
     <div className="modal-invoice-background">
       <div className="modal-invoice-container">
-        <ModalHeader title={title} closeModal={closeModal} />
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         <form>
           <input
             className="invoice-name"

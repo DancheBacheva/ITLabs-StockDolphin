@@ -1,13 +1,13 @@
 import React from "react";
-import "./ModalEditCategory.css";
+import "./ModalEditItem.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalEditCategory = ({ closeModal, title, saveChanges, itemTitle }) => {
+export const ModalEditItem = ({ closeModal, modalTitle, saveChanges, itemTitle }) => {
   return (
     <div className="modal-background">
       <div className="modal-container-edit">
-        <ModalHeader title={title} closeModal={closeModal} />
+        <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         <form>
           <input
             className="input-modal-name"
