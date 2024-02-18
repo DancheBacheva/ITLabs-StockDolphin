@@ -1,6 +1,7 @@
 const Item = require("../../../pkg/item/itemSchema");
 const Category = require("../../../pkg/category/categorySchema");
 const Activity = require("../../../pkg/activity/activitySchema");
+const Order = require("../../../pkg/order/orderSchema");
 const multer = require("multer");
 const uuid = require("uuid");
 
@@ -58,11 +59,13 @@ exports.viewAll = async (req, res) => {
 
 exports.viewOne = async (req, res) => {
   try {
-    const item = await Item.findById(req.params.id).populate("category");
+    const item = await Item.findById(req.params.id).populate("category").populate("order");
+    const orders = await Order.findOne({ itemTitle: item.itemTitle });
     res.status(200).json({
       status: "success",
       data: {
         item,
+        orders,
       },
     });
   } catch (err) {

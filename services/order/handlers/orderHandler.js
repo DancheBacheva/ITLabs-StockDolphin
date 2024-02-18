@@ -64,6 +64,10 @@ exports.create = async (req, res) => {
       date: new Date(),
     });
     
+    await Item.findByIdAndUpdate(item._id, {
+      $push: {order: newOrder._id}
+    })
+    
     res.status(201).json({
       status: "success",
       data: {

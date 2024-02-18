@@ -4,8 +4,34 @@ import { Link } from "react-router-dom";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const CategoriesList = ({ filteredCategories }) => {
+export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) => {
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+
+  const handleCategoryDelete = async (categoryId) => {
+    try {
+      const res = await fetch(
+        `http://localhost:9001/api/v1/category/${categoryId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (res.ok) {
+        const updatedCategories = filteredCategories.filter(
+          (category) => category._id !== categoryId
+        );
+        setFilteredCategories(updatedCategories);
+      }
+    } catch (err) {
+      console.log("Error deleting category", err);
+    }
+    setOpenModalDiscardConfirm(false);
+    setSelectedCategoryId(null);
+  };
 
   return (
     <div>
@@ -54,6 +80,7 @@ export const CategoriesList = ({ filteredCategories }) => {
                 <button
                   onClick={() => {
                     setOpenModalDiscardConfirm(true);
+                    setSelectedCategoryId(category._id);
                   }}
                   className="delete-category-list"
                 >
@@ -66,8 +93,9 @@ export const CategoriesList = ({ filteredCategories }) => {
                 {openModalDiscardConfirm && (
                   <ModalDiscardConfirm
                     closeModal={setOpenModalDiscardConfirm}
+                    handleCategoryDelete={handleCategoryDelete}
                     text={
-                      "Are you sure that you want to delete? All the items in the category will be deleted."
+                      `Are you sure that you want to delete ${filteredCategories.find((category) => category._id === selectedCategoryId)?.title}? All the items in the category will be deleted.`
                     }
                     saveChanges={"CONFIRM"}
                   />

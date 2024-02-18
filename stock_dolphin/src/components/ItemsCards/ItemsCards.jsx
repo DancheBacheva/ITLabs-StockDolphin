@@ -11,7 +11,7 @@ export const ItemsCards = ({ title, filteredItems }) => {
     <div>
       <div className="main-card-item">
         {oneCategory.length > 0 ? (
-          oneCategory.map((item) => (
+          oneCategory.slice(0, 8).map((item) => (
             <div key={item._id} className="cards-container">
               <div className="item-image-container">
                 <img className="item-image" src={`/img/items/${item.icon}`} alt={`Icon for ${item.itemTitle}`}/>
