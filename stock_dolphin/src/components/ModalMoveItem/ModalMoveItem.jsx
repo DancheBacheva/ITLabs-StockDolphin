@@ -11,7 +11,7 @@ export const ModalMoveItem = ({ closeModal, modalTitle }) => {
         <ModalHeader modalTitle={modalTitle} closeModal={closeModal}/>
         <div className="modal-move-main">
           <hr />
-          <div>
+          <div className="scrollable-container">
             {categories.map((category) => (
               <div className="move-container">
                 <img src="/images/Folder1.png" alt="addImage" />

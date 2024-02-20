@@ -13,6 +13,35 @@ export const SuppliersInfo = () => {
   const [filteredSuppliers, setFilteredSuppliers] = useState(suppliers);
   const [openModalAddSupplier, setOpenModalAddSupplier] = useState(false);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+  const [editSupplier, setEditSupplier] = useState(null);
+
+  const handleEditSupplier = async (supplierId) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
+        {
+          method: "PATCH",
+          // body: JSON.stringify(),
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      const resData = await res.json();
+      
+      if (!res.ok) {
+        console.log("Error editing supplier");
+      }
+      
+      setEditSupplier(supplierId);
+      setOpenModalAddSupplier(true);
+      setSuppliers(resData);
+      
+    } catch (error) {
+      console.log("Error editing supplier", error);
+    }     
+  };
 
   const handleDeleteSupplier = async (supplierId) => {
     try {
@@ -92,7 +121,12 @@ export const SuppliersInfo = () => {
                   <hr className="supplier-line" />
                 </div>
                 <div className="edit-delete-container">
-                  <div className="edit-supplier">
+                  <button
+                    className="edit-supplier"
+                    onClick={() => {
+                      handleEditSupplier(supplier._id);
+                    }}
+                  >
                     <img
                       className="edit-btn"
                       src="/images/icone-crayon-vert1.png"
@@ -101,7 +135,7 @@ export const SuppliersInfo = () => {
                     {/* <span className="actions">
                       <BsFillPencilFill className="edit-btn" />
                     </span> */}
-                  </div>
+                  </button>
                   <button
                     onClick={() => {
                       setOpenModalDiscardConfirm(true);
@@ -126,9 +160,18 @@ export const SuppliersInfo = () => {
       )}
       {openModalAddSupplier && (
         <ModalAddSupplier
-          modalTitle={"Add Supplier"}
-          closeModal={setOpenModalAddSupplier}
-          saveChanges={"ADD SUPPLIER"}
+          modalTitle={editSupplier !== null ? "Edit Supplier" : "Add Supplier"}
+          closeModal={() => {
+            setOpenModalAddSupplier(false);
+            setEditSupplier(null);
+          }}
+          saveChanges={editSupplier !== null ? "SAVE CHANGES" : "ADD SUPPLIER"}
+          defaultValues={
+            editSupplier !== null
+              ? suppliers.find((supplier) => supplier._id === editSupplier)
+              : null
+          }
+          handleEditSupplier={handleEditSupplier}
         />
       )}
       {openModalDiscardConfirm && (

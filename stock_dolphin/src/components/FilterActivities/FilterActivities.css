@@ -1,6 +1,6 @@
 .activity-sidebar-right{
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   max-width: 350px;
   max-height: 540px;
   border-radius: 20px;
@@ -20,7 +20,8 @@
 }
 
 #filter-hr{
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   margin: 20px 0;
   border: 2px solid #5C5C5C;
 }
@@ -28,8 +29,6 @@
 .activity-sidebar-right input{
   width: 30px;
   height: 29.4px;
-  top: 257.64px;
-  left: 1601px;
   border: 2px solid #53A856;
   margin-left: 20px;
   margin-top: 15px;

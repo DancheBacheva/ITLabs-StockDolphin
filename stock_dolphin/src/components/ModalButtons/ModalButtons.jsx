@@ -8,6 +8,8 @@ export const ModalButtons = ({
   handleConfirmDelete,
   handleAddCategory,
   handleAddItem,
+  handleEditSupplier,
+  handleAddOrder
 }) => {
   return (
     <div>
@@ -18,12 +20,21 @@ export const ModalButtons = ({
         <button
           type="submit"
           className="btn-add"
-          onClick={
-            handleAddSupplier ||
-            handleConfirmDelete ||
-            handleAddCategory ||
-            handleAddItem
+          onClick={() => {
+            if (handleAddSupplier) {
+              handleAddSupplier();
+            } else if (handleConfirmDelete) {
+              handleConfirmDelete();
+            } else if (handleAddCategory) {
+              handleAddCategory();
+            } else if (handleAddItem) {
+              handleAddItem();
+            } else if (handleEditSupplier) {
+              handleEditSupplier();
+            } else if (handleAddOrder) {
+            handleAddOrder();
           }
+          }}
         >
           {saveChanges}
         </button>

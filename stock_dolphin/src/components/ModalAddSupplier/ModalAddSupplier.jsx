@@ -3,14 +3,14 @@ import "./ModalAddSupplier.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
+export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges, defaultValues, handleEditSupplier }) => {
   const initialData = {
     name: "",
     address: "",
     phoneNumber: "",
     email: "",
   };
-  const [formValues, setFormValues] = useState(initialData);
+  const [formValues, setFormValues] = useState(defaultValues || initialData);
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
@@ -53,12 +53,12 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
             "Content-Type": "application/json",
           },
         });
-        let jsonToObject = await res.json();
+        const resData = await res.json();
         
         if (!res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
-          saveChanges(formValues);
+          saveChanges(resData);
         }
       } catch (err) {
         console.log(err);
@@ -83,7 +83,7 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
       <div className="modal-order-container">
         <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         {isSubmit ? (
-          <h1>New supplier added</h1>
+          <h1>Loading changes...</h1>
         ) : (
           <form>
             <div className="form-field">
@@ -142,6 +142,7 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
               closeModal={closeModal}
               saveChanges={saveChanges}
               handleAddSupplier={handleAddSupplier}
+              handleEditSupplier={handleEditSupplier}
             />
           </form>
         )}

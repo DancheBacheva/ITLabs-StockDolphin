@@ -36,12 +36,12 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
             "Content-Type": "application/json",
           },
         });
-        let jsonToObject = await res.json();
+        const resData = await res.json();
 
         if(!res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
-          saveChanges(formValues);
+          saveChanges(resData);
         }
       } catch (err) {
         console.log(err);

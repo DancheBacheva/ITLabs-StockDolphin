@@ -1,9 +1,6 @@
-body{
-  font-family: Poppins;  
-}
-
 .main-list-item{
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   margin-left: 130px;
   display: flex;
   flex-direction: column;
@@ -11,7 +8,8 @@ body{
 }
 
 .list-container{
-  width: 920px;
+  width: 100%;
+  max-width: 920px;
   height: 150px;
   border-radius: 10px;
   box-shadow: 3px 3px 4px 0px #00000040;

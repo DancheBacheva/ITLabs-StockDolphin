@@ -1,5 +1,6 @@
 .search-add-main{
-  width: 1470px;
+  width: 100%;
+  max-width: 1470px;
   height: 100px;
   margin-left: 75px;
   display: flex;
