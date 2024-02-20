@@ -95,16 +95,16 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
         {isSubmit ? (
           <h1>New supplier added</h1>
         ) : (
-        <form action="" method="">
+        <form action="" method="POST">
           <div className="form-field">
           <input
             className="input-modal-name"
             type="text"
             value={formValues.title}
-            // value={title === "Category" ? formValues.title : formValues.itemTitle}
+            // value={formValues.title === "Category" ? formValues.title : formValues.itemTitle}
             onChange={handleChange}
             name="title"
-            // name={title === "Category" ? "title" : "itemTitle"}
+            // name={formValues.title === "Category" ? "title" : "itemTitle"}
             id="name"
             placeholder="Name*"
             required

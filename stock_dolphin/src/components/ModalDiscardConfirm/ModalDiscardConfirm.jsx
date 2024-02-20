@@ -7,13 +7,17 @@ export const ModalDiscardConfirm = ({
   text,
   supplierId,
   categoryId,
+  itemId,
   handleDeleteSupplier,
   handleCategoryDelete,
+  handleDeleteItem,
   saveChanges
 }) => {
   const handleConfirmDelete = () => {
     if(categoryId !== undefined) {
       handleCategoryDelete(categoryId);
+    }else if(itemId !== undefined){
+      handleDeleteItem(itemId);
     }else if(supplierId !== undefined){
       handleDeleteSupplier(supplierId);
     }

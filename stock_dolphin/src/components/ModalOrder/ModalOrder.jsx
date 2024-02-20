@@ -10,16 +10,20 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
     supplier: "",
     quantity: "",
     totalPrice: "",
-    date: "",
+    ordered: "",
   };
-  const [selectedSupplier, setSelectedSupplier] = useState("");
-  const [date, setDate] = useState("");
   const [formValues, setFormValues] = useState(initialData);
+  const [selectedSupplier, setSelectedSupplier] = useState("");
+  const [ordered, setOrdered] = useState(new Date());
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
   const validate = (values) => {
     const errors = {};
+
+    if (!values.supplier) {
+      errors.supplier = "Supplier selection is required";
+    }
 
     if (!values.quantity) errors.quantity = "Quantity is required";
 
@@ -31,6 +35,35 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
 
   const handleSupplierChange = (e) => {
     setSelectedSupplier(e.target.value);
+  };
+
+  const handleOrderedChange = (e) => {
+    setOrdered(e.target.value);
+  };
+
+  const handleAddOrder = async () => {
+    const errors = validate(formValues);
+    setFormErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      try {
+        let res = await fetch("http://localhost:9005/api/v1/order", {
+          method: "POST",
+          body: JSON.stringify(formValues),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const resData = await res.json();
+
+        if (!res.ok) {
+          setFormValues(initialData);
+          setIsSubmit(true);
+          saveChanges(resData);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const handleChange = (e) => {
@@ -45,75 +78,76 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
     });
   };
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-
-  const handleAddOrder = (e) => {
-    const errors = validate(formValues);
-    if (Object.keys(errors).length === 0) {
-      closeModal();
-    } else {
-      setFormErrors(errors);
-    }
-    // da se napravi fetch na orders
-  };
-
   return (
     <div className="modal-order-background">
       <div className="modal-order-container">
         <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
-        <form>
-          <select
-            className="select-supplier"
-            name="supplier"
-            id="supplier"
-            value={selectedSupplier}
-            onChange={handleSupplierChange}
-          >
-            <option>Supplier</option>
-            {suppliers.map((supplier) => (
-              <option key={supplier._id} value={supplier.name}>
-                {supplier.name}
-              </option>
-            ))}
-          </select>
-          <hr className="smaller-hr" />
-          <input
-            className="quantity"
-            type="number"
-            value={formValues.quantity}
-            onChange={handleChange}
-            name="quantity"
-            id="quantity"
-            placeholder="Quantity*"
-            required
-          />
-          <hr className="smaller-hr" />
-          <input
-            type="number"
-            value={formValues.totalPrice}
-            onChange={handleChange}
-            name="totalPrice"
-            id="totalPrice"
-            placeholder="Total Price*"
-            required
-          />
-          <hr className="smaller-hr" />
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={date}
-            onChange={handleDateChange}
-          />
-          <hr className="bigger-hr" />
-          <ModalButtons
-            closeModal={closeModal}
-            saveChanges={saveChanges}
-            handleAddOrder={handleAddOrder}
-          />
-        </form>
+        {isSubmit ? (
+          <h1>Loading changes...</h1>
+        ) : (
+          <form>
+            <div className="form-field">
+              <select
+                className="select-supplier"
+                name="supplier"
+                id="supplier"
+                value={selectedSupplier}
+                onChange={handleSupplierChange}
+              >
+                <option>Supplier</option>
+                {suppliers.map((supplier) => (
+                  <option key={supplier._id} value={supplier.name}>
+                    {supplier.name}
+                  </option>
+                ))}
+              </select>
+              {selectedSupplier === "" ? <p>{formErrors.supplier}</p> : null}
+            </div>
+            <hr className="smaller-hr" />
+            <div className="form-field">
+              <input
+                className="quantity"
+                type="number"
+                value={formValues.quantity}
+                onChange={handleChange}
+                name="quantity"
+                id="quantity"
+                placeholder="Quantity*"
+                required
+              />
+              {formErrors?.quantity && <p>{formErrors.quantity}</p>}
+            </div>
+            <hr className="smaller-hr" />
+            <div className="form-field">
+              <input
+                type="number"
+                value={formValues.totalPrice}
+                onChange={handleChange}
+                name="totalPrice"
+                id="totalPrice"
+                placeholder="Total Price*"
+                required
+              />
+              {formErrors?.totalPrice && <p>{formErrors.totalPrice}</p>}
+            </div>
+            <hr className="smaller-hr" />
+            <div className="input-ordered">
+            <input
+              type="date"
+              id="ordered"
+              name="ordered"
+              value={ordered}
+              onChange={handleOrderedChange}
+            />
+            </div>
+            <hr className="bigger-hr" />
+            <ModalButtons
+              closeModal={closeModal}
+              saveChanges={saveChanges}
+              handleAddOrder={handleAddOrder}
+            />
+          </form>
+        )}
       </div>
     </div>
   );

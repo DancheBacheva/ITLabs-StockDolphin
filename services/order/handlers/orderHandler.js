@@ -1,6 +1,7 @@
 const Order = require("../../../pkg/order/orderSchema");
 const Item = require("../../../pkg/item/itemSchema");
 const Activity = require("../../../pkg/activity/activitySchema");
+const Supplier = require("../../../pkg/supplier/supplierSchema");
 
 exports.viewAll = async (req, res) => {
   try {
@@ -11,7 +12,7 @@ exports.viewAll = async (req, res) => {
       (match) => `$${match}`
     );
     const query = JSON.parse(queryString);
-    const orders = await Order.find(query).populate("item");
+    const orders = await Order.find(query).populate("item").populate("supplier");
     res.status(200).json({
       status: "success",
       data: {
@@ -45,9 +46,11 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { itemTitle, categoryTitle, quantity, pricePerUnit } = req.body;
+    const { itemTitle, categoryTitle, quantity, pricePerUnit, name } = req.body;
 
     const item = await Item.findOne({ itemTitle });
+
+    const supplier = await Supplier.findOne ({ name })
 
     const newOrder = await Order.create({
       itemTitle,
@@ -55,6 +58,7 @@ exports.create = async (req, res) => {
       pricePerUnit,
       item: item._id,
       icon: item.icon,
+      supplier: supplier._id
     });
 
     const createdActivity = await Activity.create({

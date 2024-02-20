@@ -55,48 +55,54 @@ export const Category = ({ title }) => {
           saveChanges={"ADD ITEM"}
         />
       )}
-          <div>
-      <div className="main-container-items">
-        <div className="show-item-cards">
-          {showCards ? (
-            <ItemsCards title={title} filteredItems={filteredItems} />
-          ) : (
-            <ItemsList title={title} filteredItems={filteredItems} />
-          )}
-        </div>
-        <div className="inventory-category-right">
-          <div className="item-show">
-            <button className="control-panel-btn" onClick={handleShowCards}>
-              <img src="/images/ControlPanel.png" alt="Control Panel" />
-            </button>
-            <button className="list-btn" onClick={handleShowList}>
-              <img src="/images/List.png" alt="list" />
-            </button>
+      <div>
+        <div className="main-container-items">
+          <div className="show-item-cards">
+            {showCards ? (
+              <ItemsCards
+                title={title}
+                filteredItems={filteredItems}
+                setFilteredItems={setFilteredItems}
+              />
+            ) : (
+              <ItemsList
+                title={title}
+                filteredItems={filteredItems}
+                setFilteredItems={setFilteredItems}
+              />
+            )}
           </div>
-          <br />
+          <div className="inventory-category-right">
+            <div className="item-show">
+              <button className="control-panel-btn" onClick={handleShowCards}>
+                <img src="/images/ControlPanel.png" alt="Control Panel" />
+              </button>
+              <button className="list-btn" onClick={handleShowList}>
+                <img src="/images/List.png" alt="list" />
+              </button>
+            </div>
+            <br />
+          </div>
         </div>
+        <button
+          className="edit-category-btn"
+          onClick={() => {
+            setOpenModalEdit(true);
+          }}
+        >
+          <div className="rectangle78">
+            <img src="/images/Edit.png" alt="edit" />
+          </div>
+          <h4>Edit Category</h4>
+        </button>
+        {openModalEdit && (
+          <Modal
+            closeModal={setOpenModalEdit}
+            modalTitle={"Edit Category"}
+            saveChanges={"SAVE CHANGES"}
+          />
+        )}
       </div>
-      <button
-        className="edit-category-btn"
-        onClick={() => {
-          setOpenModalEdit(true);
-        }}
-      >
-        <div className="rectangle78">
-          <img src="/images/Edit.png" alt="edit" />
-        </div>
-        <h4>Edit Category</h4>
-      </button>
-      {openModalEdit && (
-        <Modal
-          closeModal={setOpenModalEdit}
-          modalTitle={"Edit Category"}
-          saveChanges={"SAVE CHANGES"}
-        />
-      )}
     </div>
-    </div>
-
-    
   );
 };

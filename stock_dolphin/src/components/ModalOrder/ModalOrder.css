@@ -20,7 +20,7 @@
 }
 
 .select-supplier{
-  width: 330px;
+  width: 250px;
   height: 50px;
   font-size: 30px;
   font-weight: 500;
@@ -33,7 +33,7 @@
 }
 
 .modal-order-container input{
-  width: 300px;
+  width: 250px;
   height: 45px;
   border: none;
   margin: 20px 0 0 30px;
@@ -49,8 +49,7 @@
   color: #3E4153;
 }
 
-#date{
-  margin-left: 30px;
+.input-ordered{
   width: 260px;
   height: 60px;
   border-radius: 12px;
@@ -64,5 +63,7 @@
   line-height: 36px;
   letter-spacing: 0.05em;
   text-align: left;
-  color: #3E4153;
+  color: #3E4153; 
+  margin: 20px 0 0 30px;
+  padding: 0 10px;
 }

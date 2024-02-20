@@ -4,11 +4,35 @@ import React, { useState } from "react";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const ItemsList = ({ title, filteredItems }) => {
+export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
   const oneCategory = filteredItems.filter(
     (item) => item.category.title === title
   );
+  const [selectedItemId, setSelectedItemId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+
+  const handleDeleteItem = async (itemId) => {
+    try{
+      const res = await fetch(
+        `http://localhost:9003/api/v1/item/${itemId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if(res.ok) {
+        const updatedItems = filteredItems.filter((item) => item._id !== itemId);
+        setFilteredItems(updatedItems);
+      } 
+    }catch(err){
+      console.log("Error deleting item", err);
+    }
+    setOpenModalDiscardConfirm(false);
+    setSelectedItemId(null);
+  }
 
   return (
     <div>
@@ -45,6 +69,7 @@ export const ItemsList = ({ title, filteredItems }) => {
                 <button
                   onClick={() => {
                     setOpenModalDiscardConfirm(true);
+                    setSelectedItemId(item._id);
                   }}
                   className="delete-item-list"
                 >
@@ -58,7 +83,9 @@ export const ItemsList = ({ title, filteredItems }) => {
               {openModalDiscardConfirm && (
                 <ModalDiscardConfirm
                   closeModal={setOpenModalDiscardConfirm}
-                  text={"Do you want to delete this item"}
+                  itemId={selectedItemId}
+                  handleDeleteItem={handleDeleteItem}
+                  text={`Do you want to delete ${filteredItems.find((item) => item._id === selectedItemId)?.itemTitle}`}
                   saveChanges={"CONFIRM"}
                 />
               )}
