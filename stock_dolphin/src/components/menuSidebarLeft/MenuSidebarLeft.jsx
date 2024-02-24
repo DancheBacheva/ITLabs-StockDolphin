@@ -1,36 +1,73 @@
 import "./MenuSidebarLeft.css";
-import { Link, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Outlet, NavLink } from "react-router-dom";
 
 export const MenuSidebarLeft = () => {
-return(
-  <div>
-    <div className="menu-panel">
-      <Link to="/dashboard"><img className="logo" src="/images/logo1.png" alt="logoItLabs"/></Link>
-      <div className="sidebar-navigation-btn">
-        <button className="dashboard-btn">
-          <img className="dashboard-img" src="/images/DashboardLayout.png" alt="dashboard-layout"/>
-          <Link className="link-dashboard" to="/dashboard"><h1>Dashboard</h1></Link> 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        className="hamburger-menu-btn"
+        onClick={() => {
+          setMenuOpen(true);
+        }}
+      >
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </button>
+      <div className={`menu-panel ${menuOpen ? "open" : ""}`}>
+        <button
+          className="menu-btn-close"
+          onClick={() => {
+            setMenuOpen(false);
+          }}
+        >
+          <img src="/images/multiply.png" alt="x-btn" />
         </button>
-        <button className="items-nav-btn">
-            <img className="product" src="/images/ProductLayout.png" alt="product"/>
-            <Link className="link-inventory" to="/inventory"><h1>Inventory</h1></Link>
-        </button>
-        <div className="reports-nav-btn">
-          <button className="reports-btn">
-              <img className="combo-chart" src="/images/ComboChart.png" alt="combo-chart"/>
-              <Link className="link-reports" to="/reports"><h1>Reports</h1></Link>
-          </button>
-          <button className="suppliers-btn">
-            <Link className="link-suppliers" to="/suppliers"><h1>Suppliers</h1></Link>
-          </button>
-          <button className="signout-btn">
-            <img className="shutdown" src="/images/Shutdown.png" alt="shutdown"/>
-            <Link className="link-signout" to="/"><h1>Sign Out</h1></Link>
-          </button>
+        <Link to="/dashboard">
+          <img className="logo" src="/images/logo1.png" alt="logoItLabs" />
+        </Link>
+        <div className="sidebar-navigation">
+          <NavLink className="dashboard-link" to="/dashboard">
+            <img
+              className="dashboard-img"
+              src="/images/DashboardLayout.png"
+              alt="dashboard-layout"
+            />
+            <h1>Dashboard</h1>
+          </NavLink>
+          <NavLink className="items-nav-link" to="/inventory">
+            <img
+              className="product"
+              src="/images/ProductLayout.png"
+              alt="product"
+            />
+            <h1>Inventory</h1>
+          </NavLink>
+          <NavLink className="reports-link" to="/reports">
+            <img
+              className="combo-chart"
+              src="/images/ComboChart.png"
+              alt="combo-chart"
+            />
+            <h1>Reports</h1>
+          </NavLink>
+          <NavLink className="suppliers-link" to="/suppliers">
+            <h1>Suppliers</h1>
+          </NavLink>
+          <NavLink className="signout" to="/">
+            <img
+              className="shutdown"
+              src="/images/Shutdown.png"
+              alt="shutdown"
+            />
+            <h1>Sign Out</h1>
+          </NavLink>
         </div>
       </div>
+      <Outlet />
     </div>
-    <Outlet/>
-  </div>
-)
-}
+  );
+};

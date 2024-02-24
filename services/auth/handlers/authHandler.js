@@ -3,15 +3,16 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res) => {
-  try{
+  try {
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      // role: req.body.role
     });
-
+    // console.log(req.body);
     const token = jwt.sign(
-      { id: newUser._id, name: newUser.name },
+      { id: newUser._id, name: newUser.name, role: newUser.role },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -26,15 +27,15 @@ exports.register = async (req, res) => {
 
     res.status(201).json({
       status: "success",
-      token
+      token,
     });
-  }catch (err) {
+  } catch (err) {
     return res.status(500).send(err);
   }
 };
 
-exports.login = async (req, res) =>{
-  try{
+exports.login = async (req, res) => {
+  try {
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).send("Please enter email and password");
@@ -42,14 +43,16 @@ exports.login = async (req, res) =>{
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).send("User with this email does not exist in the database");
+      return res
+        .status(400)
+        .send("User with this email does not exist in the database");
     }
 
     const isPasswordValid = bcrypt.compareSync(password, user.password);
     if (!isPasswordValid) {
       return res.status(400).send("Invalid password!");
     }
-    
+
     const token = jwt.sign(
       { id: user._id, name: user.name },
       process.env.JWT_SECRET,
@@ -67,8 +70,9 @@ exports.login = async (req, res) =>{
     res.status(201).json({
       status: "success",
       token,
+      username: user.name,
     });
-  }catch (err) {
+  } catch (err) {
     return res.status(500).send("Internal server error");
   }
 };

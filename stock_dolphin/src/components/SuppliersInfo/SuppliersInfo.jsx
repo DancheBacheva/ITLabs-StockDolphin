@@ -21,7 +21,7 @@ export const SuppliersInfo = () => {
         `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
         {
           method: "PATCH",
-          // body: JSON.stringify(),
+          // body: JSON.stringify(supplierId), da se proveri sto treba tocno da stoi tuka
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -29,18 +29,15 @@ export const SuppliersInfo = () => {
       );
 
       const resData = await res.json();
-      
-      if (!res.ok) {
-        console.log("Error editing supplier");
+
+      if (res.ok) {
+        setEditSupplier(supplierId);
+        setOpenModalAddSupplier(true);
+        setSuppliers(resData);
       }
-      
-      setEditSupplier(supplierId);
-      setOpenModalAddSupplier(true);
-      setSuppliers(resData);
-      
     } catch (error) {
       console.log("Error editing supplier", error);
-    }     
+    }
   };
 
   const handleDeleteSupplier = async (supplierId) => {

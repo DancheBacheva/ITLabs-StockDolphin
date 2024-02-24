@@ -50,7 +50,7 @@ export const Orders = () => {
             Total Cost: &nbsp;<strong>€{totalCostOneItem}</strong>
           </p>
           <p>
-            Total Invoices: &nbsp;<strong>12</strong>
+            Total Invoices: &nbsp;<strong>0</strong>
           </p>
         </div>
         <button
@@ -100,7 +100,7 @@ export const Orders = () => {
                     <td>{order.quantity} units</td>
                     <td>€{calculateTotalPrice(order)}</td>
                     <td>€{order.pricePerUnit}</td>
-                    <td>{moment(order.ordered).format("MM/DD/YYYY HH:mm")}</td>
+                    <td>{moment(order.ordered).format("MM/DD/YYYY")}</td>
                     <td>Amazon Ltd Electronics</td>
                   </tr>
                 </tbody>
@@ -182,4 +182,4 @@ export const Orders = () => {
       )}
     </div>
   );
-};
+};   

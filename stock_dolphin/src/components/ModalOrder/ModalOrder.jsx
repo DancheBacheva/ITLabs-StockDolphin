@@ -41,6 +41,18 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
     setOrdered(e.target.value);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setFormErrors({
+      ...formErrors,
+      [name]: "",
+    });
+  };
+
   const handleAddOrder = async () => {
     const errors = validate(formValues);
     setFormErrors(errors);
@@ -55,7 +67,7 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
         });
         const resData = await res.json();
 
-        if (!res.ok) {
+        if (res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
           saveChanges(resData);
@@ -64,18 +76,6 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
         console.log(err);
       }
     }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    setFormErrors({
-      ...formErrors,
-      [name]: "",
-    });
   };
 
   return (

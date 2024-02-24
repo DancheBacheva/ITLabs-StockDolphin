@@ -29,10 +29,10 @@ const itemSchema = new mongoose.Schema({
     ref: 'Activity'
   },
     
-  order: {
+  order: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order'
-  }
+  }]
 })
 
 const Item = mongoose.model("Item", itemSchema);

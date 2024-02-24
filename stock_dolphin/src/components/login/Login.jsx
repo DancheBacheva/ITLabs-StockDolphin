@@ -1,6 +1,7 @@
 import "./Login.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import jwtDecode from 'jwt-decode';
 
 export const Login = ({ onShowRegister }) => {
   const initialData = {
@@ -11,6 +12,7 @@ export const Login = ({ onShowRegister }) => {
   const [data, setData] = useState(initialData);
   const [loggedIn, setLoggedIn] = useState(false);
   const [dataErrors, setDataErrors] = useState({});
+  //   const [decodedToken, setDecodedToken] = useState(null);
 
   const navigate = useNavigate();
 
@@ -59,6 +61,7 @@ export const Login = ({ onShowRegister }) => {
         setLoggedIn(true);
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('token', jsonToObject.token);
+        // localStorage.setItem('username', jsonToObject.username);
 
         navigate("/dashboard");
       }
@@ -68,6 +71,19 @@ export const Login = ({ onShowRegister }) => {
         console.log(err);
       }
   };
+
+//  useEffect(() => {
+//      const token = localStorage.getItem('token');
+//      if (token) {
+//        try {
+//          const decoded = jwtDecode(token);
+//          setDecodedToken(decoded);
+//        } catch (error) {
+//          console.error("Failed to decode token", error);
+//        }
+//      }
+//    }, []);
+
 
   useEffect(()=>{
     const isLoggedIn = localStorage.getItem('loggedIn') === 'true';

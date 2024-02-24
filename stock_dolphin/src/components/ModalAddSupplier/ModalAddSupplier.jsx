@@ -55,7 +55,7 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges, defaultV
         });
         const resData = await res.json();
         
-        if (!res.ok) {
+        if (res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
           saveChanges(resData);

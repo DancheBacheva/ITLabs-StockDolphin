@@ -120,6 +120,12 @@
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
   border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.add-supplier-btn:hover{
+  transform: scale(1.1);
 }
 
 .delete-btn, .edit-btn{

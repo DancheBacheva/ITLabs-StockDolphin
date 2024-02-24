@@ -21,6 +21,11 @@
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
   border: none;
+  transition: transform 0.3s ease;
+}
+
+.add-category-btn:hover{
+  transform: scale(1.1);
 }
 
 .inventory-summary-main{
@@ -65,9 +70,10 @@
   width: 100%;
   border: none;
   background-color: #EAEAEA;
+  transition: transform 0.3s ease;
 }
 
 .item-show button:hover{
   cursor: pointer;
+  transform: scale(1.1);
 }
-

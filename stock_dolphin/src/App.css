@@ -24,6 +24,7 @@ main {
   max-width: 1980px;
   display: flex;
   flex-direction: column;
+  margin-left: 300px; /*da se resi na poinakov nacin*/
   /* flex: 1; */
   /* padding: 20px; */
 }

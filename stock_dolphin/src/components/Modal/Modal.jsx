@@ -13,6 +13,18 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setFormErrors({
+      ...formErrors,
+      [name]: "",
+    });
+  };
+
   const validate = (values) => {
     let errors = {};
 
@@ -38,7 +50,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
         });
         const resData = await res.json();
 
-        if(!res.ok) {
+        if (res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
           saveChanges(resData);
@@ -63,7 +75,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   //       });
   //       let jsonToObject = await res.json();
 
-  //       if(!res.ok) {
+  //       if(res.ok) {
   //         setFormValues(initialData);
   //         setIsSubmit(true);
   //         saveChanges(formValues);
@@ -73,18 +85,6 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   //     }
   //   }
   // };
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    setFormErrors({
-      ...formErrors,
-      [name]: "",
-    });
-  };
 
   useEffect(() => {}, []);
 
@@ -95,35 +95,39 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
         {isSubmit ? (
           <h1>New supplier added</h1>
         ) : (
-        <form action="" method="POST">
-          <div className="form-field">
-          <input
-            className="input-modal-name"
-            type="text"
-            value={formValues.title}
-            // value={formValues.title === "Category" ? formValues.title : formValues.itemTitle}
-            onChange={handleChange}
-            name="title"
-            // name={formValues.title === "Category" ? "title" : "itemTitle"}
-            id="name"
-            placeholder="Name*"
-            required
-          />
-          {formErrors?.title && <p>{formErrors.title}</p>}
-          </div>
-          <hr className="smaller-hr" />
-          <hr className="bigger-hr" />
-          <div className="add-photo">
-            <img src="/images/AddImage.png" alt="addImage" />
-            <label for="file-input">(Add Photo, 2MB Total)</label>
-            <input type="file" id="file-input" style={{ display: "none" }} />
-          </div>
-          <hr className="bigger-hr" />
-          <ModalButtons closeModal={closeModal} saveChanges={saveChanges} handleAddCategory={handleAddCategory}
-          // handleAddItem={handleAddItem}
-          />
-        </form>
-      )}
+          <form action="" method="POST">
+            <div className="form-field">
+              <input
+                className="input-modal-name"
+                type="text"
+                value={formValues.title}
+                // value={formValues.title === "Category" ? formValues.title : formValues.itemTitle}
+                onChange={handleChange}
+                name="title"
+                // name={formValues.title === "Category" ? "title" : "itemTitle"}
+                id="name"
+                placeholder="Name*"
+                required
+              />
+              {formErrors?.title && <p>{formErrors.title}</p>}
+            </div>
+            <hr className="smaller-hr" />
+            <hr className="bigger-hr" />
+            <div className="add-photo">
+              <img src="/images/AddImage.png" alt="addImage" />
+              <label for="file-input">(Add Photo, 2MB Total)</label>
+              <input type="file" id="file-input" style={{ display: "none" }} />
+            </div>
+            <hr className="bigger-hr" />
+            <ModalButtons
+              closeModal={closeModal}
+              saveChanges={saveChanges}
+              handleAddCategory={handleAddCategory}
+              // handleAddItem={handleAddItem}
+              // handleAction={formValues.title === "Category" ? handleAddCategory : handleAddItem}
+            />
+          </form>
+        )}
       </div>
     </div>
   );

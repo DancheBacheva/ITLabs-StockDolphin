@@ -10,9 +10,11 @@ export const RecentOrder = () => {
   const orderPerPage = 4;
   const indexOfLastOrder = currentPage * orderPerPage;
   const indexOfFirstOrder = indexOfLastOrder - orderPerPage;
+
   const sortedOrders = orders.sort((a, b) => {
     return new Date(b.ordered) - new Date(a.ordered);
   });
+
   const recentOrders = sortedOrders.slice(indexOfFirstOrder, indexOfLastOrder);
 
   const calculateTotalPrice = (order) => {
@@ -45,21 +47,20 @@ export const RecentOrder = () => {
             const item = items.find((item) => item._id === order.item._id);
             return (
               <div className="item">
-                <img
-                  src={`/img/items/${order.icon}`}
-                  alt={`Icon for ${order.itemTitle}`}
-                />
-                <br />
                 <Link
                   to={`/inventory/${item.category.title}/${order.itemTitle}`}
                   className="link-cards"
                 >
-                  <span className="item-name">{order.itemTitle}</span>{" "}
+                  <img
+                    src={`/img/items/${order.icon}`}
+                    alt={`Icon for ${order.itemTitle}`}
+                  />
+                  <br />
+                  <span className="item-name">{order.itemTitle}</span> <br />
+                  <span className="quantity-cost">
+                    <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
+                  </span>
                 </Link>
-                <br />
-                <span className="quantity-cost">
-                  <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
-                </span>
               </div>
             );
           })}

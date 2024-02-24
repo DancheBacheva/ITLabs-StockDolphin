@@ -35,7 +35,6 @@ export const Activities = () => {
             <div key={activity._id} className="activity-box1">
               <p className="activity-box-text">
                 Admin has {activity.activity} item <b>{activity.itemTitle}</b> in <b>{activity.categoryTitle}({activity.categoryTitle})</b>
-                {/* ova da se napravi so split i da se zema samo imeto na kategorijata za da bide (Office Categories) */}
               </p>
               <p>{moment(activity.date).format("MM/DD/YYYY HH:mm")}</p>
             </div>

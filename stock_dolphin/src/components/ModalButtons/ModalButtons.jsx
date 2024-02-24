@@ -9,7 +9,7 @@ export const ModalButtons = ({
   handleAddCategory,
   handleAddItem,
   handleEditSupplier,
-  handleAddOrder
+  handleAddOrder,
 }) => {
   return (
     <div>
@@ -32,8 +32,8 @@ export const ModalButtons = ({
             } else if (handleEditSupplier) {
               handleEditSupplier();
             } else if (handleAddOrder) {
-            handleAddOrder();
-          }
+              handleAddOrder();
+            }
           }}
         >
           {saveChanges}
