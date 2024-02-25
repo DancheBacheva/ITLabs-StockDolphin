@@ -16,19 +16,18 @@ export const SuppliersInfo = () => {
   const [editSupplier, setEditSupplier] = useState(null);
 
   const handleEditSupplier = async (supplierId) => {
-    try {
-      const res = await fetch(
+     try {
+       const res = await fetch(
         `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
         {
           method: "PATCH",
-          // body: JSON.stringify(supplierId), da se proveri sto treba tocno da stoi tuka
+           body: JSON.stringify(editSupplier), 
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      const resData = await res.json();
+             Authorization: `Bearer ${localStorage.getItem("token")}`,
+           },
+         }
+       );
+       const resData = await res.json();
 
       if (res.ok) {
         setEditSupplier(supplierId);

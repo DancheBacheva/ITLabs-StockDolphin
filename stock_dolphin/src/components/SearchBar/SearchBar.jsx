@@ -9,7 +9,7 @@ export const SearchBar = ({ placeholderText, data, setData, name }) => {
       item[name].toLowerCase().includes(searchQuery.toLowerCase())
     );
     setData(filteredData);
-  }, [searchQuery, data, name, setData]);
+  }, []);
 
   const handleSearch = (e) => {
     const query = e.target.value;

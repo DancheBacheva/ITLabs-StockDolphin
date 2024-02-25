@@ -29,7 +29,8 @@ exports.viewAll = async (req, res) => {
 
 exports.viewOne = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id).populate("item");
+    const order = await Order.findById(req.params.id).populate("item").populate("supplier");
+
     res.status(200).json({
       status: "success",
       data: {
@@ -46,19 +47,21 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { itemTitle, categoryTitle, quantity, pricePerUnit, name } = req.body;
+    const { itemTitle, categoryTitle, quantity, pricePerUnit, supplierName } = req.body;
 
     const item = await Item.findOne({ itemTitle });
 
-    const supplier = await Supplier.findOne ({ name })
+    // const supplier = await Supplier.findOne ({ name })
 
     const newOrder = await Order.create({
       itemTitle,
       quantity,
       pricePerUnit,
+      supplierName,
+      categoryTitle,
       item: item._id,
       icon: item.icon,
-      supplier: supplier._id
+      // supplier: supplier._id
     });
 
     const createdActivity = await Activity.create({

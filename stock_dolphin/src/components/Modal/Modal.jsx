@@ -1,19 +1,33 @@
 // modal for add item, add category and edit category
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
+export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
   const initialData = {
     title: "",
     // itemTitle: "",
   };
+  
   const [formValues, setFormValues] = useState(initialData);
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
+    // const { name, value } = e.target;
+  //   if (modalFor === "category" || modalFor === "item") {
+  //     setFormValues({
+  //       ...formValues,
+  //       [name]: value,
+  //     });
+
+  //     setFormErrors({
+  //       ...formErrors,
+  //       [name]: "",
+  //     });
+  //   }
+  // };
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -29,9 +43,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
     let errors = {};
 
     if (!values.title) errors.title = "Name is required";
-
     // if (!values.itemTitle) errors.itemTitle = "Name is required";
-
     // da se napravi validate za format na slika
     return errors;
   };
@@ -41,7 +53,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        let res = await fetch("http://localhost:9001/api/v1/category", {
+        const res = await fetch("http://localhost:9001/api/v1/category", {
           method: "POST",
           body: JSON.stringify(formValues),
           headers: {
@@ -51,9 +63,9 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
         const resData = await res.json();
 
         if (res.ok) {
-          setFormValues(initialData);
-          setIsSubmit(true);
-          saveChanges(resData);
+          setFormValues(formValues);
+          setIsSubmit(false);
+          formValues(resData);
         }
       } catch (err) {
         console.log(err);
@@ -73,12 +85,12 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   //           "Content-Type": "application/json",
   //         },
   //       });
-  //       let jsonToObject = await res.json();
+  //       let resData = await res.json();
 
-  //       if(res.ok) {
+  //       if (res.ok) {
   //         setFormValues(initialData);
   //         setIsSubmit(true);
-  //         saveChanges(formValues);
+  //         saveChanges(resData);
   //       }
   //     } catch (err) {
   //       console.log(err);
@@ -86,22 +98,24 @@ export const Modal = ({ closeModal, modalTitle, saveChanges }) => {
   //   }
   // };
 
-  useEffect(() => {}, []);
-
   return (
     <div className="modal-background">
       <div className="modal-container">
         <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
         {isSubmit ? (
-          <h1>New supplier added</h1>
+          <h1>Successfully added</h1>
         ) : (
-          <form action="" method="POST">
+          <form>
             <div className="form-field">
               <input
                 className="input-modal-name"
                 type="text"
                 value={formValues.title}
-                // value={formValues.title === "Category" ? formValues.title : formValues.itemTitle}
+                // value={
+                //   formValues.title === "Category"
+                //     ? formValues.title
+                //     : formValues.itemTitle
+                // }
                 onChange={handleChange}
                 name="title"
                 // name={formValues.title === "Category" ? "title" : "itemTitle"}

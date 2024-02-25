@@ -6,6 +6,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { DataContext } from "../../App";
 import { ItemsCards } from "../ItemsCards/ItemsCards";
 import { ItemsList } from "../ItemsList/ItemsList";
+import ModalAddItem from "../ModalAddItem/ModalAddItem";
 
 export const Category = ({ title }) => {
   const { items } = useContext(DataContext);
@@ -49,7 +50,13 @@ export const Category = ({ title }) => {
         </div>
       </div>
       {openModal && (
-        <Modal
+        // <Modal
+        //   closeModal={setOpenModal}
+        //   modalTitle={"Add Item"}
+        //   saveChanges={"ADD ITEM"}
+        //   modalFor={"item"}
+        // />
+        <ModalAddItem
           closeModal={setOpenModal}
           modalTitle={"Add Item"}
           saveChanges={"ADD ITEM"}

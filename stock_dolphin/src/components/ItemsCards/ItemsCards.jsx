@@ -39,17 +39,15 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
       <div className="main-card-item">
         {oneCategory.length > 0 ? (
           oneCategory.slice(0, 8).map((item) => {
-            const { quantity, totalPrice } = orders.reduce(
+            const { totalPrice } = orders.reduce(
               (acc, order) => {
                 if (order.itemTitle === item.itemTitle) {
-                  acc.quantity += order.quantity;
                   acc.totalPrice += order.quantity * order.pricePerUnit;
                 }
                 return acc;
               },
-              { quantity: 0, totalPrice: 0 }
+              { totalPrice: 0 }
             );
-            // tuka mi treba purchase, ne vkupno quantity, da se doresi
             return (
               <div key={item._id} className="cards-container">
                 <div className="item-image-container">
@@ -68,7 +66,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
                   </h3>
                 </Link>
                 <p className="content-item-text">
-                  <strong>{quantity} Purchase records</strong> | €
+                  <strong>{item.order.length} Purchase records</strong> | €
                   {Math.round(totalPrice)}
                 </p>
                 <div className="remove-item">
@@ -91,10 +89,10 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
                     closeModal={setOpenModalDiscardConfirm}
                     itemId={selectedItemId}
                     handleDeleteItem={handleDeleteItem}
-                    text={`Do you want to delete ${
+                    text={`Are you sure that you want to delete the ${
                       filteredItems.find((item) => item._id === selectedItemId)
                         ?.itemTitle
-                    }`}
+                    } item? All associated orders in the item will be deleted. This action is irreversible.`}
                     saveChanges={"CONFIRM"}
                   />
                 )}

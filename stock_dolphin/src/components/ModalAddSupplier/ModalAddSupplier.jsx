@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./ModalAddSupplier.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
@@ -36,10 +36,6 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges, defaultV
     }
     return errors;
   };
-
-  useEffect(() => {
-    
-  }, []); 
 
   const handleAddSupplier = async () => {
     const errors = validate(formValues);

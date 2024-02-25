@@ -46,11 +46,11 @@ export const RecentOrder = () => {
           {recentOrders.map((order) => {
             const item = items.find((item) => item._id === order.item._id);
             return (
-              <div className="item">
                 <Link
                   to={`/inventory/${item.category.title}/${order.itemTitle}`}
                   className="link-cards"
                 >
+                  <div className="item" key={item._id}>
                   <img
                     src={`/img/items/${order.icon}`}
                     alt={`Icon for ${order.itemTitle}`}
@@ -60,8 +60,8 @@ export const RecentOrder = () => {
                   <span className="quantity-cost">
                     <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
                   </span>
+                  </div>
                 </Link>
-              </div>
             );
           })}
           <button onClick={handleNext} className="arrow-btn">

@@ -102,6 +102,7 @@ export const Orders = () => {
                     <td>€{order.pricePerUnit}</td>
                     <td>{moment(order.ordered).format("MM/DD/YYYY")}</td>
                     <td>Amazon Ltd Electronics</td>
+                    {/* <td>{order.supplierName}</td> */}
                   </tr>
                 </tbody>
               ))

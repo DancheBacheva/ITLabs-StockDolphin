@@ -22,12 +22,11 @@
 }
 
 .modal-container-discard-confirm p{
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 42px;
   letter-spacing: 0em;
   text-align: center;
   color: #5C5C5C;
   margin: 10px;
-  padding: 10px;
 }

@@ -14,7 +14,7 @@ export const RecentActivity = () => {
         <strong>Recent Activity</strong>
       </h3>
       {recentActivities.map((activity) => (
-        <div className="activity-box">
+        <div className="activity-box" key={activity._id}>
           <div className="rectangle7">
             <p>
               Admin has {activity.activity} item <b>{activity.itemTitle}</b> in{" "}

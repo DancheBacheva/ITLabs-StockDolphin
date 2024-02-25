@@ -95,7 +95,7 @@ export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) =
                     closeModal={setOpenModalDiscardConfirm}
                     handleCategoryDelete={handleCategoryDelete}
                     text={
-                      `Are you sure that you want to delete ${filteredCategories.find((category) => category._id === selectedCategoryId)?.title}? All the items in the category will be deleted.`
+                      `Are you sure that you want to delete ${filteredCategories.find((category) => category._id === selectedCategoryId)?.title}? All the items in the category will be permanently deleted. This action is irreversible.`
                     }
                     saveChanges={"CONFIRM"}
                   />

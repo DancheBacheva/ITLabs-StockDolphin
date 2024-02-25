@@ -85,7 +85,10 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
                   closeModal={setOpenModalDiscardConfirm}
                   itemId={selectedItemId}
                   handleDeleteItem={handleDeleteItem}
-                  text={`Do you want to delete ${filteredItems.find((item) => item._id === selectedItemId)?.itemTitle}`}
+                  text={`Are you sure that you want to delete the ${
+                    filteredItems.find((item) => item._id === selectedItemId)
+                      ?.itemTitle
+                  } item? All associated orders in the item will be deleted. This action is irreversible.`}
                   saveChanges={"CONFIRM"}
                 />
               )}
