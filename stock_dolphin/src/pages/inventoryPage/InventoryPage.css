@@ -7,16 +7,9 @@
   justify-content: space-between;
 }
 
-.add-category{
-  width: 230px;
-  height: 60px;
-}
-
 .add-category-btn{
   width: 230px;
   height: 60px;
-  top: 130px;
-  left: 1671px;
   border-radius: 10px;
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
@@ -76,4 +69,21 @@
 .item-show button:hover{
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .add-category-btn{
+    width: 160px;
+    height: 30px;
+    margin-top: 20px;
+  }
+
+  .inventory-summary-container p{
+    font-size: 9px;
+  }  
+
+  .item-show{
+    width: 30px;
+    height: 30px;
+  } 
 }

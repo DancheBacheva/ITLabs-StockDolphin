@@ -46,6 +46,7 @@ export const RecentOrder = () => {
           {recentOrders.map((order) => {
             const item = items.find((item) => item._id === order.item._id);
             return (
+              <div className="item-container">
                 <Link
                   to={`/inventory/${item.category.title}/${order.itemTitle}`}
                   className="link-cards"
@@ -62,6 +63,7 @@ export const RecentOrder = () => {
                   </span>
                   </div>
                 </Link>
+              </div>
             );
           })}
           <button onClick={handleNext} className="arrow-btn">

@@ -45,3 +45,26 @@
   color: #000000;
   margin-left: 10px;
 }
+
+@media only screen and (max-width: 768px) {
+  .activity-sidebar-right{
+    width: 320px;
+    box-shadow: 3px 3px 4px 0px #00000040;
+  }
+
+  .activity-sidebar-right h1{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  #filter-hr{
+    margin: 10px 0;
+  }
+
+  .activity-sidebar-right label{
+    font-size: 12px;
+  }
+}

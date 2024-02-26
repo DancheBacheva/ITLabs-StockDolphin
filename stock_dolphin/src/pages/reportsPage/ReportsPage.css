@@ -65,3 +65,22 @@
   border: 1px solid #000000;
   margin-left: 75px;
 }
+
+@media only screen and (max-width: 768px) {
+
+  .time-mashine-img,
+  .product-img-r{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .activity-history h1,
+  .inventory-summary-reports h1{
+    font-size: 28px;
+  }
+  
+  .activity-history p,
+  .inventory-summary-reports p{
+    font-size: 14px;
+  }
+}

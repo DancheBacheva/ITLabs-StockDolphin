@@ -34,3 +34,13 @@
   text-align: left;
   color: #000000;
 }
+
+@media only screen and (max-width: 768px) {
+  .search-label{
+    width: 150px;
+    height: 30px;
+  }
+  .input-search::placeholder{
+    font-size: 10px;
+  }
+}

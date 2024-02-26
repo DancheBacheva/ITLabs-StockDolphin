@@ -143,14 +143,14 @@
 }
 
 @media screen and (max-width: 767px){
-  /* .menu-panel.open{
+  .menu-panel.open{
     width: 0;
-  } */
+  }
 
-  .menu-panel{
+  /* .menu-panel{
     width: 50%;
     height: auto;
-  }
+  } */
 
   .sidebar-navigation{
     width: 50%;

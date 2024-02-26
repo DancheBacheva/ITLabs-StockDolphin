@@ -115,3 +115,13 @@
   border: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px){
+  .card-category-text{
+    font-size: 16px;
+  }
+
+  .updated-category{
+    font-size: 12px;
+  }
+}

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 
 export const SearchBar = ({ placeholderText, data, setData, name }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const filteredData = data.filter((item) =>
-      item[name].toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setData(filteredData);
-  }, []);
+  // useEffect(() => {
+  //   const filteredData = data.filter((item) =>
+  //     item[name].toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+  //   setData(filteredData);
+  // }, []);
 
   const handleSearch = (e) => {
     const query = e.target.value;

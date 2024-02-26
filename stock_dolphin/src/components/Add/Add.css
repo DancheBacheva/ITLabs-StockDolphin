@@ -30,3 +30,19 @@
   text-align: left;
   color: #FFFFFF;
 }
+
+@media only screen and (max-width: 768px) {
+  .inside-btn{
+    width: 180px;
+    height: 30px;
+  }
+
+  .rectangle37{
+    width: 20px;
+    height: 20px;
+  }
+    
+  .text-btn{
+    font-size: 10px;
+}
+}

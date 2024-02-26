@@ -134,3 +134,11 @@
   color: #53A856;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+  .add-supplier-btn{
+    width: 130px;
+    height: 30px;
+    margin-top: 20px;
+  }
+}

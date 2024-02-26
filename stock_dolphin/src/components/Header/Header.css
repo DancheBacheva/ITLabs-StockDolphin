@@ -24,3 +24,10 @@
   border: 2px solid #5C5C5C;
   margin-left: 75px;
 }
+
+@media screen and (max-width: 767px){
+  .header-title, .header-subtitle{
+    height: 37px;
+    font-size: 30px;
+  }
+}

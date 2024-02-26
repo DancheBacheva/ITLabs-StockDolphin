@@ -46,7 +46,6 @@ export const InventoryPage = () => {
               setData={updateFilteredCategories}
             />
           </div>
-          <div className="add-category">
             <button
               className="add-category-btn"
               onClick={() => {
@@ -55,7 +54,6 @@ export const InventoryPage = () => {
             >
               <Add addText={"ADD CATEGORY"} />
             </button>
-          </div>
         </div>
         {openModal && (
           <Modal
