@@ -2,20 +2,36 @@ import React, { useState } from "react";
 import "./ModalAddItem.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
+import { useNavigate } from "react-router-dom";
 
-export const ModalAddItem = ({ closeModal, modalTitle, saveChanges }) => {
+export const ModalAddItem = ({
+  closeModal,
+  modalTitle,
+  saveChanges,
+  categoryName,
+}) => {
   const initialData = {
     itemTitle: "",
+    // icon: "",
   };
+
   const [formValues, setFormValues] = useState(initialData);
+  // const [file, setFile] = useState();
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    setFormErrors({ ...formErrors, [name]: ""})
+    setFormErrors({ ...formErrors, [name]: "" });
   };
+
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFormValues({ ...formValues, icon: file });
+  // };
 
   const validate = (values) => {
     let errors = {};
@@ -24,30 +40,51 @@ export const ModalAddItem = ({ closeModal, modalTitle, saveChanges }) => {
     return errors;
   };
 
-    const handleAddItem = async () => {
+  const handleAddItem = async () => {
+    console.log(formValues);
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
         let res = await fetch("http://localhost:9003/api/v1/item", {
           method: "POST",
-          body: JSON.stringify(formValues),
+          body: JSON.stringify({
+            itemTitle: formValues.itemTitle,
+            categoryTitle: categoryName,
+          }),
           headers: {
             "Content-Type": "application/json",
           },
         });
         let resData = await res.json();
-  console.log("res", res)
+        console.log("res", res);
         if (res.ok) {
           setFormValues(formValues);
           setIsSubmit(true);
         }
-        console.log()
+
+        navigate("/inventory");
       } catch (err) {
         console.log(err);
       }
     }
   };
+
+  //   const upload = async () => {
+  //     const formData = new FormData();
+  //     formData.append('file', file);
+
+  //     const res = await fetch(`http://localhost:9003/api/v1/item`,
+  //     {
+  //       method: "POST",
+  //       body: JSON.stringify(formData),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then(res => {})
+  //     .catch(err => console.log(err))
+  // }
 
   return (
     <div className="modal-background">
@@ -75,7 +112,13 @@ export const ModalAddItem = ({ closeModal, modalTitle, saveChanges }) => {
             <div className="add-photo">
               <img src="/images/AddImage.png" alt="addImage" />
               <label for="file-input">(Add Photo, 2MB Total)</label>
-              <input type="file" id="file-input" style={{ display: "none" }} />
+              <input
+                type="file"
+                value={formValues.icon}
+                id="file-input"
+                style={{ display: "none" }}
+                // onChange={(e) => setFile(e.target.files[0])}
+              />
             </div>
             <hr className="bigger-hr" />
             <ModalButtons
@@ -83,6 +126,10 @@ export const ModalAddItem = ({ closeModal, modalTitle, saveChanges }) => {
               saveChanges={saveChanges}
               handleAddItem={handleAddItem}
             />
+            <button onClick={() => navigate(`/inventory/nesto`)}>
+              testnavigate
+            </button>
+            {/* <button type='button' onClick={upload}>Upload</button> */}
           </form>
         )}
       </div>

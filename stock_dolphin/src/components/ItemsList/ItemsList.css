@@ -1,7 +1,6 @@
 .main-list-item{
   width: 100%;
   max-width: 1170px;
-  margin-left: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

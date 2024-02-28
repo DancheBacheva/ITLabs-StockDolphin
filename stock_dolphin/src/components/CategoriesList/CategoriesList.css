@@ -1,7 +1,7 @@
 .main-list-category{
   width: 100%;
   max-width: 1170px;
-  margin-left: 130px;
+  margin-left: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -46,7 +46,6 @@
 .image2-list {
   flex: 1;
   display: flex;
-  align-items: flex-end;
 }
 
 .image3-list {

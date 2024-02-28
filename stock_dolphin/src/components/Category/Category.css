@@ -40,6 +40,7 @@
   max-height: 700px; /* da se proveri pak*/
   display: flex;
   justify-content: space-between;
+  margin: 20px 30px;
 }
 
 .show-item-cards{
@@ -51,7 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: end; /* da se proveri pak, ne e do kraj*/
+  margin-right: 30px;
 }
 
 .edit-category-btn{
@@ -64,7 +65,7 @@
   align-items: center;
   border: none;
   float: inline-end;
-  margin-right: 125px;
+  margin-right: 75px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }

@@ -1,31 +1,12 @@
 import "./MenuSidebarLeft.css";
-import React, { useState } from "react";
+import React from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
 
 export const MenuSidebarLeft = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div>
-      <button
-        className="hamburger-menu-btn"
-        onClick={() => {
-          setMenuOpen(true);
-        }}
-      >
-        <div className="bar1"></div>
-        <div className="bar2"></div>
-        <div className="bar3"></div>
-      </button>
-      <div className={`menu-panel ${menuOpen ? "open" : ""}`}>
-        <button
-          className="menu-btn-close"
-          onClick={() => {
-            setMenuOpen(false);
-          }}
-        >
-          <img src="/images/multiply.png" alt="x-btn" />
-        </button>
+      <div className="menu-panel">
         <Link to="/dashboard">
           <img className="logo" src="/images/logo1.png" alt="logoItLabs" />
         </Link>

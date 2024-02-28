@@ -101,8 +101,7 @@ export const Orders = () => {
                     <td>€{calculateTotalPrice(order)}</td>
                     <td>€{order.pricePerUnit}</td>
                     <td>{moment(order.ordered).format("MM/DD/YYYY")}</td>
-                    <td>Amazon Ltd Electronics</td>
-                    {/* <td>{order.supplierName}</td> */}
+                    <td>{order.supplierName}</td>
                   </tr>
                 </tbody>
               ))

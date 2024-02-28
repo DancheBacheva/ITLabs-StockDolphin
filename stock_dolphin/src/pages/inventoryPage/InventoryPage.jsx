@@ -43,7 +43,9 @@ export const InventoryPage = () => {
               placeholderText="Search Categories"
               name="title"
               data={filteredCategories}
+              originalData={categories}
               setData={updateFilteredCategories}
+              isInventory={true}
             />
           </div>
             <button
@@ -60,7 +62,7 @@ export const InventoryPage = () => {
             closeModal={setOpenModal}
             modalTitle={"Add Category"}
             saveChanges={"ADD CATEGORY"}
-            modalFor={"category"}
+            modalFor="category"
           />
         )}
       </div>
@@ -90,9 +92,9 @@ export const InventoryPage = () => {
           </div>
         </div>
         {showCards ? (
-          <CategoriesCards filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
+          <CategoriesCards filteredCategories={filteredCategories} originalData={categories} setFilteredCategories={setFilteredCategories} />
         ) : (
-          <CategoriesList filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
+          <CategoriesList filteredCategories={filteredCategories} originalData={categories} setFilteredCategories={setFilteredCategories} />
         )}
       </div>
     </div>

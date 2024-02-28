@@ -1,57 +1,17 @@
 .menu-panel{
-  /* width: 100%;
+  width: 100%;
   height: 100%;
   max-width: 350px;
-  max-height: 1080px;*/
+  max-height: 1080px;
   float: left;
-  width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background: #53A856;
-  overflow-x: hidden;
   padding-top: 60px; 
   transition: 0.5s;
-  margin-right: 75px;
-}
-
-.menu-panel.open{
-  width: 350px;
-}
-
-.menu-btn-close{
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #53A856;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger-menu-btn{
-  display: inline-block;
-  cursor: pointer;
-  background-color: #444;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.hamburger-menu-btn:hover{
-  background-color: #53A856;
-}
-
-.bar1,
-.bar2,
-.bar3{
-  width: 35px;
-  height: 5px;
-  border-radius: 10px;
-  background-color: white;
-  margin: 6px 0;
-  transition: 0.4s;
+  /* margin-right: 75px; */
 }
  
 .logo{
@@ -127,10 +87,7 @@
   padding-left: 65px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* .menu-panel.open{
-    width: 0;
-  } */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
     .menu-panel{
     width: 70%;
     height: auto;
@@ -143,14 +100,10 @@
 }
 
 @media screen and (max-width: 767px){
-  .menu-panel.open{
-    width: 0;
-  }
-
-  /* .menu-panel{
+  .menu-panel{
     width: 50%;
     height: auto;
-  } */
+  }
 
   .sidebar-navigation{
     width: 50%;

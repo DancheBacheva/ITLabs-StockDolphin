@@ -78,15 +78,23 @@ exports.viewOne = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
+    console.log("creating items", req.body);
     const { itemTitle, icon, categoryTitle } = req.body;
+    
+    if (req.file) {
+      const filename = req.file.filename;
+      req.body.icon = filename;
+    }
 
     const category = await Category.findOne({ title: categoryTitle });
+    console.log("finding category", category);
 
     const newItem = await Item.create({
       itemTitle,
       icon,
       category: category._id,
     });
+    console.log("newItem", newItem);
 
     const createdActivity = await Activity.create({
       activity: "created",

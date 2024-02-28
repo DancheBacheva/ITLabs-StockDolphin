@@ -15,7 +15,7 @@ import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
 export const DataContext = React.createContext();
 
 function App() {
-  const [data, setData] = useState({ categories: [], items: [], orders: [], suppliers: [], activities: [] });
+const [data, setData] = useState({ categories: [], items: [], orders: [], suppliers: [], activities: [] });
 
  useEffect(() => {
   const fetchData = async () => {
@@ -59,30 +59,35 @@ function App() {
       let newData = { ...data };
 
       if (categoriesResponse.ok) {
+        console.log("Response for categories:", categoriesData);
         newData.categories = categoriesData.data.categories;
       } else {
         console.error("Error fetching categories");
       }
 
       if (itemsResponse.ok) {
+        console.log("Response for items:", itemsData);
         newData.items = itemsData.data.items;
       } else {
         console.error("Error fetching items");
       }
 
       if (ordersResponse.ok) {
+        console.log("Response for orders:", ordersData);
         newData.orders = ordersData.data.orders;
       } else {
         console.error("Error fetching items");
       }
 
       if (suppliersResponse.ok) {
+        console.log("Response for suppliers:", suppliersData);
         newData.suppliers = suppliersData.data.suppliers;
       } else {
         console.error("Error fetching suppliers");
       }
 
       if (activitiesResponse.ok) {
+        console.log("Response for activities:", activitiesData);
         newData.activities = activitiesData.data.activities;
       } else {
         console.error("Error fetching suppliers");
@@ -95,15 +100,11 @@ function App() {
   };
 
   fetchData();
-}, [data]);
+}, []);
 
   return (
     <div className="App">
       <DataContext.Provider value={data}>
-      {/* <nav>
-        <MenuSidebarLeft/>
-      </nav> */}
-      
       <main>
         <Routes>
           <Route path="/" element={<Default/>}/>

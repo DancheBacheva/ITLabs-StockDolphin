@@ -11,6 +11,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
   };
   
   const [formValues, setFormValues] = useState(initialData);
+  const [file, setFile] = useState();
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
@@ -49,6 +50,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
   };
 
   const handleAddCategory = async () => {
+    console.log("pushtanje add item");
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
@@ -61,6 +63,8 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
           },
         });
         const resData = await res.json();
+
+        console.log("resdata", resData);
 
         if (res.ok) {
           setFormValues(formValues);
@@ -112,13 +116,13 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
                 type="text"
                 value={formValues.title}
                 // value={
-                //   formValues.title === "Category"
+                //   modalFor === "category"
                 //     ? formValues.title
                 //     : formValues.itemTitle
                 // }
                 onChange={handleChange}
                 name="title"
-                // name={formValues.title === "Category" ? "title" : "itemTitle"}
+                // name={modalFor === "category" ? "title" : "itemTitle"}
                 id="name"
                 placeholder="Name*"
                 required
@@ -129,8 +133,8 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
             <hr className="bigger-hr" />
             <div className="add-photo">
               <img src="/images/AddImage.png" alt="addImage" />
-              <label for="file-input">(Add Photo, 2MB Total)</label>
-              <input type="file" id="file-input" style={{ display: "none" }} />
+              <label htmlFor="file-input">(Add Photo, 2MB Total)</label>
+              <input type="file" id="file-input" style={{ display: "none" }} onChange={(e)=>setFile(e.target.files[0])}/>
             </div>
             <hr className="bigger-hr" />
             <ModalButtons
@@ -138,7 +142,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
               saveChanges={saveChanges}
               handleAddCategory={handleAddCategory}
               // handleAddItem={handleAddItem}
-              // handleAction={formValues.title === "Category" ? handleAddCategory : handleAddItem}
+              // handleAction={modalFor === "category" ? handleAddCategory : handleAddItem}
             />
           </form>
         )}
