@@ -9,7 +9,8 @@ export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) 
   const { categories, orders } = useContext(DataContext);
 
   const filteredOrders = orders.filter((order) => {
-   
+    const orderDate = moment(order.ordered);
+    return orderDate.isBetween(dateFrom, dateTo, null, '[]');
   });
   
   return (
@@ -18,7 +19,7 @@ export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) 
         <Line
           data={{
             labels: filteredOrders.map((order) =>
-              moment(order.ordered).format("MM/DD/YYYY HH:mm")
+              moment(order.ordered).format("MM/DD/YYYY")
             ),
             datasets: [
               {

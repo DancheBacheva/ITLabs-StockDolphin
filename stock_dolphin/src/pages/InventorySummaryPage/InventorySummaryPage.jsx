@@ -38,23 +38,29 @@ export const InventorySummaryPage = () => {
     <div className="reports-main">
       <Header headerTitle={"Reports"} headerSubtitle={"Inventory Summary"} />
       <div className="btns-container">
-        <input
-          type="date"
-          className="input-calendar"
-          id="dateFrom"
-          name="dateFrom"
-          placeholder="Date From"
-          value={dateFrom}
-          onChange={handleDateFromChange}
-        />
-        <input
-          type="date"
-          className="input-calendar"
-          id="dateTo"
-          name="dateTo"
-          value={dateTo}
-          onChange={handleDateToChange}
-        />
+        <div class="input-container">
+          <label htmlFor="">Date From</label>
+          <input
+            type="date"
+            className="input-calendar"
+            id="dateFrom"
+            name="dateFrom"
+            placeholder="Date From"
+            value={dateFrom}
+            onChange={handleDateFromChange}
+          />
+        </div>
+        <div class="input-container">
+          <label htmlFor="">Date To</label>
+          <input
+            type="date"
+            className="input-calendar"
+            id="dateTo"
+            name="dateTo"
+            value={dateTo}
+            onChange={handleDateToChange}
+          />
+        </div>
         <select
           className="select-category"
           id="categoryDropdown"
@@ -69,7 +75,10 @@ export const InventorySummaryPage = () => {
             </option>
           ))}
         </select>
-        <button className="btn-show-reset" onClick={showResults ? handleReset : handleShowResults}>
+        <button
+          className="btn-show-reset"
+          onClick={showResults ? handleReset : handleShowResults}
+        >
           {showResults ? "RESET" : "SHOW"}
         </button>
       </div>

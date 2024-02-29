@@ -4,7 +4,7 @@ import "./ModalOrder.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
+export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) => {
   const { suppliers, orders } = useContext(DataContext);
   const initialData = {
     supplier: "",
@@ -60,7 +60,13 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
       try {
         let res = await fetch("http://localhost:9005/api/v1/order", {
           method: "POST",
-          body: JSON.stringify(formValues),
+          body: JSON.stringify({
+            supplier: formValues.supplier,
+            quantity: formValues.quantity,
+            totalPrice: formValues.totalPrice,
+            ordered: formValues.ordered,
+            itemTitle: itemName
+          }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -70,7 +76,6 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
         if (res.ok) {
           setFormValues(initialData);
           setIsSubmit(true);
-          saveChanges(resData);
         }
       } catch (err) {
         console.log(err);
@@ -132,13 +137,13 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges }) => {
             </div>
             <hr className="smaller-hr" />
             <div className="input-ordered">
-            <input
-              type="date"
-              id="ordered"
-              name="ordered"
-              value={ordered}
-              onChange={handleOrderedChange}
-            />
+              <input
+                type="date"
+                id="ordered"
+                name="ordered"
+                value={ordered}
+                onChange={handleOrderedChange}
+              />
             </div>
             <hr className="bigger-hr" />
             <ModalButtons

@@ -9,7 +9,6 @@ import { ModalMoveItem } from "../ModalMoveItem/ModalMoveItem";
 import { Add } from "../Add/Add";
 import moment from "moment";
 
-// da se proverat klasi
 export const Orders = () => {
   const { orders, items } = useContext(DataContext);
   const { itemTitle } = useParams();
@@ -157,6 +156,7 @@ export const Orders = () => {
           modalTitle={"Add Order"}
           closeModal={setOpenModal}
           saveChanges={"ADD ORDER"}
+          itemName={itemTitle}
         />
       )}
       {openModalInvoice && (

@@ -11,13 +11,25 @@
   height: 30px;
 }
 
+.input-container {
+  position: relative;
+  margin-right: 50px;
+}
+
+.input-container label {
+  position: absolute;
+  top: 0; 
+  left: 50px;
+  font-size: 20px;
+}
+
 .input-calendar, .select-category{
   width: 260px;
   height: 60px;
   border: 2px solid #999999;
   border-radius: 12px;
   background: #D9D9D9;
-  margin-right: 100px;
+  margin-right: 50px;
   font-size: 20px;
   font-weight: 500;
   line-height: 36px;
@@ -25,6 +37,7 @@
   text-align: center;
   display: flex;
   align-items: center;
+  padding-top: 5px;
 }
 
 .btn-show-reset{

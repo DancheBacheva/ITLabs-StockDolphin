@@ -49,7 +49,7 @@
   color: #3E4153;
 }
 
-.input-ordered{
+.input-ordered input{
   width: 260px;
   height: 60px;
   border-radius: 12px;
