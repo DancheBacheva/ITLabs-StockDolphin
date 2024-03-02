@@ -51,11 +51,13 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
             );
             return (
               <div key={item._id} className="list-container">
+                <div className="list-container-img">
                 <img
                   className="item-image"
                   src={`/img/items/${item.icon}`}
                   alt={`Icon for ${item.itemTitle}`}
                 />
+                </div>
                 <div className="middle-container-list">
                   <Link
                     to={`/inventory/${title}/${item.itemTitle}`}

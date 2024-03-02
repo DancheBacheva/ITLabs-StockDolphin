@@ -126,9 +126,6 @@ export const ModalAddItem = ({
               saveChanges={saveChanges}
               handleAddItem={handleAddItem}
             />
-            <button onClick={() => navigate(`/inventory/nesto`)}>
-              testnavigate
-            </button>
             {/* <button type='button' onClick={upload}>Upload</button> */}
           </form>
         )}

@@ -17,6 +17,13 @@
   margin-bottom: 30px;
 }
 
+.item-image-container{
+  width: 260px;
+  height: 140px;
+  border-radius: 8px 10px 0 0;
+  background-color:  #53A856;
+}
+
 .item-image-container .item-image{
   width: 260px;
   height: 140px;

@@ -11,27 +11,6 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
   );
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
-
-  const totalCostItem = oneCategory.map((item) => {
-    const totalPrice = orders.reduce(
-      (acc, order) => {
-        if (order.itemTitle === item.itemTitle) {
-          acc.totalPrice += order.quantity * order.pricePerUnit;
-        }
-        return acc;
-      },
-      { totalPrice: 0 }
-    );
-    return totalPrice.totalPrice;
-  });
-  
-  const totalCostCategory = totalCostItem.reduce((acc, totalPrice) => {
-    acc += totalPrice;
-    return acc;
-  }, 0);
-  
-  console.log(totalCostItem);
-  console.log(totalCostCategory);
   
   const handleDeleteItem = async (itemId) => {
     try {
@@ -62,7 +41,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
           oneCategory.slice(0, 8).map((item) => {
             const { totalPrice } = orders.reduce(
               (acc, order) => {
-                if (order.itemTitle === item.itemTitle) {
+                if (order.item._id === item._id) {
                   acc.totalPrice += order.quantity * order.pricePerUnit;
                 }
                 return acc;

@@ -17,7 +17,14 @@
   display: flex;
 }
 
-.item-image{
+.list-container-img{
+  width: 250px;
+  height: 150px;
+  border-radius: 10px 0 0 10px;
+  background-color: #53A856;
+}
+
+.list-container-img .item-image{
   width: 250px;
   height: 150px;
   border-radius: 10px 0 0 10px;
