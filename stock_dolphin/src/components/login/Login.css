@@ -2,6 +2,10 @@
     text-align: center;
     color: #4F5366;
   }
+
+  .login-form p{
+    margin: 0;
+  }
   
   .input-login{
     width: 250px;

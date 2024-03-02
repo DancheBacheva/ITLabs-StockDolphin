@@ -6,7 +6,7 @@ import { Line } from "react-chartjs-2";
 import moment from "moment";
 
 export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) => {
-  const { categories, orders } = useContext(DataContext);
+  const { orders } = useContext(DataContext);
 
   const filteredOrders = orders.filter((order) => {
     const orderDate = moment(order.ordered);
@@ -27,7 +27,6 @@ export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) 
                 data: filteredOrders.map((order)=> order.pricePerUnit * order.quantity),
                 cubicInterpolationMode: 'monotone'
               },
-            
             ],
           }}
         />

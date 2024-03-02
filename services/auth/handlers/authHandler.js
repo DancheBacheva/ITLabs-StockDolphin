@@ -12,7 +12,8 @@ exports.register = async (req, res) => {
     });
     // console.log(req.body);
     const token = jwt.sign(
-      { id: newUser._id, name: newUser.name, role: newUser.role },
+      // { id: newUser._id, name: newUser.name, role: newUser.role },
+      { id: newUser._id, name: newUser.name },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );

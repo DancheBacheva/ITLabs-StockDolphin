@@ -3,6 +3,10 @@ text-align: center;
 color: #4F5366;
 }
 
+.register-form p{
+  margin: 0;
+}
+
 .input-register{
   width: 250px;
   height: 40px;

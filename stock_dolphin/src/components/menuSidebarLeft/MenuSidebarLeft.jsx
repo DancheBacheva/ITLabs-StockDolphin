@@ -1,8 +1,15 @@
 import "./MenuSidebarLeft.css";
-import React from "react";
+import React, {useState} from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
 
 export const MenuSidebarLeft = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const logout = () => {
+    setLoggedIn(false);
+    localStorage.setItem("loggedIn", "false");
+    localStorage.removeItem("token");
+  };
 
   return (
     <div>
@@ -38,7 +45,7 @@ export const MenuSidebarLeft = () => {
           <NavLink className="suppliers-link" to="/suppliers">
             <h1>Suppliers</h1>
           </NavLink>
-          <NavLink className="signout" to="/">
+          <NavLink className="signout" to="/" onClick={logout}>
             <img
               className="shutdown"
               src="/images/Shutdown.png"
