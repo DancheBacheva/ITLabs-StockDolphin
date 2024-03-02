@@ -4,11 +4,15 @@ import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm"
 import "./ItemsCards.css";
 import { Link } from "react-router-dom";
 
-export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
+export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalData }) => {
   const { orders } = useContext(DataContext);
   const oneCategory = filteredItems.filter(
     (item) => item.category.title === title
   );
+  const oneCategoryOriginal = originalData.filter(
+    (item) => item.category.title === title
+  );
+
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
   
@@ -37,8 +41,9 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
   return (
     <div>
       <div className="main-card-item">
-        {oneCategory.length > 0 ? (
-          oneCategory.slice(0, 8).map((item) => {
+        {(oneCategory.length > 0 ? 
+          oneCategory : oneCategoryOriginal)
+          .slice(0, 8).map((item) => {
             const { totalPrice } = orders.reduce(
               (acc, order) => {
                 if (order.item._id === item._id) {
@@ -66,8 +71,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
                   </h3>
                 </Link>
                 <p className="content-item-text">
-                  <strong>{item.order.length} Purchase records</strong> | €
-                  {Math.round(totalPrice)}
+                  <strong>{item.order.length} Purchase records</strong> | € {Math.round(totalPrice)}
                 </p>
                 <div className="remove-item">
                   <button
@@ -98,10 +102,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems }) => {
                 )}
               </div>
             );
-          })
-        ) : (
-          <p>No items for the selected category</p>
-        )}
+          })};
       </div>
     </div>
   );

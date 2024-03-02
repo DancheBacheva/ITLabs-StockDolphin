@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./CategoriesList.css";
 import { Link } from "react-router-dom";
+import { DataContext } from "../../App";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) => {
+export const CategoriesList = ({
+  filteredCategories,
+  setFilteredCategories,
+  originalData,
+}) => {
+  const { orders } = useContext(DataContext);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+
+  const totalCostOfItemsInOneCategory = (filteredCategories) => {
+    let totalCost = 0;
+    filteredCategories.items.forEach((item) => {
+      const itemOrders = orders.filter((order) => order.item._id === item._id);
+      const itemTotalCost = itemOrders.reduce(
+        (acc, order) => acc + order.quantity * order.pricePerUnit,
+        0
+      );
+      totalCost += itemTotalCost;
+    });
+    return totalCost;
+  };
 
   const handleCategoryDelete = async (categoryId) => {
     try {
@@ -35,9 +54,10 @@ export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) =
 
   return (
     <div>
-      {filteredCategories.length > 0 ? (
-        <div className="main-list-category">
-          {filteredCategories.slice(0, 4).map((category) => (
+      <div className="main-list-category">
+        {(filteredCategories.length > 0 ? filteredCategories : originalData)
+          .slice(0, 4)
+          .map((category) => (
             <div key={category._id} className="list-container">
               <div className="images3-container-list">
                 {category.items.slice(0, 1).map((item) => (
@@ -68,14 +88,17 @@ export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) =
                   </h3>
                 </Link>
                 <p className="content-category-text-list">
-                  <strong>{category.items.length} Items</strong> | €338.00
+                  <strong>{category.items.length} Items</strong> | €{" "}
+                  {totalCostOfItemsInOneCategory(category)}
                 </p>
               </div>
               <div className="date-remove-list">
                 <hr />
                 <span className="updated-date-category-list">
                   Updated At: <br />
-                  <strong>{moment(category.date).format("MM/DD/YYYY HH:mm")}</strong>
+                  <strong>
+                    {moment(category.date).format("MM/DD/YYYY HH:mm")}
+                  </strong>
                 </span>
                 <button
                   onClick={() => {
@@ -94,19 +117,18 @@ export const CategoriesList = ({ filteredCategories, setFilteredCategories, }) =
                   <ModalDiscardConfirm
                     closeModal={setOpenModalDiscardConfirm}
                     handleCategoryDelete={handleCategoryDelete}
-                    text={
-                      `Are you sure that you want to delete ${filteredCategories.find((category) => category._id === selectedCategoryId)?.title}? All the items in the category will be permanently deleted. This action is irreversible.`
-                    }
+                    text={`Are you sure that you want to delete ${
+                      filteredCategories.find(
+                        (category) => category._id === selectedCategoryId
+                      )?.title
+                    }? All the items in the category will be permanently deleted. This action is irreversible.`}
                     saveChanges={"CONFIRM"}
                   />
                 )}
               </div>
             </div>
           ))}
-        </div>
-      ) : (
-        <h1>Loading categories...</h1>
-      )}
+      </div>
     </div>
   );
 };

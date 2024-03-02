@@ -59,7 +59,7 @@ export const RecentOrder = () => {
                   <br />
                   <span className="item-name">{order.itemTitle}</span> <br />
                   <span className="quantity-cost">
-                    <b>{order.quantity}</b> | €{calculateTotalPrice(order)}
+                    <b>{order.quantity} Unit</b> | € {calculateTotalPrice(order)}
                   </span>
                   </div>
                 </Link>

@@ -45,6 +45,7 @@ export const Category = ({ title }) => {
             name="itemTitle"
             data={filteredItems}
             setData={updateFilteredItems}
+            originalData={items}
           />
         </div>
         <div className="add-item">
@@ -80,12 +81,14 @@ export const Category = ({ title }) => {
                 title={title}
                 filteredItems={filteredItems}
                 setFilteredItems={setFilteredItems}
+                originalData={items}
               />
             ) : (
               <ItemsList
                 title={title}
                 filteredItems={filteredItems}
                 setFilteredItems={setFilteredItems}
+                originalData={items}
               />
             )}
           </div>

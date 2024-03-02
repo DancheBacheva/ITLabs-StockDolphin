@@ -5,11 +5,20 @@ import { DataContext } from "../../App";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
 
-export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
+export const ItemsList = ({
+  title,
+  filteredItems,
+  setFilteredItems,
+  originalData,
+}) => {
   const { orders } = useContext(DataContext);
   const oneCategory = filteredItems.filter(
     (item) => item.category.title === title
   );
+  const oneCategoryOriginal = originalData.filter(
+    (item) => item.category.title === title
+  );
+
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
 
@@ -38,8 +47,9 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
   return (
     <div>
       <div className="main-list-item">
-        {oneCategory.length > 0 ? (
-          oneCategory.slice(0, 4).map((item) => {
+        {(oneCategory.length > 0 ? oneCategory : oneCategoryOriginal)
+          .slice(0, 4)
+          .map((item) => {
             const { totalPrice } = orders.reduce(
               (acc, order) => {
                 if (order.itemTitle === item.itemTitle) {
@@ -52,11 +62,11 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
             return (
               <div key={item._id} className="list-container">
                 <div className="list-container-img">
-                <img
-                  className="item-image"
-                  src={`/img/items/${item.icon}`}
-                  alt={`Icon for ${item.itemTitle}`}
-                />
+                  <img
+                    className="item-image"
+                    src={`/img/items/${item.icon}`}
+                    alt={`Icon for ${item.itemTitle}`}
+                  />
                 </div>
                 <div className="middle-container-list">
                   <Link
@@ -68,7 +78,7 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
                     </h3>
                   </Link>
                   <p className="content-item-text-list">
-                    <strong>{item.order.length} Purchase records</strong> | €
+                    <strong>{item.order.length} Purchase records</strong> | €{" "}
                     {Math.round(totalPrice)}
                   </p>
                 </div>
@@ -108,10 +118,7 @@ export const ItemsList = ({ title, filteredItems, setFilteredItems }) => {
                 )}
               </div>
             );
-          })
-        ) : (
-          <p>No items for the selected category</p>
-        )}
+          })};
       </div>
     </div>
   );

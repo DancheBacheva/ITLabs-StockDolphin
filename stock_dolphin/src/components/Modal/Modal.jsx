@@ -50,7 +50,6 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
   };
 
   const handleAddCategory = async () => {
-    console.log("pushtanje add item");
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
