@@ -29,6 +29,7 @@ exports.register = async (req, res) => {
     res.status(201).json({
       status: "success",
       token,
+      // username: user.name,
     });
   } catch (err) {
     return res.status(500).send(err);

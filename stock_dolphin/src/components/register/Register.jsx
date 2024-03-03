@@ -1,6 +1,6 @@
 import "./Register.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export const Register = ({ onShowRegister }) => {
@@ -24,6 +24,10 @@ export const Register = ({ onShowRegister }) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const validate = (values) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -50,27 +54,26 @@ export const Register = ({ onShowRegister }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     const errors = validate(data);
-    console.log('Validation errors:', errors);
+    console.log("Validation errors:", errors);
     setDataErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        console.log('Registering user with data:', data);
+        console.log("Registering user with data:", data);
         let res = await fetch("http://127.0.0.1:9000/api/v1/auth/register", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
-            "Content-Type": "appication/json",
+            "Content-Type": "application/json",
           },
         });
         let jsonData = await res.json();
-        console.log('Response from server:', jsonData);
-
-        // setDataErrors(validate(data));
+        console.log("Response from server:", jsonData);
 
         if (res.ok) {
           setLoggedIn(true);
           localStorage.setItem("loggedIn", "true");
           localStorage.setItem("token", jsonData.token);
+          localStorage.setItem("username", jsonData.username);
           alert("User is created");
           navigate("/dashboard");
         } else {
@@ -78,7 +81,7 @@ export const Register = ({ onShowRegister }) => {
           // navigate("*");
         }
       } catch (err) {
-        console.log('Error registering user:', err);
+        console.log("Error registering user:", err);
       }
     }
   };
@@ -102,23 +105,14 @@ export const Register = ({ onShowRegister }) => {
     setLoggedIn(isLoggedIn);
   }, []);
 
-  const logout = () => {
-    setLoggedIn(false);
-    localStorage.setItem("loggedIn", "false");
-    localStorage.removeItem("token");
-  };
-
   return (
     <div>
-      {loggedIn ? (
-        <div>
-          {/* <ProtectedRoute /> */}
-          <button onClick={logout}>Logout</button>
-        </div>
+      {Object.keys(dataErrors).length === 0 && loggedIn ? (
+        <Navigate to="/dashboard" />
       ) : (
         <form className="register-form">
           <h1>Register</h1>
-          <label>
+          <label htmlFor="name">
             <input
               className="input-register"
               type="name"
@@ -130,7 +124,7 @@ export const Register = ({ onShowRegister }) => {
           </label>
           {dataErrors?.name && <p>{dataErrors.name}</p>}
           <br />
-          <label>
+          <label htmlFor="email">
             <input
               className="input-register"
               type="email"
@@ -142,7 +136,7 @@ export const Register = ({ onShowRegister }) => {
           </label>
           {dataErrors?.email && <p>{dataErrors.email}</p>}
           <br />
-          <label>
+          <label htmlFor="password">
             <input
               className="input-register"
               type="password"

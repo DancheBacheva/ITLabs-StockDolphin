@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export const Login = ({ onShowRegister }) => {
@@ -61,7 +61,7 @@ export const Login = ({ onShowRegister }) => {
           setLoggedIn(true);
           localStorage.setItem("loggedIn", "true");
           localStorage.setItem("token", jsonData.token);
-          // localStorage.setItem("username", jsonData.username);
+          localStorage.setItem("username", jsonData.username);
           alert(`Welcome, ${jsonData.username}!`);
           navigate("/dashboard");
         } else {
@@ -100,11 +100,8 @@ export const Login = ({ onShowRegister }) => {
   };
   return (
     <div>
-      {loggedIn ? (
-        <div>
-          {/* <ProtectedRoute /> */}
-          <button onClick={logout}>Logout</button>
-        </div>
+      {Object.keys(dataErrors).length === 0 && loggedIn ? (
+        <Navigate to="/dashboard" />
       ) : (
         <form className="login-form">
           <h1>Login</h1>
