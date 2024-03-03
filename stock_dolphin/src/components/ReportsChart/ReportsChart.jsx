@@ -14,7 +14,7 @@ export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) 
   });
   
   return (
-    <div>
+    <>
       <div className="chart-main-container">
         <Line
           data={{
@@ -31,6 +31,6 @@ export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) 
           }}
         />
       </div>
-    </div>
+    </>
   );
 };

@@ -4,15 +4,15 @@ import { TopSectonDashboard } from "../../components/TopSectionDashboard/TopSect
 import { RecentActivity } from "../../components/RecentActivity/RecentActivity";
 import { RecentOrder } from "../../components/RecentOrder/RecentOrder";
 
-export const DashboardPage = () =>{
-  return(
+export const DashboardPage = () => {
+  return (
     <div className="dashboard">
-      <TopSectonDashboard/>
+      <TopSectonDashboard />
       <div className="dashboard-main">
-      <InventorySummDashboard/>
-      <RecentActivity/>
-      <RecentOrder/>
+        <InventorySummDashboard />
+        <RecentActivity />
+        <RecentOrder />
       </div>
     </div>
-  )
-}
+  );
+};

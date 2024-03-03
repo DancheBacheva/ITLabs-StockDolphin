@@ -39,7 +39,7 @@ export const Orders = () => {
   )
 
   return (
-    <div>
+    <>
       <div className="main-container-up">
         <div className="total-container">
           <p>
@@ -105,7 +105,9 @@ export const Orders = () => {
                 </tbody>
               ))
             ) : (
-              <p>No orders for this item</p>
+              <tr>
+                <td>No orders for this item</td>
+              </tr>
             )}
           </table>
         </div>
@@ -180,6 +182,6 @@ export const Orders = () => {
           closeModal={setOpenModalMoveItem}
         />
       )}
-    </div>
+    </>
   );
 };   

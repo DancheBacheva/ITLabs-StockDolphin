@@ -45,7 +45,7 @@ export const ItemsList = ({
   };
 
   return (
-    <div>
+    <>
       <div className="main-list-item">
         {(oneCategory.length > 0 ? oneCategory : oneCategoryOriginal)
           .slice(0, 4)
@@ -120,6 +120,6 @@ export const ItemsList = ({
             );
           })};
       </div>
-    </div>
+    </>
   );
 };

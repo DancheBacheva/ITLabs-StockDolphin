@@ -11,6 +11,7 @@ import { ActivityHistoryPage } from "./pages/ActivityHistoryPage/ActivityHistory
 import { InventorySummaryPage } from "./pages/InventorySummaryPage/InventorySummaryPage";
 import { InventoryItemPage } from "./pages/InventoryItemPage/InventoryItemPage";
 import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
+import { NotFound } from "./components/NotFound/NotFound";
 
 export const DataContext = React.createContext();
 
@@ -108,6 +109,7 @@ const [data, setData] = useState({ categories: [], items: [], orders: [], suppli
       <main>
         <Routes>
           <Route path="/" element={<Default/>}/>
+          <Route path="*" element={<NotFound />} />
           <Route element={<MenuSidebarLeft/>}>
             <Route path="/dashboard" element={<DashboardPage/>}/>
             <Route path="/inventory" element={<InventoryPage/>}/>

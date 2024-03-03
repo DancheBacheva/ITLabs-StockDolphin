@@ -44,8 +44,6 @@
   height: 100%;
   max-width: 40px;
   max-height: 40px;
-  top: 62px;
-  left: 1861px;
 }
 
 .top-section-dashboard hr{
@@ -61,5 +59,19 @@
   .top-section-dashboard hr{
     width: 100%;
     height: auto;
+  }
+
+  .top-section h1{
+    height: 37px;
+    font-size: 30px;
+  }
+
+  .user-section h2{
+    font-size: 12px;
+  }
+
+  .user-section img{
+    max-width: 20px;
+    max-height: 20px;
   }
 }

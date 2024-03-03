@@ -39,7 +39,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
   };
 
   return (
-    <div>
+    <>
       <div className="main-card-item">
         {(oneCategory.length > 0 ? 
           oneCategory : oneCategoryOriginal)
@@ -101,9 +101,9 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
                   />
                 )}
               </div>
-            );
-          })};
+            )
+          })}
       </div>
-    </div>
+    </>
   );
 };

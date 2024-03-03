@@ -6,7 +6,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { DataContext } from "../../App";
 import { ItemsCards } from "../ItemsCards/ItemsCards";
 import { ItemsList } from "../ItemsList/ItemsList";
-import ModalAddItem from "../ModalAddItem/ModalAddItem";
+import { ModalAddItem } from "../ModalAddItem/ModalAddItem";
 import { useLocation } from "react-router-dom";
 
 export const Category = ({ title }) => {
@@ -37,7 +37,7 @@ export const Category = ({ title }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="search-add-main">
         <div className="search-item">
           <SearchBar
@@ -123,6 +123,6 @@ export const Category = ({ title }) => {
           />
         )}
       </div>
-    </div>
+    </>
   );
 };

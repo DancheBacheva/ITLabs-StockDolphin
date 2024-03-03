@@ -67,7 +67,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
 
         if (res.ok) {
           setFormValues(formValues);
-          setIsSubmit(false);
+          setIsSubmit(true);
           formValues(resData);
         }
       } catch (err) {

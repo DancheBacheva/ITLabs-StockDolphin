@@ -12,7 +12,6 @@ export const ModalAddItem = ({
 }) => {
   const initialData = {
     itemTitle: "",
-    // icon: "",
   };
 
   const [formValues, setFormValues] = useState(initialData);
@@ -70,21 +69,26 @@ export const ModalAddItem = ({
     }
   };
 
-  //   const upload = async () => {
+  // const upload = async () => {
+  //   try {
   //     const formData = new FormData();
   //     formData.append('file', file);
 
-  //     const res = await fetch(`http://localhost:9003/api/v1/item`,
-  //     {
+  //     const res = await fetch(`http://localhost:9003/api/v1/item`, {
   //       method: "POST",
-  //       body: JSON.stringify(formData),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then(res => {})
-  //     .catch(err => console.log(err))
-  // }
+  //       body: formData,
+  //     });
+
+  //     if (res.ok) {
+  //       console.log("File uploaded successfully");
+  //       setIsSubmit(true);
+  //     } else {
+  //       console.error("File upload failed");
+  //     }
+  //   } catch (err) {
+  //     console.error("Error uploading file:", err);
+  //   }
+  // };
 
   return (
     <div className="modal-background">
@@ -114,10 +118,9 @@ export const ModalAddItem = ({
               <label for="file-input">(Add Photo, 2MB Total)</label>
               <input
                 type="file"
-                value={formValues.icon}
                 id="file-input"
                 style={{ display: "none" }}
-                // onChange={(e) => setFile(e.target.files[0])}
+                // onChange={handleFileChange}
               />
             </div>
             <hr className="bigger-hr" />
@@ -126,12 +129,9 @@ export const ModalAddItem = ({
               saveChanges={saveChanges}
               handleAddItem={handleAddItem}
             />
-            {/* <button type='button' onClick={upload}>Upload</button> */}
           </form>
         )}
       </div>
     </div>
   );
 };
-
-export default ModalAddItem;

@@ -78,7 +78,7 @@ export const Register = ({ onShowRegister }) => {
           navigate("/dashboard");
         } else {
           alert(jsonData.status);
-          // navigate("*");
+          navigate("*");
         }
       } catch (err) {
         console.log("Error registering user:", err);

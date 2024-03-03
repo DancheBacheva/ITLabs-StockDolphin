@@ -101,13 +101,11 @@
 
 @media screen and (max-width: 767px){
   .menu-panel{
-    width: 50%;
-    height: auto;
+    width: 100px;
   }
 
   .sidebar-navigation{
-    width: 50%;
-    height: auto;
+    width: 100%;
   }
 
   .dashboard-link h1,
@@ -120,15 +118,19 @@
   .dashboard-link,
   .items-nav-link,
   .reports-link,
-  .suppliers-link,
   .signout{
     width: 50%;
     height: 50%;
     margin-bottom: 10px;
   }
 
+  .suppliers-link{
+    width: 50%;
+  }
+
   .suppliers-link h1{
-    font-size: 12px;
+    width: 50px;
+    font-size: 8px;
     text-align: left;
   }
  

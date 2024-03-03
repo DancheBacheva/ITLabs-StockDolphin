@@ -12,7 +12,7 @@ export const MenuSidebarLeft = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="menu-panel">
         <Link to="/dashboard">
           <img className="logo" src="/images/logo1.png" alt="logoItLabs" />
@@ -56,6 +56,6 @@ export const MenuSidebarLeft = () => {
         </div>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 };

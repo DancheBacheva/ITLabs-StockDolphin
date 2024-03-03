@@ -3,7 +3,7 @@ import "./FilterActivities.css";
 
 export const FilterActivities = ({ handleChange, selectedActivity }) => {
   return (
-    <div>
+    <>
       <div className="activity-sidebar-right">
         <h1>Filter Activities</h1>
         <hr id="filter-hr" />
@@ -61,6 +61,6 @@ export const FilterActivities = ({ handleChange, selectedActivity }) => {
         />
         <label htmlFor="radio">Ordered</label>
       </div>
-    </div>
+    </>
   );
 };

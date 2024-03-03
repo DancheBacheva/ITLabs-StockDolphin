@@ -38,7 +38,7 @@ export const SearchBar = ({
   };
 
   return (
-    <div>
+    <>
       <label className="search-label" htmlFor="search">
         <img className="search-img" src="/images/Search.png" alt="Search" />
         <input
@@ -51,6 +51,6 @@ export const SearchBar = ({
           onChange={handleSearch}
         />
       </label>
-    </div>
+    </>
   );
 };

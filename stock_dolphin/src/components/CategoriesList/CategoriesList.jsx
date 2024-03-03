@@ -53,7 +53,7 @@ export const CategoriesList = ({
   };
 
   return (
-    <div>
+    <>
       <div className="main-list-category">
         {(filteredCategories.length > 0 ? filteredCategories : originalData)
           .slice(0, 4)
@@ -129,6 +129,6 @@ export const CategoriesList = ({
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 };

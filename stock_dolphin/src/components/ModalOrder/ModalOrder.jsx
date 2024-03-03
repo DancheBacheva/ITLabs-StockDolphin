@@ -1,22 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../App";
 import "./ModalOrder.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
+import moment from 'moment';
 
 export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) => {
-  const { suppliers, orders } = useContext(DataContext);
+  const { suppliers } = useContext(DataContext);
   const initialData = {
     supplier: "",
     quantity: "",
-    totalPrice: "",
+    pricePerUnit: "",
     ordered: "",
   };
   const [formValues, setFormValues] = useState(initialData);
   const [selectedSupplier, setSelectedSupplier] = useState("");
-  const [ordered, setOrdered] = useState(new Date());
+  const [ordered, setOrdered] = useState(moment().format('YYYY-MM-DD'));
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+
+  useEffect(() => {
+    console.log(formValues);
+  }, [formValues]);
 
   const validate = (values) => {
     const errors = {};
@@ -27,8 +32,8 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
 
     if (!values.quantity) errors.quantity = "Quantity is required";
 
-    if (!values.totalPrice) {
-      errors.totalPrice = "Total Price is required";
+    if (!values.pricePerUnit) {
+      errors.pricePerUnit = "Total Price is required";
     }
     return errors;
   };
@@ -38,7 +43,8 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
   };
 
   const handleOrderedChange = (e) => {
-    setOrdered(e.target.value);
+    const selectedDate = e.target.value;
+    setOrdered(selectedDate);
   };
 
   const handleChange = (e) => {
@@ -53,8 +59,10 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
     });
   };
 
-  const handleAddOrder = async () => {
+  const handleAddOrder = async () => {;
+    console.log(formValues);
     const errors = validate(formValues);
+    console.log("Validation errors:", errors);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
@@ -63,8 +71,7 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
           body: JSON.stringify({
             supplier: formValues.supplier,
             quantity: formValues.quantity,
-            totalPrice: formValues.totalPrice,
-            ordered: formValues.ordered,
+            pricePerUnit: formValues.pricePerUnit,
             itemTitle: itemName
           }),
           headers: {
@@ -72,9 +79,9 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
           },
         });
         const resData = await res.json();
-
+        console.log("res", res);
         if (res.ok) {
-          setFormValues(initialData);
+          setFormValues(formValues);
           setIsSubmit(true);
         }
       } catch (err) {
@@ -126,14 +133,14 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
             <div className="form-field">
               <input
                 type="number"
-                value={formValues.totalPrice}
+                value={formValues.pricePerUnit}
                 onChange={handleChange}
-                name="totalPrice"
-                id="totalPrice"
-                placeholder="Total Price*"
+                name="pricePerUnit"
+                id="pricePerUnit"
+                placeholder="Price per unit*"
                 required
               />
-              {formErrors?.totalPrice && <p>{formErrors.totalPrice}</p>}
+              {formErrors?.pricePerUnit && <p>{formErrors.pricePerUnit}</p>}
             </div>
             <hr className="smaller-hr" />
             <div className="input-ordered">
