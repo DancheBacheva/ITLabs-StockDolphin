@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user._id, name: user.name },
+      { id: user._id, name: user.name, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -77,4 +77,13 @@ exports.login = async (req, res) => {
   } catch (err) {
     return res.status(500).send("Internal server error");
   }
+};
+
+exports.restrict = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.auth.role)) {
+      return res.status(500).send('You dont have access');
+    }
+    next();
+  };
 };

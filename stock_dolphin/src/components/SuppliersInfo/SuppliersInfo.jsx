@@ -21,7 +21,7 @@ export const SuppliersInfo = () => {
         `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
         {
           method: "PATCH",
-           body: JSON.stringify(editSupplier), 
+          body: JSON.stringify(editSupplier), 
           headers: {
              Authorization: `Bearer ${localStorage.getItem("token")}`,
            },

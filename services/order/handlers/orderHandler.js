@@ -67,7 +67,7 @@ exports.create = async (req, res) => {
     const createdActivity = await Activity.create({
       activity: "ordered",
       itemTitle,
-      categoryTitle, //ne se pojavuva imeto na kategorijata, da se proveri zosto 
+      categoryTitle,
       date: new Date(),
     });
     

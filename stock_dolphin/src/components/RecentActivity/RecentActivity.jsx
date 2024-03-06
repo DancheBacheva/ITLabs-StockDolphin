@@ -4,6 +4,7 @@ import { DataContext } from "../../App";
 
 export const RecentActivity = () => {
   const { activities } = useContext(DataContext);
+  
   const recentActivities = activities.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   }).slice(0, 4);

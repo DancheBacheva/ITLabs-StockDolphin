@@ -5,8 +5,8 @@ export const TopSectonDashboard = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    setUsername(storedUsername);
+    const getUser = localStorage.getItem("username");
+    setUsername(getUser);
   }, []);
 
   return (

@@ -7,16 +7,9 @@ import { DataContext } from "../../App";
 import { ItemsCards } from "../ItemsCards/ItemsCards";
 import { ItemsList } from "../ItemsList/ItemsList";
 import { ModalAddItem } from "../ModalAddItem/ModalAddItem";
-import { useLocation } from "react-router-dom";
+import { ModalEditCategory } from "../ModalEditCategory/ModalEditCategory";
 
 export const Category = ({ title }) => {
-  let location = useLocation();
-  console.log(location.pathname);
-  const lastPart = location.pathname.split("/").pop();
-  let formatedString = lastPart.replace(/[%0-9]/g, "/");
-  const finalFormattedString = formatedString.replace("///", " ");
-  console.log(formatedString);
-  console.log(finalFormattedString);
 
   const { items } = useContext(DataContext);
   const [filteredItems, setFilteredItems] = useState(items);
@@ -70,7 +63,7 @@ export const Category = ({ title }) => {
           closeModal={setOpenModal}
           modalTitle={"Add Item"}
           saveChanges={"ADD ITEM"}
-          categoryName={finalFormattedString}
+          categoryName={title}
         />
       )}
       <div>
@@ -116,10 +109,11 @@ export const Category = ({ title }) => {
           <h4>Edit Category</h4>
         </button>
         {openModalEdit && (
-          <Modal
+          <ModalEditCategory
             closeModal={setOpenModalEdit}
             modalTitle={"Edit Category"}
             saveChanges={"SAVE CHANGES"}
+            categoryName={title}
           />
         )}
       </div>

@@ -3,19 +3,24 @@ import { DataContext } from "../../App";
 import "./ModalOrder.css";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
-import moment from 'moment';
+import moment from "moment";
 
-export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) => {
-  const { suppliers } = useContext(DataContext);
+export const ModalOrder = ({
+  closeModal,
+  modalTitle,
+  saveChanges,
+  itemName,
+}) => {
+  const { orders, setOrders } = useContext(DataContext);
+
   const initialData = {
-    supplier: "",
+    supplierName: "",
     quantity: "",
     pricePerUnit: "",
     ordered: "",
   };
   const [formValues, setFormValues] = useState(initialData);
-  const [selectedSupplier, setSelectedSupplier] = useState("");
-  const [ordered, setOrdered] = useState(moment().format('YYYY-MM-DD'));
+  const [ordered, setOrdered] = useState(moment().format("YYYY-MM-DD"));
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
@@ -26,8 +31,8 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
   const validate = (values) => {
     const errors = {};
 
-    if (!values.supplier) {
-      errors.supplier = "Supplier selection is required";
+    if (!values.supplierName) {
+      errors.supplierName = "Supplier is required";
     }
 
     if (!values.quantity) errors.quantity = "Quantity is required";
@@ -36,10 +41,6 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
       errors.pricePerUnit = "Total Price is required";
     }
     return errors;
-  };
-
-  const handleSupplierChange = (e) => {
-    setSelectedSupplier(e.target.value);
   };
 
   const handleOrderedChange = (e) => {
@@ -59,7 +60,7 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
     });
   };
 
-  const handleAddOrder = async () => {;
+  const handleAddOrder = async () => {
     console.log(formValues);
     const errors = validate(formValues);
     console.log("Validation errors:", errors);
@@ -69,20 +70,22 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
         let res = await fetch("http://localhost:9005/api/v1/order", {
           method: "POST",
           body: JSON.stringify({
-            supplier: formValues.supplier,
+            supplierName: formValues.supplierName,
             quantity: formValues.quantity,
             pricePerUnit: formValues.pricePerUnit,
-            itemTitle: itemName
+            itemTitle: itemName,
           }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        const resData = await res.json();
-        console.log("res", res);
+
         if (res.ok) {
-          setFormValues(formValues);
+          const newOrder = await res.json();
+          setOrders([...orders, newOrder.formValues]);
           setIsSubmit(true);
+          console.log("res", res);
         }
       } catch (err) {
         console.log(err);
@@ -99,21 +102,17 @@ export const ModalOrder = ({ closeModal, modalTitle, saveChanges, itemName }) =>
         ) : (
           <form>
             <div className="form-field">
-              <select
-                className="select-supplier"
-                name="supplier"
-                id="supplier"
-                value={selectedSupplier}
-                onChange={handleSupplierChange}
-              >
-                <option>Supplier</option>
-                {suppliers.map((supplier) => (
-                  <option key={supplier._id} value={supplier.name}>
-                    {supplier.name}
-                  </option>
-                ))}
-              </select>
-              {selectedSupplier === "" ? <p>{formErrors.supplier}</p> : null}
+              <input
+                className="supplierName"
+                type="text"
+                value={formValues.supplierName}
+                onChange={handleChange}
+                name="supplierName"
+                id="supplierName"
+                placeholder="Supplier*"
+                required
+              />
+              {formErrors?.supplierName && <p>{formErrors.supplierName}</p>}
             </div>
             <hr className="smaller-hr" />
             <div className="form-field">

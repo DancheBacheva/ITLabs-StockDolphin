@@ -9,7 +9,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
     title: "",
     // itemTitle: "",
   };
-  
+
   const [formValues, setFormValues] = useState(initialData);
   const [file, setFile] = useState();
   const [isSubmit, setIsSubmit] = useState(false);
@@ -17,18 +17,18 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
 
   const handleChange = (e) => {
     // const { name, value } = e.target;
-  //   if (modalFor === "category" || modalFor === "item") {
-  //     setFormValues({
-  //       ...formValues,
-  //       [name]: value,
-  //     });
+    //   if (modalFor === "category" || modalFor === "item") {
+    //     setFormValues({
+    //       ...formValues,
+    //       [name]: value,
+    //     });
 
-  //     setFormErrors({
-  //       ...formErrors,
-  //       [name]: "",
-  //     });
-  //   }
-  // };
+    //     setFormErrors({
+    //       ...formErrors,
+    //       [name]: "",
+    //     });
+    //   }
+    // };
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -59,6 +59,7 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
           body: JSON.stringify(formValues),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const resData = await res.json();
@@ -133,7 +134,12 @@ export const Modal = ({ closeModal, modalTitle, saveChanges, modalFor }) => {
             <div className="add-photo">
               <img src="/images/AddImage.png" alt="addImage" />
               <label htmlFor="file-input">(Add Photo, 2MB Total)</label>
-              <input type="file" id="file-input" style={{ display: "none" }} onChange={(e)=>setFile(e.target.files[0])}/>
+              <input
+                type="file"
+                id="file-input"
+                style={{ display: "none" }}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
             </div>
             <hr className="bigger-hr" />
             <ModalButtons
