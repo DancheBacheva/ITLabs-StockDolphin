@@ -3,6 +3,5 @@
   height: 100%;
   max-width: 1470px;
   max-height: 1080px;
-  float: right;
-  padding-right: 50px;
+  margin-left: 75px;
 }

@@ -7,7 +7,9 @@ import { RecentOrder } from "../../components/RecentOrder/RecentOrder";
 export const DashboardPage = () => {
   return (
     <div className="dashboard">
+      <div className="dashboard-header">
       <TopSectonDashboard />
+      </div>
       <div className="dashboard-main">
         <InventorySummDashboard />
         <RecentActivity />

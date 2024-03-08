@@ -3,7 +3,7 @@ import "./Header.css";
 
 export const Header = ({ headerTitle, headerSubtitle, headerSubSubtitle }) => {
   return (
-    <>
+    <div className="header-main">
       <div className="top-section-header">
         <h1 className="header-title">{headerTitle}</h1>
         {headerSubtitle && (
@@ -20,6 +20,6 @@ export const Header = ({ headerTitle, headerSubtitle, headerSubSubtitle }) => {
         )}
       </div>
       <hr className="line-header" />
-    </>
+    </div>
   );
 };

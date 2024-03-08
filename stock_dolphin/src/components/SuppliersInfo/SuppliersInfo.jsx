@@ -70,7 +70,7 @@ export const SuppliersInfo = () => {
   };
 
   return (
-    <>
+    <div className="suppliers-main">
       <div className="search-add-main">
         <SearchBar
           placeholderText="Search Suppliers"
@@ -181,6 +181,6 @@ export const SuppliersInfo = () => {
           saveChanges={"CONFIRM"}
         />
       )}
-    </>
+    </div>
   );
 };

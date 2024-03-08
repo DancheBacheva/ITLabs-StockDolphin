@@ -6,7 +6,9 @@ import { SuppliersInfo } from "../../components/SuppliersInfo/SuppliersInfo";
 export const SuppliersPage = () => {
   return (
     <div className="supplier-main">
+      <div className="supplier-header">
       <Header headerTitle={"Suppliers"}/>
+      </div>
       <SuppliersInfo/>
     </div>
   )
