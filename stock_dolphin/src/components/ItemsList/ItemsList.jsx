@@ -27,6 +27,7 @@ export const ItemsList = ({
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
         method: "DELETE",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });

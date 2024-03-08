@@ -53,6 +53,7 @@ export const ModalAddItem = ({
           }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         let resData = await res.json();

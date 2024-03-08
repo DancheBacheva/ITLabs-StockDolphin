@@ -67,7 +67,7 @@ exports.create = async (req, res) => {
     const createdActivity = await Activity.create({
       activity: "ordered",
       itemTitle,
-      categoryTitle,
+      categoryTitle: categoryTitle,
       date: new Date(),
     });
     

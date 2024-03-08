@@ -10,8 +10,9 @@ export const ModalOrder = ({
   modalTitle,
   saveChanges,
   itemName,
+  categoryName
 }) => {
-  const { orders, setOrders } = useContext(DataContext);
+  const { orders, setOrders, activities, setActivities } = useContext(DataContext);
 
   const initialData = {
     supplierName: "",
@@ -74,6 +75,7 @@ export const ModalOrder = ({
             quantity: formValues.quantity,
             pricePerUnit: formValues.pricePerUnit,
             itemTitle: itemName,
+            categoryTitle: categoryName
           }),
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +85,7 @@ export const ModalOrder = ({
 
         if (res.ok) {
           const newOrder = await res.json();
-          setOrders([...orders, newOrder.formValues]);
+          setOrders([...orders, newOrder]);
           setIsSubmit(true);
           console.log("res", res);
         }

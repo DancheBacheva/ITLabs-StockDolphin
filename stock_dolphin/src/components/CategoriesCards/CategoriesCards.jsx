@@ -89,7 +89,7 @@ export const CategoriesCards = ({
                 </Link>
                 <p className="content-category-text">
                   <strong>{category.items.length} Items</strong> | €{" "}
-                  {totalCostOfItemsInOneCategory(category)}
+                  {Math.round(totalCostOfItemsInOneCategory(category))}
                 </p>
                 <div className="date-remove">
                   <span className="updated-category">

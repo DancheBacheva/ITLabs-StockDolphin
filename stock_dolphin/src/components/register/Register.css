@@ -1,6 +1,12 @@
+.logo-default-page{
+  max-width: 300px;
+  max-height: 150px;  
+}
+
 .register-form{
 text-align: center;
 color: #4F5366;
+padding: 30px;
 }
 
 .register-form p{

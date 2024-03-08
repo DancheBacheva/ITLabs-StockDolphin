@@ -67,6 +67,26 @@ exports.create = async (req, res) => {
   }
 };
 
+exports.update = async (req, res) => {
+  try {
+    const activity = await Activity.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: "success",
+      data: {
+        activity,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
+
 exports.delete = async (req, res) => {
   try{
     await Activity.findByIdAndDelete(req.params.id);

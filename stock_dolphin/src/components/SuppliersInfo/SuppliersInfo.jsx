@@ -23,6 +23,7 @@ export const SuppliersInfo = () => {
           method: "PATCH",
           body: JSON.stringify(editSupplier), 
           headers: {
+            "Content-Type": "application/json",
              Authorization: `Bearer ${localStorage.getItem("token")}`,
            },
          }
@@ -46,6 +47,7 @@ export const SuppliersInfo = () => {
         {
           method: "DELETE",
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }

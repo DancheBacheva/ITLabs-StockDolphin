@@ -89,7 +89,7 @@ export const CategoriesList = ({
                 </Link>
                 <p className="content-category-text-list">
                   <strong>{category.items.length} Items</strong> | €{" "}
-                  {totalCostOfItemsInOneCategory(category)}
+                  {Math.round(totalCostOfItemsInOneCategory(category))}
                 </p>
               </div>
               <div className="date-remove-list">

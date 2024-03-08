@@ -47,6 +47,7 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges, defaultV
           body: JSON.stringify(formValues),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         const resData = await res.json();

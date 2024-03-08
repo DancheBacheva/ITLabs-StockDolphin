@@ -11,9 +11,11 @@ export const Default = () => {
   }
 
   return (
+    <>
     <div className="login-register">
       {showRegister ? <Register /> : <Login onShowRegister={handleShow} />}
     </div>
+    </>
   );
 };
 

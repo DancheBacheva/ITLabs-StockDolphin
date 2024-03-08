@@ -11,7 +11,7 @@ import moment from "moment";
 
 export const Orders = () => {
   const { orders, items } = useContext(DataContext);
-  const { itemTitle } = useParams();
+  const { title, itemTitle } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [openModalInvoice, setOpenModalInvoice] = useState(false);
   const [openModalEditCategory, setOpenModalEditCategory] = useState(false);
@@ -159,6 +159,7 @@ export const Orders = () => {
           closeModal={setOpenModal}
           saveChanges={"ADD ORDER"}
           itemName={itemTitle}
+          categoryName={title}
         />
       )}
       {openModalInvoice && (
@@ -173,7 +174,7 @@ export const Orders = () => {
           closeModal={setOpenModalEditCategory}
           modalTitle={"Edit Item"}
           saveChanges={"SAVE CHANGES"}
-          itemTitle={itemTitle}
+          itemName={itemTitle}
         />
       )}
       {openModalMoveItem && (

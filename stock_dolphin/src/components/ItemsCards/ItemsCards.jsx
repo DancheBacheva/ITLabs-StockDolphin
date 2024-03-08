@@ -5,7 +5,7 @@ import "./ItemsCards.css";
 import { Link } from "react-router-dom";
 
 export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalData }) => {
-  const { orders } = useContext(DataContext);
+  const { orders, activities } = useContext(DataContext);
   const oneCategory = filteredItems.filter(
     (item) => item.category.title === title
   );
@@ -21,6 +21,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
         method: "DELETE",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });

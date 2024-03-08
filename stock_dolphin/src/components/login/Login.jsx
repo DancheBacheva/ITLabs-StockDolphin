@@ -93,17 +93,13 @@ export const Login = ({ onShowRegister }) => {
     setLoggedIn(isLoggedIn);
   }, []);
 
-  const logout = () => {
-    setLoggedIn(false);
-    localStorage.setItem("loggedIn", "false");
-    localStorage.removeItem("token");
-  };
   return (
     <div>
       {Object.keys(dataErrors).length === 0 && loggedIn ? (
         <Navigate to="/dashboard" />
       ) : (
         <form className="login-form">
+          <img className="logo-default-page" src="/images/logo1.png" alt="logoItLabs" />
           <h1>Login</h1>
           <label>
             <input

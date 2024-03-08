@@ -8,11 +8,11 @@ export const ModalEditItem = ({
   closeModal,
   modalTitle,
   saveChanges,
-  itemTitle,
+  itemName,
 }) => {
   const { items, setItems } = useContext(DataContext);
   const initialData = {
-    itemTitle: itemTitle,
+    itemTitle: itemName,
   };
 
   const [formValues, setFormValues] = useState(initialData);
@@ -31,12 +31,12 @@ export const ModalEditItem = ({
   };
 
   const handleEditItem = async (e) => {
-    const item = items.find((item) => item.itemTitle === itemTitle);
+    e.preventDefault();
+    const item = items.find((item) => item.itemTitle === itemName);
     const itemId = item._id;
     console.log("item", item);
     console.log("itemId", itemId);
     try {
-      e.preventDefault();
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
         method: "PATCH",
         body: JSON.stringify(formValues),
@@ -46,18 +46,19 @@ export const ModalEditItem = ({
         },
       });
 
+      const resData = await res.json();
+      console.log("resData", resData);
+
       if (res.ok) {
         setIsEdited(true);
         closeModal(false);
-        const updatedItems = items.map((it) => {
+        const updatedItem = items.map((it) => {
           if (it._id === item._id) {
             return { ...it, ...formValues };
           }
           return it;
         });
-        setItems(updatedItems);
-      } else {
-        e.preventDefault();
+        setItems(updatedItem);
       }
     } catch (err) {
       console.log(err);
@@ -68,27 +69,34 @@ export const ModalEditItem = ({
     <div className="modal-background">
       <div className="modal-container-edit">
         <ModalHeader modalTitle={modalTitle} closeModal={closeModal} />
-        <form>
-          <input
-            className="input-modal-name"
-            type="text"
-            name="name"
-            id="name"
-            value={formValues.itemTitle}
-            onChange={handleChange}
-            placeholder={itemTitle}
-            required
-          />
-          <hr className="smaller-hr" />
-          <hr className="bigger-hr" />
-          <div className="photo-container">
-            <img src="/images/AddImage.png" alt="addImage" />
-            <label for="file-input">(Add Photo, 2MB Total)</label>
-            <input type="file" id="file-input" style={{ display: "none" }} />
-          </div>
-          <hr className="bigger-hr" />
-          {/* <ModalButtons closeModal={closeModal} saveChanges={saveChanges} /> */}
-          <div className="buttons-model">
+        {isEdited ? (
+          <h1>Successfully edited</h1>
+        ) : (
+          <form>
+            <div className="form-field">
+              <label htmlFor="name">
+                <input
+                  className="input-modal-name"
+                  type="text"
+                  name="itemTitle"
+                  id="name"
+                  value={formValues.itemTitle}
+                  onChange={handleChange}
+                  placeholder="Name*"
+                  required
+                />
+              </label>
+            </div>
+            <hr className="smaller-hr" />
+            <hr className="bigger-hr" />
+            <div className="photo-container">
+              <img src="/images/AddImage.png" alt="addImage" />
+              <label for="file-input">(Add Photo, 2MB Total)</label>
+              <input type="file" id="file-input" style={{ display: "none" }} />
+            </div>
+            <hr className="bigger-hr" />
+            {/* <ModalButtons closeModal={closeModal} saveChanges={saveChanges} /> */}
+            <div className="buttons-model">
               <button className="btn-cancel" onClick={() => closeModal(false)}>
                 CANCEL
               </button>
@@ -100,7 +108,8 @@ export const ModalEditItem = ({
                 {saveChanges}
               </button>
             </div>
-        </form>
+          </form>
+        )}
       </div>
     </div>
   );

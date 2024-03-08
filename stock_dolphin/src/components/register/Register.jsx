@@ -111,6 +111,7 @@ export const Register = ({ onShowRegister }) => {
         <Navigate to="/dashboard" />
       ) : (
         <form className="register-form">
+          <img className="logo-default-page" src="/images/logo1.png" alt="logoItLabs" />
           <h1>Register</h1>
           <label htmlFor="name">
             <input
