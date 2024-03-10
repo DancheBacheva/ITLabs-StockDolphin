@@ -5,40 +5,16 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { Add } from "../Add/Add";
 import { ModalAddSupplier } from "../ModalAddSupplier/ModalAddSupplier";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
-// import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
+import { ModalEditSupplier } from "../ModalEditSupplier/ModalEdiSupplier";
 
 export const SuppliersInfo = () => {
   const { suppliers, setSuppliers } = useContext(DataContext);
   const [selectedSupplierId, setSelectedSupplierId] = useState(null);
   const [filteredSuppliers, setFilteredSuppliers] = useState(suppliers);
   const [openModalAddSupplier, setOpenModalAddSupplier] = useState(false);
+  const [openModalEditSupplier, setOpenModalEditSupplier] = useState(false);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
   const [editSupplier, setEditSupplier] = useState(null);
-
-  const handleEditSupplier = async (supplierId) => {
-     try {
-       const res = await fetch(
-        `http://127.0.0.1:9007/api/v1/supplier/${supplierId}`,
-        {
-          method: "PATCH",
-          body: JSON.stringify(editSupplier), 
-          headers: {
-            "Content-Type": "application/json",
-             Authorization: `Bearer ${localStorage.getItem("token")}`,
-           },
-         }
-       );
-       const resData = await res.json();
-
-      if (res.ok) {
-        setEditSupplier(supplierId);
-        setOpenModalAddSupplier(true);
-        setSuppliers(resData);
-      }
-    } catch (error) {
-      console.log("Error editing supplier", error);
-    }
-  };
 
   const handleDeleteSupplier = async (supplierId) => {
     try {
@@ -58,11 +34,11 @@ export const SuppliersInfo = () => {
           prevSuppliers.filter((supplier) => supplier._id !== supplierId)
         );
       }
+      setOpenModalDiscardConfirm(false);
+      setSelectedSupplierId(null);
     } catch (error) {
       console.log("Error deleting supplier", error);
     }
-    setOpenModalDiscardConfirm(false);
-    setSelectedSupplierId(null);
   };
 
   const updateFilteredSuppliers = (filteredData) => {
@@ -87,9 +63,9 @@ export const SuppliersInfo = () => {
           <Add addText={"ADD SUPPLIER"} />
         </button>
       </div>
-      {filteredSuppliers.length > 0 ? (
-        <div className="suppliersInfo-main-container">
-          {filteredSuppliers.map((supplier) => {
+      <div className="suppliersInfo-main-container">
+        {(filteredSuppliers.length > 0 ? filteredSuppliers : suppliers).map(
+          (supplier) => {
             return (
               <div className="supplier-card" key={supplier._id}>
                 <div className="supplier-title">
@@ -122,7 +98,9 @@ export const SuppliersInfo = () => {
                   <button
                     className="edit-supplier"
                     onClick={() => {
-                      handleEditSupplier(supplier._id);
+                      setOpenModalEditSupplier(true);
+                      setSelectedSupplierId(supplier._id);
+                      console.log(supplier._id);
                     }}
                   >
                     <img
@@ -130,9 +108,6 @@ export const SuppliersInfo = () => {
                       src="/images/icone-crayon-vert1.png"
                       alt="edit supplier"
                     />
-                    {/* <span className="actions">
-                      <BsFillPencilFill className="edit-btn" />
-                    </span> */}
                   </button>
                   <button
                     onClick={() => {
@@ -146,17 +121,14 @@ export const SuppliersInfo = () => {
                       src="/images/Delete.png"
                       alt="delete supplier"
                     />
-                    {/* <BsFillTrashFill className="delete-btn" /> */}
                   </button>
                 </div>
               </div>
             );
-          })}
-        </div>
-      ) : (
-        <h1>Loading suppliers...</h1>
-      )}
-      {openModalAddSupplier && (
+          }
+        )}
+      </div>
+      {/* {openModalAddSupplier && (
         <ModalAddSupplier
           modalTitle={editSupplier !== null ? "Edit Supplier" : "Add Supplier"}
           closeModal={() => {
@@ -171,13 +143,32 @@ export const SuppliersInfo = () => {
           }
           handleEditSupplier={handleEditSupplier}
         />
+      )} */}
+      {openModalAddSupplier && (
+        <ModalAddSupplier
+          modalTitle={"Add Supplier"}
+          closeModal={() => {
+            setOpenModalAddSupplier(false);
+          }}
+          saveChanges={"ADD SUPPLIER"}
+        />
+      )}
+      {openModalEditSupplier && (
+        <ModalEditSupplier
+          modalTitle={"Edit Supplier"}
+          closeModal={() => {
+            setOpenModalEditSupplier(false);
+          }}
+          saveChanges={"SAVE CHANGES"}
+          supplier={selectedSupplierId}
+        />
       )}
       {openModalDiscardConfirm && (
         <ModalDiscardConfirm
-          closeModal={setOpenModalDiscardConfirm}
+          closeModal={() => setOpenModalDiscardConfirm(false)}
           supplierId={selectedSupplierId}
           handleDeleteSupplier={handleDeleteSupplier}
-          text={"Do you want to delete this supplier"}
+          text={"Do you want to delete this supplier?"}
           saveChanges={"CONFIRM"}
         />
       )}

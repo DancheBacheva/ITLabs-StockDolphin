@@ -96,12 +96,12 @@ exports.create = async (req, res) => {
     });
     console.log("newItem", newItem);
 
-    const createdActivity = await Activity.create({
-      activity: "created",
-      itemTitle,
-      categoryTitle,
-      date: new Date(),
-    });
+    // const createdActivity = await Activity.create({
+    //   activity: "created",
+    //   itemTitle,
+    //   categoryTitle,
+    //   date: new Date(),
+    // });
 
     await Category.findByIdAndUpdate(category._id, {
       $push: { items: newItem._id },
@@ -111,7 +111,7 @@ exports.create = async (req, res) => {
       status: "success",
       data: {
         item: newItem,
-        activity: createdActivity,
+        // activity: createdActivity,
       },
     });
   } catch (err) {
@@ -164,7 +164,14 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   try {
-    const { itemTitle, categoryTitle } = req.body;
+    const item = await Item.findById(req.params.id);
+
+    const { itemTitle, category } = item;
+    categoryTitle = category.title;
+
+    for (const order of item.order) {
+      await Order.findByIdAndDelete(order._id);
+    }
 
     await Item.findByIdAndDelete(req.params.id);
 

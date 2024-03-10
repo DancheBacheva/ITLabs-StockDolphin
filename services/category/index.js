@@ -4,7 +4,7 @@ const cors = require("cors");
 const jwt = require("express-jwt");
 
 const category = require("./handlers/categoryHandler");
-const restrict = require("./../auth/handlers/authHandler")
+const restrict = require("./../auth/handlers/authHandler");
 
 const app = express();
 
@@ -28,7 +28,8 @@ app.use(
       return null; 
   },
   }).unless({
-    path: ["/api/v1/category"]
+    // path: ["/api/v1/category"]
+    path: []
   })
 );
 

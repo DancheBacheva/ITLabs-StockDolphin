@@ -6,7 +6,7 @@
 .register-form{
 text-align: center;
 color: #4F5366;
-padding: 30px;
+padding-top: 20px;
 }
 
 .register-form p{
@@ -30,7 +30,7 @@ padding: 30px;
   border-radius: 20px;
   background-color: #4F5366;
   color: #53A856;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border: none;
   box-shadow: 4px 4px 4px 0px #00000040;
   font-size: 20px;

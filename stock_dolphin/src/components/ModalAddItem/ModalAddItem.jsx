@@ -15,7 +15,7 @@ export const ModalAddItem = ({
   };
 
   const [formValues, setFormValues] = useState(initialData);
-  // const [file, setFile] = useState();
+  const [file, setFile] = useState();
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -27,10 +27,10 @@ export const ModalAddItem = ({
     setFormErrors({ ...formErrors, [name]: "" });
   };
 
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setFormValues({ ...formValues, icon: file });
-  // };
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
 
   const validate = (values) => {
     let errors = {};
@@ -45,12 +45,18 @@ export const ModalAddItem = ({
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
+        // const formData = new FormData();
+        // formData.append("file", file);
+        // formData.append("itemTitle", formValues.itemTitle);
+        // formData.append("categoryTitle", categoryName);
+
         let res = await fetch("http://localhost:9003/api/v1/item", {
           method: "POST",
           body: JSON.stringify({
             itemTitle: formValues.itemTitle,
             categoryTitle: categoryName,
           }),
+          // body: formData,
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -59,11 +65,12 @@ export const ModalAddItem = ({
         let resData = await res.json();
         console.log("res", res);
         if (res.ok) {
-          setFormValues(formValues);
+          // setFormValues(formValues);
           setIsSubmit(true);
-        }
-
-        navigate("/inventory");
+          navigate("/inventory");
+        } else {
+          console.error("Failed to upload file");
+        } 
       } catch (err) {
         console.log(err);
       }
@@ -121,7 +128,7 @@ export const ModalAddItem = ({
                 type="file"
                 id="file-input"
                 style={{ display: "none" }}
-                // onChange={handleFileChange}
+                onChange={handleFileChange}
               />
             </div>
             <hr className="bigger-hr" />
@@ -130,6 +137,7 @@ export const ModalAddItem = ({
               saveChanges={saveChanges}
               handleAddItem={handleAddItem}
             />
+            {/* <button type="submit" onClick={handleAddItem}>Proba</button> */}
           </form>
         )}
       </div>

@@ -9,6 +9,7 @@ export const ModalEditItem = ({
   modalTitle,
   saveChanges,
   itemName,
+  // categoryName,
 }) => {
   const { items, setItems } = useContext(DataContext);
   const initialData = {
@@ -16,6 +17,7 @@ export const ModalEditItem = ({
   };
 
   const [formValues, setFormValues] = useState(initialData);
+  // const [file, setFile] = useState(null);
   const [isEdited, setIsEdited] = useState(false);
 
   useEffect(() => {
@@ -30,6 +32,11 @@ export const ModalEditItem = ({
     });
   };
 
+  // const handleFileChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setFile(selectedFile);
+  // };
+
   const handleEditItem = async (e) => {
     e.preventDefault();
     const item = items.find((item) => item.itemTitle === itemName);
@@ -37,6 +44,13 @@ export const ModalEditItem = ({
     console.log("item", item);
     console.log("itemId", itemId);
     try {
+      // const formData = new FormData();
+      // formData.append("file", file);
+      // formData.append("itemTitle", formValues.itemTitle);
+      // formData.append("categoryTitle", categoryName);
+
+      // console.log(`formdata:`, formData);
+
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
         method: "PATCH",
         body: JSON.stringify(formValues),
@@ -91,8 +105,13 @@ export const ModalEditItem = ({
             <hr className="bigger-hr" />
             <div className="photo-container">
               <img src="/images/AddImage.png" alt="addImage" />
-              <label for="file-input">(Add Photo, 2MB Total)</label>
-              <input type="file" id="file-input" style={{ display: "none" }} />
+              <label htmlFor="file-input">(Add Photo, 2MB Total)</label>
+              <input
+                type="file"
+                id="file-input"
+                // onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
             </div>
             <hr className="bigger-hr" />
             {/* <ModalButtons closeModal={closeModal} saveChanges={saveChanges} /> */}

@@ -12,7 +12,7 @@ export const ModalOrder = ({
   itemName,
   categoryName
 }) => {
-  const { orders, setOrders, activities, setActivities } = useContext(DataContext);
+  const { orders, setOrders } = useContext(DataContext);
 
   const initialData = {
     supplierName: "",

@@ -1,18 +1,38 @@
-import React, { useState } from "react";
-import "./ModalAddSupplier.css";
+import React, { useState, useEffect, useContext } from "react";
+import { DataContext } from "../../App";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { ModalButtons } from "../ModalButtons/ModalButtons";
 
-export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
-  const initialData = {
-    name: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-  };
-  const [formValues, setFormValues] = useState(initialData);
+export const ModalEditSupplier = ({
+  closeModal,
+  modalTitle,
+  saveChanges,
+  supplier,
+}) => {
+  const { suppliers, setSuppliers } = useContext(DataContext);
+  const [formValues, setFormValues] = useState({
+    name: supplier.name,
+    address: supplier.address,
+    phoneNumber: supplier.phoneNumber,
+    email: supplier.email,
+  });
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  // const [editSupplier, setEditSupplier] = useState(null);
+
+  console.log("form values", formValues);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setFormErrors({
+      ...formErrors,
+      [name]: "",
+    });
+  };
 
   const validate = (values) => {
     const regexPhone = /^\+\d{1,3}\d{6,14}$/;
@@ -37,42 +57,36 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
     return errors;
   };
 
-  const handleAddSupplier = async () => {
+  const handleEditSupplier = async (e) => {
     const errors = validate(formValues);
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        let res = await fetch("http://127.0.0.1:9007/api/v1/supplier", {
-          method: "POST",
-          body: JSON.stringify(formValues),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        e.preventDefault();
+        const res = await fetch(
+          `http://127.0.0.1:9007/api/v1/supplier/${supplier._id}`,
+          {
+            method: "PATCH",
+            body: JSON.stringify(formValues),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const resData = await res.json();
-        
+
         if (res.ok) {
-          setFormValues(initialData);
-          setIsSubmit(true);
-          saveChanges(resData);
+          closeModal(false);
+          const updatedSuppliers = suppliers.map((sup) =>
+            sup._id === supplier._id ? { ...sup, ...formValues } : sup
+          );
+          setSuppliers(updatedSuppliers);
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log("Error editing supplier", error);
       }
     }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    setFormErrors({
-      ...formErrors,
-      [name]: "",
-    });
   };
 
   return (
@@ -138,7 +152,7 @@ export const ModalAddSupplier = ({ closeModal, modalTitle, saveChanges }) => {
             <ModalButtons
               closeModal={closeModal}
               saveChanges={saveChanges}
-              handleAddSupplier={handleAddSupplier}
+              handleEditSupplier={handleEditSupplier}
             />
           </form>
         )}
