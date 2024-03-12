@@ -18,10 +18,17 @@ margin-left: 330px;
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
   border: none;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.add-category-btn:hover{
+.add-category-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-category-btn:hover:not(:disabled) {
   transform: scale(1.1);
 }
 

@@ -19,7 +19,13 @@
   transition: transform 0.3s ease;
 }
 
-.add-item-btn:hover{
+.add-item-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-item-btn:hover:not(:disabled){
   transform: scale(1.04);
 }
 
@@ -70,7 +76,13 @@
   transition: transform 0.3s ease;
 }
 
-.edit-category-btn:hover{
+.edit-category-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.edit-category-btn:hover:not(:disabled) {
   transform: scale(1.1);
 }
 

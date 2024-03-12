@@ -28,18 +28,18 @@ app.use(
       return null; 
   },
   }).unless({
-    path: ["/api/v1/category"]
+    path: []
   })
 );
 
 app.get("/api/v1/category", category.viewAll);
 app.get("/api/v1/category/:id", category.viewOne);
-app.post("/api/v1/category", category.create);
+// app.post("/api/v1/category", category.create);
+app.post("/api/v1/category", auth.restrict('admin'), category.create);
 app.patch("/api/v1/category/:id", category.update);
-app.delete("/api/v1/category/:id", category.delete);
-// app.post("/api/v1/category", auth.restrict('admin'), category.create);
 // app.patch('/api/v1/category:id', auth.restrict('admin'), category.update);
-// app.delete("/api/v1/category/:id", auth.restrict('admin'), category.delete);
+// app.delete("/api/v1/category/:id", category.delete);
+app.delete("/api/v1/category/:id", auth.restrict('admin'), category.delete);
 
 app.listen(process.env.PORTCATEGORY, (err)=>{
   if(err){

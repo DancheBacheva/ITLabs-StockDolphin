@@ -4,8 +4,14 @@ import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm"
 import "./ItemsCards.css";
 import { Link } from "react-router-dom";
 
-export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalData }) => {
-  const { orders, activities } = useContext(DataContext);
+export const ItemsCards = ({
+  title,
+  filteredItems,
+  setFilteredItems,
+  originalData,
+  isButtonDisabled,
+}) => {
+  const { orders } = useContext(DataContext);
   const oneCategory = filteredItems.filter(
     (item) => item.category.title === title
   );
@@ -15,7 +21,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
 
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
-  
+
   const handleDeleteItem = async (itemId) => {
     try {
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
@@ -42,9 +48,9 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
   return (
     <>
       <div className="main-card-item">
-        {(oneCategory.length > 0 ? 
-          oneCategory : oneCategoryOriginal)
-          .slice(0, 8).map((item) => {
+        {(oneCategory.length > 0 ? oneCategory : oneCategoryOriginal)
+          .slice(0, 8)
+          .map((item) => {
             const { totalPrice } = orders.reduce(
               (acc, order) => {
                 if (order.item._id === item._id) {
@@ -72,15 +78,21 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
                   </h3>
                 </Link>
                 <p className="content-item-text">
-                  <strong>{item.order.length} Purchase records</strong> | € {Math.round(totalPrice)}
+                  <strong>{item.order.length} Purchase records</strong> | €{" "}
+                  {Math.round(totalPrice)}
                 </p>
                 <div className="remove-item">
                   <button
+                    disabled={isButtonDisabled}
                     onClick={() => {
                       setOpenModalDiscardConfirm(true);
                       setSelectedItemId(item._id);
                     }}
-                    className="delete-item"
+                    className={
+                      isButtonDisabled
+                        ? "delete-item disabled-button"
+                        : "delete-item"
+                    }
                   >
                     <img
                       className="delete-img"
@@ -102,7 +114,7 @@ export const ItemsCards = ({ title, filteredItems, setFilteredItems, originalDat
                   />
                 )}
               </div>
-            )
+            );
           })}
       </div>
     </>

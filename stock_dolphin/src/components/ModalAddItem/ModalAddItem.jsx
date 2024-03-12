@@ -35,7 +35,6 @@ export const ModalAddItem = ({
   const validate = (values) => {
     let errors = {};
     if (!values.itemTitle) errors.itemTitle = "Name is required";
-    // da se napravi validate za format na slika
     return errors;
   };
 
@@ -68,7 +67,7 @@ export const ModalAddItem = ({
           navigate("/inventory");
         } else {
           console.error("Failed to upload file");
-        } 
+        }
       } catch (err) {
         console.log(err);
       }

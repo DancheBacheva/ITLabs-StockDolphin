@@ -5,14 +5,31 @@ import { Header } from "../../components/Header/Header";
 import { Modal } from "../../components/Modal/Modal";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import "./InventoryPage.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../App";
+import { jwtDecode } from "jwt-decode";
 
 export const InventoryPage = () => {
   const { categories, items, orders } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(false);
   const [filteredCategories, setFilteredCategories] = useState(categories);
   const [showCards, setShowCards] = useState(true);
+  const [decodedToken, setDecodedToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch (error) {
+        console.error("Failed to decode token", error);
+      }
+    }
+  }, []);
+  console.log(decodedToken);
+
+  const isButtonDisabled = decodedToken?.role !== "admin";
 
   const totalCost = Math.round(
     orders.reduce((acc, order) => {
@@ -48,14 +65,19 @@ export const InventoryPage = () => {
               isInventory={true}
             />
           </div>
-            <button
-              className="add-category-btn"
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            >
-              <Add addText={"ADD CATEGORY"} />
-            </button>
+          <button
+            disabled={isButtonDisabled}
+            className={
+              isButtonDisabled
+                ? "add-category-btn disabled-button"
+                : "add-category-btn"
+            }
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
+            <Add addText={"ADD CATEGORY"} />
+          </button>
         </div>
         {openModal && (
           <Modal
@@ -92,9 +114,19 @@ export const InventoryPage = () => {
           </div>
         </div>
         {showCards ? (
-          <CategoriesCards filteredCategories={filteredCategories} originalData={categories} setFilteredCategories={setFilteredCategories} />
+          <CategoriesCards
+            filteredCategories={filteredCategories}
+            originalData={categories}
+            setFilteredCategories={setFilteredCategories}
+            isButtonDisabled={isButtonDisabled}
+          />
         ) : (
-          <CategoriesList filteredCategories={filteredCategories} originalData={categories} setFilteredCategories={setFilteredCategories} />
+          <CategoriesList
+            filteredCategories={filteredCategories}
+            originalData={categories}
+            setFilteredCategories={setFilteredCategories}
+            isButtonDisabled={isButtonDisabled}
+          />
         )}
       </div>
     </div>

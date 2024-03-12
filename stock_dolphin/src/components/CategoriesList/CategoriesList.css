@@ -131,6 +131,11 @@
   cursor: pointer;
 }
 
+.delete-category-list:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .main-list-category hr{
   height: 150px;
   border: 1px solid #000000;

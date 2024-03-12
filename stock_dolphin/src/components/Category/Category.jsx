@@ -1,21 +1,35 @@
 import { Add } from "../Add/Add";
 import "./Category.css";
-import React, { useState, useContext } from "react";
-import { Modal } from "../Modal/Modal";
+import React, { useState, useContext, useEffect } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { DataContext } from "../../App";
 import { ItemsCards } from "../ItemsCards/ItemsCards";
 import { ItemsList } from "../ItemsList/ItemsList";
 import { ModalAddItem } from "../ModalAddItem/ModalAddItem";
 import { ModalEditCategory } from "../ModalEditCategory/ModalEditCategory";
+import { jwtDecode } from "jwt-decode";
 
 export const Category = ({ title }) => {
-
   const { items } = useContext(DataContext);
   const [filteredItems, setFilteredItems] = useState(items);
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [showCards, setShowCards] = useState(true);
+  const [decodedToken, setDecodedToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch (error) {
+        console.error("Failed to decode token", error);
+      }
+    }
+  }, []);
+
+  const isButtonDisabled = decodedToken?.role !== "admin";
 
   const updateFilteredItems = (filteredData) => {
     setFilteredItems(filteredData);
@@ -43,7 +57,10 @@ export const Category = ({ title }) => {
         </div>
         <div className="add-item">
           <button
-            className="add-item-btn"
+            disabled={isButtonDisabled}
+            className={
+              isButtonDisabled ? "add-item-btn disabled-button" : "add-item-btn"
+            }
             onClick={() => {
               setOpenModal(true);
             }}
@@ -53,12 +70,6 @@ export const Category = ({ title }) => {
         </div>
       </div>
       {openModal && (
-        // <Modal
-        //   closeModal={setOpenModal}
-        //   modalTitle={"Add Item"}
-        //   saveChanges={"ADD ITEM"}
-        //   modalFor={"item"}
-        // />
         <ModalAddItem
           closeModal={setOpenModal}
           modalTitle={"Add Item"}
@@ -75,6 +86,7 @@ export const Category = ({ title }) => {
                 filteredItems={filteredItems}
                 setFilteredItems={setFilteredItems}
                 originalData={items}
+                isButtonDisabled={isButtonDisabled}
               />
             ) : (
               <ItemsList
@@ -82,6 +94,7 @@ export const Category = ({ title }) => {
                 filteredItems={filteredItems}
                 setFilteredItems={setFilteredItems}
                 originalData={items}
+                isButtonDisabled={isButtonDisabled}
               />
             )}
           </div>
@@ -98,7 +111,12 @@ export const Category = ({ title }) => {
           </div>
         </div>
         <button
-          className="edit-category-btn"
+          disabled={isButtonDisabled}
+          className={
+            isButtonDisabled
+              ? "edit-category-btn disabled-button"
+              : "edit-category-btn"
+          }
           onClick={() => {
             setOpenModalEdit(true);
           }}

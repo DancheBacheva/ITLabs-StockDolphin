@@ -97,6 +97,11 @@
   cursor: pointer;
 }
 
+.delete-item-list:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .main-list-item hr{
   height: 150px;
   border: 1px solid #000000;

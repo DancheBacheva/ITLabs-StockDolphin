@@ -32,7 +32,20 @@
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
   border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
+
+.add-order-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-order-btn:hover:not(:disabled){
+  transform: scale(1.1);
+}
+
 
 .inside-btn, .add-order-btn p{
   padding-left: 10px;
@@ -71,6 +84,7 @@
   letter-spacing: 0.05em;
   text-align: center;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .hr-orders{
@@ -177,6 +191,11 @@ td{
   cursor: pointer;
 }
 
+.epipse21:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .editgreen{
   width: 30px;
   height: 30px;
@@ -213,7 +232,13 @@ td{
   border-radius: 10px;
   background: #53A856;
   border: none;
+  cursor: pointer;
   box-shadow: 3px 3px 4px 0px #00000040;
+}
+
+.add-folder:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .save-item{
@@ -223,13 +248,18 @@ td{
   background: #53A856;
   box-shadow: 3px 3px 4px 0px #00000040;
   color: #FFFFFF;
-  font-family: Poppins;
   font-size: 20px;
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 0.05em;
   text-align: center;
   border: none;
+  cursor: pointer;
+}
+
+.save-item:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 @media only screen and (max-width: 768px) {

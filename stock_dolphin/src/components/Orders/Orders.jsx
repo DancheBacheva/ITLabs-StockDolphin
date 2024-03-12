@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 import "./Orders.css";
 import { useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { ModalEditItem } from "../ModalEditItem/ModalEditItem";
 import { ModalMoveItem } from "../ModalMoveItem/ModalMoveItem";
 import { Add } from "../Add/Add";
 import moment from "moment";
+import { jwtDecode } from "jwt-decode";
 
 export const Orders = () => {
   const { orders, items } = useContext(DataContext);
@@ -16,6 +17,21 @@ export const Orders = () => {
   const [openModalInvoice, setOpenModalInvoice] = useState(false);
   const [openModalEditCategory, setOpenModalEditCategory] = useState(false);
   const [openModalMoveItem, setOpenModalMoveItem] = useState(false);
+  const [decodedToken, setDecodedToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch (error) {
+        console.error("Failed to decode token", error);
+      }
+    }
+  }, []);
+
+  const isButtonDisabled = decodedToken?.role !== "admin";
 
   const oneItem = orders.filter((order) => order.itemTitle === itemTitle);
   const itemImg = items.find((item) => item.itemTitle === itemTitle)?.icon;
@@ -24,19 +40,12 @@ export const Orders = () => {
     return order.quantity * order.pricePerUnit;
   };
 
-  // const totalCost = Math.round(
-  //   orders.reduce((acc, order) => {
-  //     const orderCost = order.quantity * order.pricePerUnit;
-  //     return acc + orderCost;
-  //   }, 0)
-  // );
-
   const totalCostOneItem = Math.round(
-    oneItem.reduce((acc, order)=> {
-    const oneOrderCost = order.quantity * order.pricePerUnit;
-    return acc + oneOrderCost
-  }, 0)
-  )
+    oneItem.reduce((acc, order) => {
+      const oneOrderCost = order.quantity * order.pricePerUnit;
+      return acc + oneOrderCost;
+    }, 0)
+  );
 
   return (
     <>
@@ -53,7 +62,10 @@ export const Orders = () => {
           </p>
         </div>
         <button
-          className="add-order-btn"
+          disabled={isButtonDisabled}
+          className={
+            isButtonDisabled ? "add-order-btn disabled-button" : "add-order-btn"
+          }
           onClick={() => {
             setOpenModal(true);
           }}
@@ -119,10 +131,13 @@ export const Orders = () => {
               alt={`Icon for ${itemTitle}`}
             />
             <button
+              disabled={isButtonDisabled}
               onClick={() => {
                 setOpenModalEditCategory(true);
               }}
-              className="epipse21"
+              className={
+                isButtonDisabled ? "epipse21 disabled-button" : "epipse21"
+              }
             >
               <img
                 className="editgreen"
@@ -138,10 +153,13 @@ export const Orders = () => {
           </div>
           <div className="folder-save-container">
             <button
+              disabled={isButtonDisabled}
               onClick={() => {
                 setOpenModalMoveItem(true);
               }}
-              className="add-folder"
+              className={
+                isButtonDisabled ? "add-folder disabled-button" : "add-folder"
+              }
             >
               <img
                 className="add-folder-img"
@@ -149,7 +167,14 @@ export const Orders = () => {
                 alt=""
               />
             </button>
-            <button className="save-item">SAVE</button>
+            <button
+              disabled={isButtonDisabled}
+              className={
+                isButtonDisabled ? "save-item disabled-button" : "save-item"
+              }
+            >
+              SAVE
+            </button>
           </div>
         </div>
       </div>
@@ -185,4 +210,4 @@ export const Orders = () => {
       )}
     </>
   );
-};   
+};

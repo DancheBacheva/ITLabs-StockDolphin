@@ -10,6 +10,7 @@ export const ItemsList = ({
   filteredItems,
   setFilteredItems,
   originalData,
+  isButtonDisabled
 }) => {
   const { orders } = useContext(DataContext);
   const oneCategory = filteredItems.filter(
@@ -92,11 +93,12 @@ export const ItemsList = ({
                     </strong>
                   </span>
                   <button
+                    disabled={isButtonDisabled}
                     onClick={() => {
                       setOpenModalDiscardConfirm(true);
                       setSelectedItemId(item._id);
                     }}
-                    className="delete-item-list"
+                    className={isButtonDisabled ?"delete-item-list disabled-button" : "delete-item-list"}
                   >
                     <img
                       className="delete-img"

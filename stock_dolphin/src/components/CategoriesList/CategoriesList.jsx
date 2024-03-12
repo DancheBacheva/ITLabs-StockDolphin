@@ -9,6 +9,7 @@ export const CategoriesList = ({
   filteredCategories,
   setFilteredCategories,
   originalData,
+  isButtonDisabled,
 }) => {
   const { orders } = useContext(DataContext);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -101,11 +102,16 @@ export const CategoriesList = ({
                   </strong>
                 </span>
                 <button
+                  disabled={isButtonDisabled}
                   onClick={() => {
                     setOpenModalDiscardConfirm(true);
                     setSelectedCategoryId(category._id);
                   }}
-                  className="delete-category-list"
+                  className={
+                    isButtonDisabled
+                      ? "delete-category-list disabled-button"
+                      : "delete-category-list"
+                  }
                 >
                   <img
                     className="delete-img-list"
