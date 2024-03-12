@@ -9,7 +9,7 @@ export const ModalEditItem = ({
   modalTitle,
   saveChanges,
   itemName,
-  // categoryName,
+  categoryName,
 }) => {
   const { items, setItems } = useContext(DataContext);
   const initialData = {
@@ -17,7 +17,7 @@ export const ModalEditItem = ({
   };
 
   const [formValues, setFormValues] = useState(initialData);
-  // const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
   const [isEdited, setIsEdited] = useState(false);
 
   useEffect(() => {
@@ -32,10 +32,10 @@ export const ModalEditItem = ({
     });
   };
 
-  // const handleFileChange = (e) => {
-  //   const selectedFile = e.target.files[0];
-  //   setFile(selectedFile);
-  // };
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
 
   const handleEditItem = async (e) => {
     e.preventDefault();
@@ -44,18 +44,19 @@ export const ModalEditItem = ({
     console.log("item", item);
     console.log("itemId", itemId);
     try {
-      // const formData = new FormData();
-      // formData.append("file", file);
-      // formData.append("itemTitle", formValues.itemTitle);
-      // formData.append("categoryTitle", categoryName);
+      const formData = new FormData();
+      if(file){
+        formData.append("icon", file);
+      }
+      formData.append("itemTitle", formValues.itemTitle);
+      formData.append("categoryTitle", categoryName);
 
-      // console.log(`formdata:`, formData);
+      console.log(`formdata:`, formData);
 
       const res = await fetch(`http://localhost:9003/api/v1/item/${itemId}`, {
         method: "PATCH",
-        body: JSON.stringify(formValues),
+        body: formData,
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
@@ -109,7 +110,7 @@ export const ModalEditItem = ({
               <input
                 type="file"
                 id="file-input"
-                // onChange={handleFileChange}
+                onChange={handleFileChange}
                 style={{ display: "none" }}
               />
             </div>

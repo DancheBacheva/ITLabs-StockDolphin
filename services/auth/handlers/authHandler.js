@@ -10,10 +10,10 @@ exports.register = async (req, res) => {
       password: req.body.password,
       // role: req.body.role
     });
-    // console.log(req.body);
+
     const token = jwt.sign(
-      // { id: newUser._id, name: newUser.name, role: newUser.role },
-      { id: newUser._id, name: newUser.name },
+      { id: newUser._id, name: newUser.name, role: newUser.role },
+      // { id: newUser._id, name: newUser.name },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -73,6 +73,7 @@ exports.login = async (req, res) => {
       status: "success",
       token,
       username: user.name,
+      role: user.role
     });
   } catch (err) {
     return res.status(500).send("Internal server error");

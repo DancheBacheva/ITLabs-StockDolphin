@@ -1,9 +1,10 @@
 import "./CategoriesCards.css";
 import { Link } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 import { ModalDiscardConfirm } from "../ModalDiscardConfirm/ModalDiscardConfirm";
 import moment from "moment";
+import { jwtDecode } from "jwt-decode";
 
 export const CategoriesCards = ({
   filteredCategories,
@@ -13,6 +14,22 @@ export const CategoriesCards = ({
   const { orders } = useContext(DataContext);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [openModalDiscardConfirm, setOpenModalDiscardConfirm] = useState(false);
+  const [decodedToken, setDecodedToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch (error) {
+        console.error("Failed to decode token", error);
+      }
+    }
+  }, []);
+  console.log(decodedToken);
+
+  const isButtonDisabled = decodedToken?.role !== "admin";
 
   const totalCostOfItemsInOneCategory = (filteredCategories) => {
     let totalCost = 0;
@@ -99,11 +116,12 @@ export const CategoriesCards = ({
                     </strong>
                   </span>
                   <button
+                    disabled={isButtonDisabled}
                     onClick={() => {
                       setOpenModalDiscardConfirm(true);
                       setSelectedCategoryId(category._id);
                     }}
-                    className="delete-category"
+                    className={isButtonDisabled ? "delete-category disabled-button" : "delete-category"}
                   >
                     <img
                       className="delete-img"

@@ -4,6 +4,7 @@ const cors = require("cors");
 const jwt = require("express-jwt");
 
 const item = require("./handlers/itemHandler");
+const auth = require("./../auth/handlers/authHandler");
 
 const app = express();
 
@@ -36,6 +37,9 @@ app.get("/api/v1/item/:id", item.viewOne);
 app.post("/api/v1/item", item.uploadPhoto, item.create);
 app.patch("/api/v1/item/:id", item.uploadPhoto, item.update);
 app.delete("/api/v1/item/:id", item.delete);
+// app.post("/api/v1/item", auth.restrict('admin'), item.uploadPhoto, item.create);
+// app.patch("/api/v1/item/:id", auth.restrict('admin'), item.uploadPhoto, item.update);
+// app.delete("/api/v1/item/:id", auth.restrict('admin'), item.delete);
 
 app.listen(process.env.PORTITEM, (err)=>{
   if(err){

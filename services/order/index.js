@@ -4,6 +4,7 @@ const cors = require("cors");
 const jwt = require("express-jwt");
 
 const order = require("./handlers/orderHandler");
+const auth = require("./../auth/handlers/authHandler");
 
 const app = express();
 

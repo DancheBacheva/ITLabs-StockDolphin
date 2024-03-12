@@ -31,7 +31,6 @@ const upload = multer({
 });
 
 exports.uploadPhoto = upload.single("icon");
-// exports.uploadPhotos = upload.array("icons", 3);
 
 exports.viewAll = async (req, res) => {
   try {
@@ -59,7 +58,9 @@ exports.viewAll = async (req, res) => {
 
 exports.viewOne = async (req, res) => {
   try {
-    const item = await Item.findById(req.params.id).populate("category").populate("order");
+    const item = await Item.findById(req.params.id)
+      .populate("category")
+      .populate("order");
     const orders = await Order.findOne({ itemTitle: item.itemTitle });
     res.status(200).json({
       status: "success",
@@ -80,28 +81,26 @@ exports.create = async (req, res) => {
   try {
     console.log("creating items", req.body);
     const { itemTitle, icon, categoryTitle } = req.body;
-    
-    if (req.file) {
-      const filename = req.file.filename;
-      req.body.icon = filename;
-    }
 
     const category = await Category.findOne({ title: categoryTitle });
-    console.log("finding category", category);
+
+    const iconItem = req.file ? req.file.filename : "defaultpp.png";
 
     const newItem = await Item.create({
       itemTitle,
-      icon,
+      icon: iconItem,
       category: category._id,
     });
+
+    console.log(req.body);
     console.log("newItem", newItem);
 
-    // const createdActivity = await Activity.create({
-    //   activity: "created",
-    //   itemTitle,
-    //   categoryTitle,
-    //   date: new Date(),
-    // });
+    const createdActivity = await Activity.create({
+      activity: "created",
+      itemTitle,
+      categoryTitle,
+      date: new Date(),
+    });
 
     await Category.findByIdAndUpdate(category._id, {
       $push: { items: newItem._id },
@@ -111,7 +110,7 @@ exports.create = async (req, res) => {
       status: "success",
       data: {
         item: newItem,
-        // activity: createdActivity,
+        activity: createdActivity,
       },
     });
   } catch (err) {
@@ -125,15 +124,11 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   try {
     const { itemTitle, categoryTitle } = req.body;
+    console.log("file", req.file);
     if (req.file) {
       const filename = req.file.filename;
       req.body.icon = filename;
     }
-
-    // if (req.files && req.files.icons) {
-    //   const filenames = req.files.icons.map((file) => file.filename);
-    //   req.body.icons = filenames;
-    // }
 
     const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
       new: true,

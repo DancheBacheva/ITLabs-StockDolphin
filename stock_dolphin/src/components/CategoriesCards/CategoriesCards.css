@@ -115,6 +115,11 @@
   cursor: pointer;
 }
 
+.delete-category:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 767px){
   .card-category-text{
     font-size: 16px;

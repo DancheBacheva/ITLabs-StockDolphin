@@ -14,7 +14,7 @@ export const TopSectonDashboard = () => {
       <div className="top-section">
         <h1>Dashboard</h1>
         <div className="user-section">
-          <h2>Welcome back {username}!</h2>
+          <h2>Welcome back, {username}!</h2>
           <img src="/images/User.png" alt="user" />
         </div>
       </div>

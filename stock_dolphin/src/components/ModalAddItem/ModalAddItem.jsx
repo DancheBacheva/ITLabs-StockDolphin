@@ -45,27 +45,25 @@ export const ModalAddItem = ({
     setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        // const formData = new FormData();
-        // formData.append("file", file);
-        // formData.append("itemTitle", formValues.itemTitle);
-        // formData.append("categoryTitle", categoryName);
+        const formData = new FormData();
+        formData.append("icon", file);
+        formData.append("itemTitle", formValues.itemTitle);
+        formData.append("categoryTitle", categoryName);
 
         let res = await fetch("http://localhost:9003/api/v1/item", {
           method: "POST",
-          body: JSON.stringify({
-            itemTitle: formValues.itemTitle,
-            categoryTitle: categoryName,
-          }),
-          // body: formData,
+          // body: JSON.stringify({
+          //   itemTitle: formValues.itemTitle,
+          //   categoryTitle: categoryName,
+          // }),
+          body: formData,
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         let resData = await res.json();
         console.log("res", res);
         if (res.ok) {
-          // setFormValues(formValues);
           setIsSubmit(true);
           navigate("/inventory");
         } else {
@@ -76,27 +74,6 @@ export const ModalAddItem = ({
       }
     }
   };
-
-  // const upload = async () => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append('file', file);
-
-  //     const res = await fetch(`http://localhost:9003/api/v1/item`, {
-  //       method: "POST",
-  //       body: formData,
-  //     });
-
-  //     if (res.ok) {
-  //       console.log("File uploaded successfully");
-  //       setIsSubmit(true);
-  //     } else {
-  //       console.error("File upload failed");
-  //     }
-  //   } catch (err) {
-  //     console.error("Error uploading file:", err);
-  //   }
-  // };
 
   return (
     <div className="modal-background">
@@ -137,7 +114,6 @@ export const ModalAddItem = ({
               saveChanges={saveChanges}
               handleAddItem={handleAddItem}
             />
-            {/* <button type="submit" onClick={handleAddItem}>Proba</button> */}
           </form>
         )}
       </div>
