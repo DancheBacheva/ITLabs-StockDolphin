@@ -1,0 +1,1 @@
+StockDolphin is an innovative Inventory System designed to revolutionise the way ITLabs offices manage and stock their supplies. With its advanced features StockDolphin aims to save costs by efficiently optimising the inventory of expandable items and automating the purchase record keeping process.
