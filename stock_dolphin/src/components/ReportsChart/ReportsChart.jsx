@@ -8,11 +8,17 @@ import moment from "moment";
 export const ReportsChart = ({dateFrom, dateTo, selectedCategory, showResults}) => {
   const { orders } = useContext(DataContext);
 
-  const filteredOrders = orders.filter((order) => {
-    const orderDate = moment(order.ordered);
-    return orderDate.isBetween(dateFrom, dateTo, null, '[]');
-  });
-  
+const filteredOrders = orders.filter((order) => {
+  if (!dateFrom && !dateTo && !selectedCategory) {
+    return true;
+  }
+  const orderDate = moment(order.ordered);
+  return (
+    (!dateFrom || orderDate.isSameOrAfter(dateFrom)) &&
+    (!dateTo || orderDate.isSameOrBefore(dateTo)) &&
+    (!selectedCategory || order.categoryTitle === selectedCategory)
+  );
+});
   return (
     <>
       <div className="chart-main-container">

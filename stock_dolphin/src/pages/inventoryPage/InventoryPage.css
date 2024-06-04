@@ -15,7 +15,7 @@ margin-left: 330px;
   width: 230px;
   height: 60px;
   border-radius: 10px;
-  background: #53A856;
+  background: var(--foreground-color);
   box-shadow: 3px 3px 4px 0px #00000040;
   border: none;
   cursor: pointer;
@@ -60,7 +60,7 @@ margin-left: 330px;
   line-height: 33px;
   letter-spacing: 0em;
   text-align: left;
-  color: #3E4153;
+  color: var(--primary-text-color);
 }
 
 .item-show{
@@ -73,7 +73,7 @@ margin-left: 330px;
 .item-show button{
   width: 100%;
   border: none;
-  background-color: #EAEAEA;
+  background-color: var(--background-color);
   transition: transform 0.3s ease;
 }
 

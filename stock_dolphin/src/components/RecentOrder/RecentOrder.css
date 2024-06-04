@@ -12,7 +12,7 @@
   line-height: 33px;
   letter-spacing: 0em;
   text-align: left;
-  color: #000000;
+  color: var(--black-white-text);
 }
 
 .navigation-recent-items{
@@ -35,9 +35,9 @@
   max-width: 150px;
   max-height: 168px;
   border-radius: 10px;
-  box-shadow: 3px 3px 4px 0px #00000040;
+  box-shadow: 3px 3px 4px 0px var(--shadow-color);
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: var(--background-two);
   margin: 10px;
   transition: transform 0.3s ease;
 }
@@ -58,7 +58,7 @@
   line-height: 24px;
   letter-spacing: 0.03em;
   text-align: left;  
-  color: #000000;
+  color: var(--black-white-text);
 }
 
 .quantity-cost{
@@ -67,7 +67,7 @@
   line-height: 18px;
   letter-spacing: 0.03em;
   text-align: left;
-  color: #000000;
+  color: var(--black-white-text);
 }
 
 .expand-arrow{

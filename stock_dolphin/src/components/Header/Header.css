@@ -15,7 +15,7 @@
   line-height: 57px;
   letter-spacing: 0em;
   text-align: left;
-  color: #3E4153;
+  color: var(--primary-text-color);
 }
 
 .line-header{

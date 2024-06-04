@@ -4,7 +4,7 @@
   max-width: 350px;
   max-height: 540px;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: var(--background-two);
   padding-bottom: 40px;
 }
 
@@ -14,7 +14,7 @@
   line-height: 45px;
   letter-spacing: 0em;
   text-align: left;
-  color: #3E4153;
+  color: var(--primary-text-color);
   padding-top: 30px;
   margin-left: 20px;
   margin-bottom: 0;
@@ -43,7 +43,7 @@
   line-height: 27px;
   letter-spacing: 0.03em;
   text-align: left;
-  color: #000000;
+  color: var( --black-white-text);
   margin-left: 10px;
 }
 

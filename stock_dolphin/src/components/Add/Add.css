@@ -28,7 +28,8 @@
   line-height: 27px;
   letter-spacing: 0.03em;
   text-align: left;
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
+  color: var(--secondary-text-color);
 }
 
 @media only screen and (max-width: 768px) {

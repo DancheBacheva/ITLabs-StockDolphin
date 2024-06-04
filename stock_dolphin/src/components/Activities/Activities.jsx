@@ -1,5 +1,5 @@
 import "./Activities.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 import { FilterActivities } from "../FilterActivities/FilterActivities";
 import moment from "moment";
@@ -7,6 +7,12 @@ import moment from "moment";
 export const Activities = () => {
   const { activities } = useContext(DataContext);
   const [selectedActivity, setSelectedActivity] = useState("all");
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const getUser = localStorage.getItem("username");
+    setUsername(getUser);
+  }, []);
 
   const sortedActivities = activities.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
@@ -31,10 +37,10 @@ export const Activities = () => {
           />
         </div>
         <div className="recent-activity-container">
-          {filteredActivities.slice(0, 12).map((activity) => (
+          {filteredActivities.slice(0, 11).map((activity) => (
             <div key={activity._id} className="activity-box1">
               <p className="activity-box-text">
-                Admin has {activity.activity} item <b>{activity.itemTitle}</b> in <b>{activity.categoryTitle}({activity.categoryTitle})</b>
+                {username} has {activity.activity} item <b>{activity.itemTitle}</b> in <b>{activity.categoryTitle}({activity.categoryTitle})</b>
               </p>
               <p>{moment(activity.date).format("MM/DD/YYYY HH:mm")}</p>
             </div>

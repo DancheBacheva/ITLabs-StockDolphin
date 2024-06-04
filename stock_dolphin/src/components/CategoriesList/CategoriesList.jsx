@@ -136,5 +136,5 @@ export const CategoriesList = ({
           ))}
       </div>
     </>
-  );
-};
+  )
+}

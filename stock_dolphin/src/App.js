@@ -12,10 +12,12 @@ import { InventorySummaryPage } from "./pages/InventorySummaryPage/InventorySumm
 import { InventoryItemPage } from "./pages/InventoryItemPage/InventoryItemPage";
 import { MenuSidebarLeft } from "./components/MenuSidebarLeft/MenuSidebarLeft";
 import { NotFound } from "./components/NotFound/NotFound";
+import { Toggle } from "./components/Toggle/Toggle";
 
 export const DataContext = React.createContext();
 
 function App() {
+const [darkMode, setDarkMode] = useState(false);
 const [data, setData] = useState({ categories: [], items: [], orders: [], suppliers: [], activities: [] });
 
  useEffect(() => {
@@ -103,10 +105,15 @@ const [data, setData] = useState({ categories: [], items: [], orders: [], suppli
   fetchData();
 }, []);
 
+const toggleDarkMode = () => {
+  setDarkMode(!darkMode);
+};
+
   return (
-    <div className="App">
+    <div className="App" data-theme={darkMode ? "dark" : "light"}>
       <DataContext.Provider value={data}>
       <main>
+    <Toggle isChecked={darkMode} handleChange={() => setDarkMode(!darkMode)}/>
         <Routes>
           <Route path="/" element={<Default/>}/>
           <Route path="*" element={<NotFound />} />

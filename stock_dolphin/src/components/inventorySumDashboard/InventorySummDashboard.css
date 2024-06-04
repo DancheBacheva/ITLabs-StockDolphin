@@ -12,7 +12,7 @@
   line-height: 33px;
   letter-spacing: 0em;
   text-align: left;
-  color: #000000; 
+  color: var(--black-white-text);
 }
 
 .rectangles{
@@ -27,7 +27,7 @@
   border-radius: 10px;
   box-shadow: 3px 4px 4px 0px #00000040;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: var(--background-two)
 }
 
 .elipse1,
@@ -71,7 +71,7 @@
   line-height: 27px;
   letter-spacing: 0.03em;
   text-align: center;
-  color: #4F5366;
+  color: var(--inventory-text-color);
 }
 
 .text{
@@ -80,7 +80,7 @@
   line-height: 21px;
   letter-spacing: 0.03em;
   text-align: center;
-  color: #4F5366;
+  color: var(--inventory-text-color);
 }
 
 @media (max-width: 768px) {
